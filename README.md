@@ -26,7 +26,7 @@ Create a feature branch and make your changes and then create a pull request . O
 ```
   Azky          :
   Suhail Mir    : suhabb22@gmail.com
-  Humpty Chris  :
+  Humphrey Curtis  : humphrey.curtis@kcl.ac.uk
   Poonam Sarode : <sarodepoonam30@gmail.com>
 ```
 
