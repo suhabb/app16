@@ -38,7 +38,7 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 
-
+//handles the analyse fragment screen
 public class analyseFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;

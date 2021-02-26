@@ -16,7 +16,7 @@ import android.view.View;
 import com.example.app16.ui.main.SectionsPagerAdapter;
 import com.example.app16.ui.main.ModelFacade;
 
-
+//Interacts with the main activity screen .xml file
 public class MainActivity extends AppCompatActivity {
     ModelFacade model;
 

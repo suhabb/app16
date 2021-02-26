@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import java.util.ArrayList;
 import java.util.HashMap; 
 
+//implements the graphs and correlate it to f/e
 public class GraphDisplay extends Drawable implements Drawable.Callback
 { private String graphKind = "line"; // could also be "scatter" or "bar"
   private Canvas canvas = null;

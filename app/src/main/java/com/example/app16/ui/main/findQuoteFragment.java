@@ -2,7 +2,8 @@ package com.example.app16.ui.main;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
+
+
 import android.os.Bundle;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -34,8 +35,9 @@ import android.widget.RadioGroup;
 import android.widget.EditText;
 import android.webkit.WebView;
 import android.widget.TextView;
-
 
+
+//controller for handling the quote request
 public class findQuoteFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;
@@ -75,7 +77,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     findQuotecancelButton.setOnClickListener(this);
     return root;
   }
-
+
+
 
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
@@ -97,7 +100,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     else
     { findQuoteResult.setText(findquotebean.findQuote() + ""); }
   }
-
+
+
 
   public void findQuoteCancel(View _v)
   { findquotebean.resetData();

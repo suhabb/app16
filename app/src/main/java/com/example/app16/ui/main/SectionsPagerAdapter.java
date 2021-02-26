@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.app16.R;
 
+//that represents each page as a Fragment t
 public class SectionsPagerAdapter extends FragmentPagerAdapter
 {
   private static final String[] TAB_TITLES = new String[]{ "FindQuote", "Analyse" };

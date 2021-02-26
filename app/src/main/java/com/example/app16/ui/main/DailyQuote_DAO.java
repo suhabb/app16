@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.*;
 
+//Handles all the quote values and parsing and conversions
 public class DailyQuote_DAO
 { public static String getURL(String command, ArrayList<String> pars, ArrayList<String> values)
   { String res = "https://query1.finance.yahoo.com/v7/finance/download/";

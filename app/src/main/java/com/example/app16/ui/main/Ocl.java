@@ -32,7 +32,7 @@ interface Evaluation<S,T> {
     T evaluate(S s);
 }
 
-
+//Operational control language for stocks values operations
   public class Ocl
   { 
 

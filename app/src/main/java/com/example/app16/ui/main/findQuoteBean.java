@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.Context;
 
+//implements the findQuoteFragment class
 public class findQuoteBean
 { ModelFacade model = null;
 

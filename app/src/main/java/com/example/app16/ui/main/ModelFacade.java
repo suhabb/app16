@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//implemented by mainActivity as a modelling instance
+//defines the model and click calls come from the top (as in the uml files)
 public class ModelFacade
   implements InternetCallback
 { 

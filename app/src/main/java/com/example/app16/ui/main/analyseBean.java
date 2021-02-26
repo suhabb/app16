@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-
+//Encapsulates the required class objects
 public class analyseBean
 { ModelFacade model = null;
 

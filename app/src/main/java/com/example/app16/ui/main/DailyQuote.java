@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.Collections;
-
+//class that handles daily quotation of stocks for given name
 class DailyQuote { static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
 
   DailyQuote() { DailyQuote_allInstances.add(this); }
@@ -18,7 +18,7 @@ class DailyQuote { static ArrayList<DailyQuote> DailyQuote_allInstances = new Ar
     return result; }
 
   String date = ""; /* primary */
-  static Map<String,DailyQuote> DailyQuote_index = new HashMap<String,DailyQuote>();
+  static Map<String,DailyQuote> DailyQuote_index = new HashMap<String,DailyQuote>();// hash map holds the data
 
   static DailyQuote createByPKDailyQuote(String datex) { DailyQuote result = new DailyQuote();
     DailyQuote.DailyQuote_index.put(datex,result);
