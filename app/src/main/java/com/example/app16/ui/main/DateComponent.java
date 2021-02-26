@@ -7,6 +7,9 @@ import java.util.Date;
 import java.text.DateFormat; 
 import java.text.SimpleDateFormat; 
 
+/*
+Does the handling of data conversions in the format YYYY-MM-DD
+ */
 
 public class DateComponent
 { public static long getEpochSeconds(String date)
