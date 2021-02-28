@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.Collections;
 import java.util.StringTokenizer;
-import java.util.Date; 
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import org.json.JSONArray;
@@ -19,7 +19,37 @@ import org.json.*;
 
 //Handles all the quote values and parsing and conversions
 public class DailyQuote_DAO
-{ public static String getURL(String command, ArrayList<String> pars, ArrayList<String> values)
+{
+  public static final String baseString = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?";
+
+  /*
+  this method will replace the method below to format url
+  @input: symbol name, date series in epochs (only passed date range validation)
+  Sample string->
+  https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1d
+  &symbol=TSLA&region=US&period1=1514117309&period2=1614318309
+  */
+  public static String formatUrlString(String stockSymbol, int fromEpoch, int toEpoch ){
+    String formatUrl = ""+baseString+"interval1d&"; //trailing & to connect next param
+    try{
+      if (stockSymbol != "" & stockSymbol != null){
+        formatUrl+=stockSymbol+"&";
+      }
+      formatUrl+="region=US&";
+      if (fromEpoch != 0 && toEpoch != 0){
+        formatUrl+="period1="+fromEpoch+"&period2="+toEpoch;
+      }
+      return formatUrl;
+
+    }catch (Exception e){
+      System.out.println("Error formatting url. It's likely due to wrong symbol name.");
+    }
+    return "MalformedURL";
+  }
+
+
+
+  public static String getURL(String command, ArrayList<String> pars, ArrayList<String> values)
   { String res = "https://query1.finance.yahoo.com/v7/finance/download/";
 
     if (command != null)

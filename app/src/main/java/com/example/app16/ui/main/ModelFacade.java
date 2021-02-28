@@ -62,6 +62,36 @@ public class ModelFacade
     return result;
   }
 
+  //method will replace the above method
+  //@ intake: symbol, from and to date. Check date range is another thing
+
+  public String findStockQuote(String shareSymbol, String fromDate, String toDate){
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public GraphDisplay analyse()
   { 
     GraphDisplay result = null;
