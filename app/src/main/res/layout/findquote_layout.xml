@@ -5,57 +5,179 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".ui.main.findQuoteFragment" >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical" >
 
-  <TableLayout
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:stretchColumns="1" >
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
 
-  <TableRow>
-  <TextView
-    android:id="@+id/findQuotedateLabel"
-    android:hint="date for findQuote"
-    android:textStyle="bold"
-    android:background="#EEFFBB"
-    android:text="Date:" />
-  <EditText
-    android:id="@+id/findQuotedateField"
-    android:layout_span="4" />
-  </TableRow>
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/shareSymbolField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/share_symbol"
+          android:fontFamily="monospace"
+          android:clickable="true"
+          android:textStyle="bold"/>
 
-  <TableRow>
-  <Button
-  android:id="@+id/findQuoteOK"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_column="1"
-  android:background="#AAAAFF"
-  android:text="findQuote"
-  android:onClick="findQuoteOK"
-  />
-  <Button
-  android:id="@+id/findQuoteCancel"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:background="#FFAAAA"
-  android:layout_column="3"
-  android:text="Cancel"
-  android:onClick="findQuoteCancel"
-  />
-  </TableRow>
+    </com.google.android.material.textfield.TextInputLayout>
 
-  <TableRow>
-  <TextView
-    android:id="@+id/findQuoteResultLabel"
-    android:hint="Result of findQuote"
-    android:textStyle="bold"
-    android:background="#EEFFBB"
-    android:text="Result:" />
-  <TextView
-    android:id="@+id/findQuoteResult"
-    android:hint="Result of findQuote"
-    android:textStyle="bold"
-    android:layout_span="4" />
-  </TableRow>
-</TableLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/findQuotedateField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/date_from"
+          android:fontFamily="monospace"
+          android:inputType="date"
+          android:textStyle="bold"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/findQuoteDateToField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/date_to"
+          android:fontFamily="monospace"
+          android:inputType="date"
+          android:textStyle="bold"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp">
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/tech_analysis"
+          android:textStyle="bold"
+          android:fontFamily="monospace"
+          android:textSize="15dp"
+          android:layout_marginBottom="5dp"/>
+
+      <CheckBox
+          android:id="@+id/sma"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:contentDescription="@string/smatxt"
+          android:fontFamily="monospace"
+          android:text="@string/sma"
+          android:textSize="15dp"
+          android:tooltipText="@string/smatxt" />
+
+      <CheckBox
+          android:id="@+id/ema"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="monospace"
+          android:text="@string/ema"
+          android:textSize="15dp"
+          android:tooltipText="@string/ematxt" />
+
+      <CheckBox
+          android:id="@+id/macd"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="monospace"
+          android:text="@string/macd"
+          android:textSize="15dp"
+          android:tooltipText="@string/macdtxt" />
+
+      <CheckBox
+          android:id="@+id/macdavg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="monospace"
+          android:text="@string/macdavg"
+          android:textSize="15dp"
+          android:tooltipText="@string/macdavgtxt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/findQuoteOK"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_shape"
+            android:onClick="findQuoteOK"
+            android:text="@string/find_quote"
+            android:fontFamily="monospace"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+
+        <Button
+            android:id="@+id/findQuoteCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_shape"
+            android:onClick="findQuoteCancel"
+            android:text="@string/reset"
+            android:fontFamily="monospace"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+      <TextView
+          android:id="@+id/findQuoteResultLabel"
+          android:hint="Result of findQuote"
+          android:textStyle="bold"
+          android:background="#EEFFBB"
+          android:text="Result"
+          android:fontFamily="monospace"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content" />
+
+      <TextView
+          android:id="@+id/findQuoteResult"
+          android:hint="Result of findQuote"
+          android:textStyle="bold"
+          android:fontFamily="monospace"
+          android:layout_span="4"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content" />
+    </LinearLayout>
+
+  </LinearLayout>
 </ScrollView>
