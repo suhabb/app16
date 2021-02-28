@@ -79,7 +79,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   }
 
 
-
+  //the main click methods are called from here by the view instance
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
     try { _imm.hideSoftInputFromWindow(_v.getWindowToken(), 0); } catch (Exception _e) { }

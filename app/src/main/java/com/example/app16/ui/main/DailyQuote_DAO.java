@@ -21,6 +21,7 @@ import org.json.*;
 public class DailyQuote_DAO
 { public static String getURL(String command, ArrayList<String> pars, ArrayList<String> values)
   { String res = "https://query1.finance.yahoo.com/v7/finance/download/";
+
     if (command != null)
     { res = res + command; }
     if (pars.size() == 0)
