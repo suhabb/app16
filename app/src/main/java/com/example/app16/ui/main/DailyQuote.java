@@ -14,15 +14,19 @@ class DailyQuote {
 
   static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
 
-  DailyQuote() { DailyQuote_allInstances.add(this); }
+  DailyQuote() {
+    DailyQuote_allInstances.add(this);
+  }
 
   static DailyQuote createDailyQuote() { DailyQuote result = new DailyQuote();
     return result; }
 
-  String date = ""; /* primary */2
+  String date = ""; /* primary */
   static Map<String,DailyQuote> DailyQuote_index = new HashMap<String,DailyQuote>();// hash map holds the data
 
-  static DailyQuote createByPKDailyQuote(String datex) { DailyQuote result = new DailyQuote();
+  //adds the value
+  static DailyQuote createByPKDailyQuote(String datex) {
+    DailyQuote result = new DailyQuote();//creates an object and sets it to HM
     DailyQuote.DailyQuote_index.put(datex,result);
     result.date = datex;
     return result; }
@@ -30,7 +34,7 @@ class DailyQuote {
   double open = 0;
   double high = 0;
   double low = 0;
-  double close = 0;
+  double close = 0; //using closing value
   double adjclose = 0;
   double volume = 0;
 
@@ -43,7 +47,7 @@ class DailyQuote {
   }
 
 
-  pubic void checkfile(String shareSymbol, String fromDate, String toDate){
+  public void checkfile(String shareSymbol, String fromDate, String toDate){
 
 
 

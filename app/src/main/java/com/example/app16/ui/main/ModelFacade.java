@@ -77,7 +77,7 @@ public class ModelFacade
     //check for cached outcome
     if (DailyQuote_DAO.isCached(fileName)){
       //file exists, so means to obtain cached data
-
+      System.out.println("TBA");
 
     }else{
       String url = DailyQuote_DAO.formatUrlString(shareSymbol,DateComponent.getEpochSeconds(fromDate),DateComponent.getEpochSeconds(toDate));
@@ -85,9 +85,9 @@ public class ModelFacade
       getCaller.setDelegate(this);
       getCaller.execute(url);
     }
-
+    return null;
   }
-
+  //graph call action
   public GraphDisplay analyse()
   { 
     GraphDisplay result = null;

@@ -29,7 +29,7 @@ public class DailyQuote_DAO
   https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1d
   &symbol=TSLA&region=US&period1=1514117309&period2=1614318309
   */
-  public static String formatUrlString(String stockSymbol, int fromEpoch, int toEpoch ){
+  public static String formatUrlString(String stockSymbol, long fromEpoch, long toEpoch ){
     String formatUrl = ""+baseString+"interval1d&"; //trailing & to connect next param
     try{
       if (!stockSymbol.equals("") & stockSymbol != null){
@@ -79,14 +79,15 @@ public class DailyQuote_DAO
   { return DailyQuote.DailyQuote_index.get(id); }
 
 
-
+  //to change this, so that it works to the current requirement.
   public static DailyQuote parseCSV(String _line)
   { if (_line == null) { return null; }
     ArrayList<String> _line1vals = Ocl.tokeniseCSV(_line);
     DailyQuote dailyquotex;
     dailyquotex = DailyQuote.DailyQuote_index.get((String) _line1vals.get(0));
-    if (dailyquotex == null)
-    { dailyquotex = DailyQuote.createByPKDailyQuote((String) _line1vals.get(0)); }
+    if (dailyquotex == null) {
+    dailyquotex = DailyQuote.createByPKDailyQuote((String) _line1vals.get(0));
+    }
     dailyquotex.date = (String) _line1vals.get(0);
     dailyquotex.open = Double.parseDouble((String) _line1vals.get(1));
     dailyquotex.high = Double.parseDouble((String) _line1vals.get(2));
@@ -98,15 +99,16 @@ public class DailyQuote_DAO
   }
 
 
-
+  //to change this, so that it works to the current requirement.
   public static DailyQuote parseJSON(JSONObject obj)
   { if (obj == null) { return null; }
 
     try {
       String date = obj.getString("date");
       DailyQuote _dailyquotex = DailyQuote.DailyQuote_index.get(date);
-      if (_dailyquotex == null) { _dailyquotex = DailyQuote.createByPKDailyQuote(date); }
-      
+      if (_dailyquotex == null) {
+      _dailyquotex = DailyQuote.createByPKDailyQuote(date);
+      }
       _dailyquotex.date = obj.getString("date");
       _dailyquotex.open = obj.getDouble("open");
       _dailyquotex.high = obj.getDouble("high");
