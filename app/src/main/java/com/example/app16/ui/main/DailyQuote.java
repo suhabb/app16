@@ -10,14 +10,16 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.Collections;
 //class that handles daily quotation of stocks for given name
-class DailyQuote { static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
+class DailyQuote {
+
+  static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
 
   DailyQuote() { DailyQuote_allInstances.add(this); }
 
   static DailyQuote createDailyQuote() { DailyQuote result = new DailyQuote();
     return result; }
 
-  String date = ""; /* primary */
+  String date = ""; /* primary */2
   static Map<String,DailyQuote> DailyQuote_index = new HashMap<String,DailyQuote>();// hash map holds the data
 
   static DailyQuote createByPKDailyQuote(String datex) { DailyQuote result = new DailyQuote();
@@ -31,5 +33,21 @@ class DailyQuote { static ArrayList<DailyQuote> DailyQuote_allInstances = new Ar
   double close = 0;
   double adjclose = 0;
   double volume = 0;
+
+  public void createname( String shareSymbol, String fromDate, String toDate){
+
+
+
+
+
+  }
+
+
+  pubic void checkfile(String shareSymbol, String fromDate, String toDate){
+
+
+
+  }
+
 }
 

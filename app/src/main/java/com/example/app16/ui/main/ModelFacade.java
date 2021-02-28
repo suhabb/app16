@@ -33,6 +33,12 @@ public class ModelFacade
 
   }
 
+  /*
+    TSLA, 2018 - 2020 => TSLA-2017/08/25-2019/08/25.csv
+                         TSLA-2017/07/25-2017/08/25.csv
+
+   */
+
   public String findQuote(String date)
   { 
     String result = "";
@@ -66,31 +72,21 @@ public class ModelFacade
   //@ intake: symbol, from and to date. Check date range is another thing
 
   public String findStockQuote(String shareSymbol, String fromDate, String toDate){
+    String fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
+    String respResult = "";
+    //check for cached outcome
+    if (DailyQuote_DAO.isCached(fileName)){
+      //file exists, so means to obtain cached data
 
 
-
-
-
-
-
-
+    }else{
+      String url = DailyQuote_DAO.formatUrlString(shareSymbol,DateComponent.getEpochSeconds(fromDate),DateComponent.getEpochSeconds(toDate));
+      InternetAccessor getCaller = new InternetAccessor();
+      getCaller.setDelegate(this);
+      getCaller.execute(url);
+    }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   public GraphDisplay analyse()
   { 

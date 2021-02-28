@@ -32,7 +32,7 @@ public class DailyQuote_DAO
   public static String formatUrlString(String stockSymbol, int fromEpoch, int toEpoch ){
     String formatUrl = ""+baseString+"interval1d&"; //trailing & to connect next param
     try{
-      if (stockSymbol != "" & stockSymbol != null){
+      if (!stockSymbol.equals("") & stockSymbol != null){
         formatUrl+=stockSymbol+"&";
       }
       formatUrl+="region=US&";
