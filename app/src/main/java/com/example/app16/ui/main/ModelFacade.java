@@ -5,6 +5,8 @@ import android.content.res.AssetManager;
 
 import java.util.ArrayList;
 
+//implemented by mainActivity as a modelling instance
+//defines the model and click calls come from the top (as in the uml files)
 public class ModelFacade
         implements InternetCallback {
 
@@ -58,24 +60,39 @@ public class ModelFacade
         x.execute(url);
         result = ("Called url: " + url);
 
-        return result;
-    }
 
-    public GraphDisplay analyse() {
-        GraphDisplay result = null;
-        result = new GraphDisplay();
-        ArrayList<DailyQuote> quotes = null;
-        quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
-        ArrayList<String> xnames = null;
-        xnames = Ocl.copySequence(Ocl.collectSequence(quotes, (q) -> {
-            return q.date;
-        }));
-        ArrayList<Double> yvalues = null;
-        yvalues = Ocl.copySequence(Ocl.collectSequence(quotes, (q) -> {
-            return q.close;
-        }));
-        result.setXNominal(xnames);
-        result.setYPoints(yvalues);
+  //method will replace the above method
+  //@ intake: symbol, from and to date. Check date range is another thing
+
+  public String findStockQuote(String shareSymbol, String fromDate, String toDate){
+    String fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
+    String respResult = "";
+    //check for cached outcome
+    if (DailyQuote_DAO.isCached(fileName)){
+      //file exists, so means to obtain cached data
+      System.out.println("TBA");
+
+    }else{
+      String url = DailyQuote_DAO.formatUrlString(shareSymbol,DateComponent.getEpochSeconds(fromDate),DateComponent.getEpochSeconds(toDate));
+      InternetAccessor getCaller = new InternetAccessor();
+      getCaller.setDelegate(this);
+      getCaller.execute(url);
+    }
+    return null;
+  }
+  //graph call action
+  public GraphDisplay analyse()
+  { 
+    GraphDisplay result = null;
+    result = new GraphDisplay();
+    ArrayList<DailyQuote> quotes = null;
+    quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
+    ArrayList<String> xnames = null;
+    xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)->{return q.date;}));
+    ArrayList<Double> yvalues = null;
+    yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)->{return q.close;}));
+    result.setXNominal(xnames);
+    result.setYPoints(yvalues);
 
         return result;
     }

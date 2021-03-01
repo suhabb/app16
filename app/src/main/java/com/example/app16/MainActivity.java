@@ -25,7 +25,7 @@ import com.example.app16.ui.main.ModelFacade;
 import com.example.app16.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-
+//Interacts with the main activity screen .xml file
 public class MainActivity extends AppCompatActivity {
    ModelFacade model;
 

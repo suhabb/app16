@@ -1,0 +1,474 @@
+@startuml
+
+title __MAIN's Class Diagram__\n
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.Analyse {
+          {static} ~ Analyse_allInstances : ArrayList<Analyse>
+          + analyse()
+          ~ Analyse()
+          {static} ~ createAnalyse()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.CalculateFormulas {
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.DailyQuote {
+          {static} ~ DailyQuote_allInstances : ArrayList<DailyQuote>
+          {static} ~ DailyQuote_index : Map<String, DailyQuote>
+          ~ adjclose : double
+          ~ close : double
+          ~ date : String
+          ~ high : double
+          ~ low : double
+          ~ open : double
+          ~ volume : double
+          ~ DailyQuote()
+          {static} ~ createByPKDailyQuote()
+          {static} ~ createDailyQuote()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.DailyQuote_DAO {
+          {static} + getCachedInstance()
+          {static} + getURL()
+          {static} + isCached()
+          {static} + makeFromCSV()
+          {static} + parseCSV()
+          {static} + parseJSON()
+          {static} + parseJSON()
+          {static} + writeJSON()
+          {static} + writeJSONArray()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.DateComponent {
+          {static} + getEpochMilliseconds()
+          {static} + getEpochSeconds()
+          {static} + getTime()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      interface com.example.app16.ui.main.Evaluation {
+          {abstract} + evaluate()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.FileAccessor {
+          ~ myContext : Context
+          + FileAccessor()
+          + createFile()
+          + readFile()
+          + writeFile()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.FindQuote {
+          {static} ~ FindQuote_allInstances : ArrayList<FindQuote>
+          + findQuote()
+          ~ FindQuote()
+          {static} ~ createFindQuote()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.GraphDisplay {
+          + xpoints : ArrayList<Double>
+          + ypoints : ArrayList<Double>
+          - blackPaint : Paint
+          - bluePaint : Paint
+          - canvas : Canvas
+          - divisions : int
+          - graphKind : String
+          {static} - instance : GraphDisplay
+          - labelsx : HashMap<String, Double>
+          - labelsy : HashMap<String, Double>
+          - linesx : HashMap<String, ArrayList<Double>>
+          - linesy : HashMap<String, ArrayList<Double>>
+          - offset : int
+          - orangePaint : Paint
+          - textPaint : Paint
+          - xName : String
+          - xlabels : ArrayList<String>
+          - yName : String
+          - zpoints : ArrayList<Double>
+          + GraphDisplay()
+          + addLabel()
+          + addLine()
+          {static} + defaultInstance()
+          + draw()
+          + getOpacity()
+          + invalidateDrawable()
+          + redraw()
+          + scheduleDrawable()
+          + setAlpha()
+          + setColorFilter()
+          + setGraphKind()
+          + setXNominal()
+          + setXScalar()
+          + setYPoints()
+          + setZPoints()
+          + setxname()
+          + setyname()
+          + unscheduleDrawable()
+          - drawNominalScaler()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.InternetAccessor {
+          {static} - instance : InternetAccessor
+          {static} + getInstance()
+          + setDelegate()
+          # doInBackground()
+          # onPostExecute()
+          # onPreExecute()
+          # onProgressUpdate()
+          - fetchUrl()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      interface com.example.app16.ui.main.InternetCallback {
+          {abstract} + internetAccessCompleted()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.ModelFacade {
+          {static} ~ instance : ModelFacade
+          ~ myContext : Context
+          + analyse()
+          + findQuote()
+          {static} + getInstance()
+          + internetAccessCompleted()
+          - ModelFacade()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.Ocl {
+          {static} + addMap()
+          {static} + addSequence()
+          {static} + addSequence()
+          {static} + addSequence()
+          {static} + addSequence()
+          {static} + addSequence()
+          {static} + addSet()
+          {static} + addSet()
+          {static} + addSet()
+          {static} + addSet()
+          {static} + addSet()
+          {static} + after()
+          {static} + any()
+          {static} + any()
+          {static} + append()
+          {static} + asSequence()
+          {static} + asSet()
+          {static} + before()
+          {static} + characters()
+          {static} + collectMap()
+          {static} + collectSequence()
+          {static} + collectSet()
+          {static} + concatenate()
+          {static} + concatenateAll()
+          {static} + concatenateAll()
+          {static} + copySequence()
+          {static} + copySet()
+          {static} + count()
+          {static} + count()
+          {static} + excludeAllMap()
+          {static} + excludingMapKey()
+          {static} + excludingMapValue()
+          {static} + excludingSequence()
+          {static} + excludingSet()
+          {static} + exists()
+          {static} + exists1()
+          {static} + exists1Map()
+          {static} + existsMap()
+          {static} + first()
+          {static} + forAll()
+          {static} + forAllMap()
+          {static} + front()
+          {static} + includingMap()
+          {static} + initialiseSequence()
+          {static} + initialiseSet()
+          {static} + insertAt()
+          {static} + insertAt()
+          {static} + integerSubrange()
+          {static} + intersectAll()
+          {static} + intersectAllSequence()
+          {static} + intersectAllSet()
+          {static} + intersection()
+          {static} + intersection()
+          {static} + intersection()
+          {static} + intersectionMap()
+          {static} + isInteger()
+          {static} + isLong()
+          {static} + isReal()
+          {static} + isUnique()
+          {static} + last()
+          {static} + max()
+          {static} + maximalElements()
+          {static} + min()
+          {static} + minimalElements()
+          {static} + oclIsTypeOf()
+          {static} + parseCSVtable()
+          {static} + prddouble()
+          {static} + prdint()
+          {static} + prdlong()
+          {static} + prepend()
+          {static} + rejectMap()
+          {static} + rejectSequence()
+          {static} + rejectSet()
+          {static} + restrictMap()
+          {static} + reverse()
+          {static} + reverse()
+          {static} + selectMap()
+          {static} + selectSequence()
+          {static} + selectSet()
+          {static} + sort()
+          {static} + sortedBy()
+          {static} + subcollections()
+          {static} + subcollections()
+          {static} + subrange()
+          {static} + subrange()
+          {static} + subtract()
+          {static} + subtract()
+          {static} + subtract()
+          {static} + subtract()
+          {static} + sumString()
+          {static} + sumdouble()
+          {static} + sumint()
+          {static} + sumlong()
+          {static} + symmetricDifference()
+          {static} + tail()
+          {static} + tokeniseCSV()
+          {static} + union()
+          {static} + union()
+          {static} + union()
+          {static} + union()
+          {static} + unionAll()
+          {static} + unionAll()
+          {static} + unionMap()
+          {static} ~ mergeSort()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.PageViewModel {
+          - mIndex : MutableLiveData<Integer>
+          - mText : LiveData<String>
+          + getText()
+          + setIndex()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.PlaceholderFragment {
+          {static} - ARG_SECTION_NUMBER : String
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      interface com.example.app16.ui.main.Predicate {
+          {abstract} + test()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.SectionsPagerAdapter {
+          {static} - TAB_TITLES : String[]
+          - mContext : Context
+          + SectionsPagerAdapter()
+          + getCount()
+          + getItem()
+          + getPageTitle()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.analyseBean {
+          - errors : List
+          + analyse()
+          + analyseBean()
+          + errors()
+          + isanalyseerror()
+          + resetData()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.analyseFragment {
+          ~ analyseOkButton : Button
+          ~ analyseResult : ImageView
+          ~ analysecancelButton : Button
+          ~ myContext : Context
+          ~ root : View
+          + analyseCancel()
+          + analyseFragment()
+          + analyseOK()
+          {static} + newInstance()
+          + onClick()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.analyseVO {
+          + analyseVO()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.findQuoteBean {
+          - date : String
+          - errors : List
+          + errors()
+          + findQuote()
+          + findQuoteBean()
+          + isfindQuoteerror()
+          + resetData()
+          + setdate()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.findQuoteFragment {
+          ~ findQuoteOkButton : Button
+          ~ findQuoteResult : TextView
+          ~ findQuotecancelButton : Button
+          ~ findQuotedateData : String
+          ~ findQuotedateTextField : EditText
+          ~ myContext : Context
+          ~ root : View
+          + findQuoteCancel()
+          + findQuoteFragment()
+          + findQuoteOK()
+          {static} + newInstance()
+          + onClick()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.app16 {
+    namespace ui.main {
+      class com.example.app16.ui.main.findQuoteVO {
+          - date : String
+          + findQuoteVO()
+          + findQuoteVO()
+          + getdate()
+          + setdate()
+      }
+    }
+  }
+  
+
+  com.example.app16.ui.main.GraphDisplay .up.|> android.graphics.drawable.Drawable.Callback
+  com.example.app16.ui.main.GraphDisplay -up-|> android.graphics.drawable.Drawable
+  com.example.app16.ui.main.InternetAccessor -up-|> android.os.AsyncTask
+  com.example.app16.ui.main.InternetAccessor o-- com.example.app16.ui.main.InternetCallback : delegate
+  com.example.app16.ui.main.ModelFacade .up.|> com.example.app16.ui.main.InternetCallback
+  com.example.app16.ui.main.ModelFacade o-- com.example.app16.ui.main.FileAccessor : fileSystem
+  com.example.app16.ui.main.PageViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.app16.ui.main.PlaceholderFragment -up-|> androidx.fragment.app.Fragment
+  com.example.app16.ui.main.PlaceholderFragment o-- com.example.app16.ui.main.PageViewModel : pageViewModel
+  com.example.app16.ui.main.SectionsPagerAdapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+  com.example.app16.ui.main.analyseBean o-- com.example.app16.ui.main.ModelFacade : model
+  com.example.app16.ui.main.analyseFragment .up.|> android.view.View.OnClickListener
+  com.example.app16.ui.main.analyseFragment -up-|> androidx.fragment.app.Fragment
+  com.example.app16.ui.main.analyseFragment o-- com.example.app16.ui.main.analyseBean : analysebean
+  com.example.app16.ui.main.findQuoteBean o-- com.example.app16.ui.main.ModelFacade : model
+  com.example.app16.ui.main.findQuoteFragment .up.|> android.view.View.OnClickListener
+  com.example.app16.ui.main.findQuoteFragment -up-|> androidx.fragment.app.Fragment
+  com.example.app16.ui.main.findQuoteFragment o-- com.example.app16.ui.main.findQuoteBean : findquotebean
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

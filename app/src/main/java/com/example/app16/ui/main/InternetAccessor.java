@@ -10,6 +10,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import android.content.Context;
 
+/*
+Does the handling of HTTP GET requests
+ */
 public class InternetAccessor extends AsyncTask<String, Void, String>
 {  private InternetCallback delegate = null;
    private static InternetAccessor instance = null;

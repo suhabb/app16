@@ -16,6 +16,7 @@ import com.example.app16.R;
 
 /**
  * A placeholder fragment containing a simple view.
+ * Used to add/transition views i believe
  */
 public class PlaceholderFragment extends Fragment {
 

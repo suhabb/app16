@@ -10,8 +10,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class FileAccessor {
-    Context myContext;
+
+//To create, read and write files. Maybe can be used for the persistence problem too
+public class FileAccessor
+{ Context myContext;
+
 
     public FileAccessor(Context context) {
         myContext = context;

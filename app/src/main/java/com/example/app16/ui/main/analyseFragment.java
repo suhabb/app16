@@ -38,7 +38,7 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 
-
+//handles the analyse fragment screen
 public class analyseFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;
@@ -87,6 +87,7 @@ public class analyseFragment extends Fragment implements OnClickListener
     { analyseCancel(_v); }
   }
 
+  //invocation of graph calls here
   public void analyseOK(View _v) 
   { 
     if (analysebean.isanalyseerror())

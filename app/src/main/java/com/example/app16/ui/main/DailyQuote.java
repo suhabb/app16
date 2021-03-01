@@ -1,21 +1,25 @@
 package com.example.app16.ui.main;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.Set;
+import java.util.HashSet;
+import java.util.TreeSet;
+import java.util.Collections;
+//class that handles daily quotation of stocks for given name
 class DailyQuote {
 
-    static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
+  static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
 
-    DailyQuote() {
-        DailyQuote_allInstances.add(this);
-    }
+  DailyQuote() {
+    DailyQuote_allInstances.add(this);
+  }
+
 
     static DailyQuote createDailyQuote() {
         DailyQuote result = new DailyQuote();
         return result;
     }
+
 
     String date = ""; /* primary */
     static Map<String, DailyQuote> DailyQuote_index = new HashMap<String, DailyQuote>();
@@ -33,5 +37,6 @@ class DailyQuote {
     double close = 0;
     double adjclose = 0;
     double volume = 0;
+
 }
 

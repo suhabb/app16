@@ -1,5 +1,6 @@
 package com.example.app16.ui.main;
 
+//unused class, could be used as a findQuoteBean
 public class findQuoteVO
 { 
  private String date;
