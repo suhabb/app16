@@ -42,7 +42,7 @@ public class DailyQuote_DAO
       return formatUrl;
 
     }catch (Exception e){
-      System.out.println("Error formatting url. It's likely due to wrong symbol name.");
+      System.out.println("Error formatting url. It's likely due to a wrong symbol name.");
     }
     return "MalformedURL";
   }
