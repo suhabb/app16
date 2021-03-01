@@ -1,9 +1,5 @@
 package com.example.app16.ui.main;
 
-import java.util.*;
-import java.util.HashMap;
-import java.util.Collection;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
@@ -18,40 +14,29 @@ class DailyQuote {
     DailyQuote_allInstances.add(this);
   }
 
-  static DailyQuote createDailyQuote() { DailyQuote result = new DailyQuote();
-    return result; }
 
-  String date = ""; /* primary */
-  static Map<String,DailyQuote> DailyQuote_index = new HashMap<String,DailyQuote>();// hash map holds the data
-
-  //adds the value
-  static DailyQuote createByPKDailyQuote(String datex) {
-    DailyQuote result = new DailyQuote();//creates an object and sets it to HM
-    DailyQuote.DailyQuote_index.put(datex,result);
-    result.date = datex;
-    return result; }
-
-  double open = 0;
-  double high = 0;
-  double low = 0;
-  double close = 0; //using closing value
-  double adjclose = 0;
-  double volume = 0;
-
-  public void createname( String shareSymbol, String fromDate, String toDate){
+    static DailyQuote createDailyQuote() {
+        DailyQuote result = new DailyQuote();
+        return result;
+    }
 
 
+    String date = ""; /* primary */
+    static Map<String, DailyQuote> DailyQuote_index = new HashMap<String, DailyQuote>();
 
+    static DailyQuote createByPKDailyQuote(String datex) {
+        DailyQuote result = new DailyQuote();
+        DailyQuote.DailyQuote_index.put(datex, result);
+        result.date = datex;
+        return result;
+    }
 
-
-  }
-
-
-  public void checkfile(String shareSymbol, String fromDate, String toDate){
-
-
-
-  }
+    double open = 0;
+    double high = 0;
+    double low = 0;
+    double close = 0;
+    double adjclose = 0;
+    double volume = 0;
 
 }
 

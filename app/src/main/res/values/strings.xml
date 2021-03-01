@@ -1,5 +1,25 @@
 <resources>
-    <string name="app_name">app16</string>
+    <string name="app_name">Stock Analysis</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="share_symbol">Share Symbol</string>
+    <string name="date_from">Start Date (YYYY-MM-DD)</string>
+    <string name="date_to">End Date (YYYY-MM-DD)</string>
+    <string name="find_quote">Find Quote</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+    <string name="analyse">Analyse</string>
+    <string name="about">About</string>
+    <string name="sma">SMA</string>
+    <string name="smatxt">Simple Moving Average</string>
+    <string name="ema">EMA</string>
+    <string name="ematxt">Exponential Moving Average</string>
+    <string name="macd">MACD</string>
+    <string name="macdtxt">Moving Average Convergence Divergence</string>
+    <string name="macdavg">MACDAvg</string>
+    <string name="macdavgtxt">EMA of MACD</string>
+    <string name="tech_analysis">Select Technical Anlaysis Indicators:</string>
+
+
+
 </resources>
