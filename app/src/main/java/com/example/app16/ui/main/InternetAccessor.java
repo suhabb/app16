@@ -32,8 +32,9 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
    protected String doInBackground(String... params)
    { String url = params[0];
      String myData = "";
-     try { myData = fetchUrl(url); }
-     catch (Exception _e)
+     try {
+         myData = fetchUrl(url);
+     } catch (Exception _e)
      { delegate.internetAccessCompleted(null);
        return null;
      }
@@ -48,8 +49,12 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
           URL myUrl = new URL(url);
           HttpURLConnection myConn = (HttpURLConnection) myUrl.openConnection();
           myConn.setRequestProperty("User-Agent", "");
+          myConn.setRequestProperty("x-rapidapi-key","4e47937527mshf111bc4e02a3f6fp1ce684jsn6de2467b8246");
+          myConn.setRequestProperty("x-rapidapi-host","apidojo-yahoo-finance-v1.p.rapidapi.com");
           myConn.setRequestMethod("GET");
           myConn.setDoInput(true);
+
+
           myConn.connect();
 
           InputStream myInStrm = myConn.getInputStream();

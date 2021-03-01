@@ -30,7 +30,10 @@ public class findQuoteBean
   public String errors() { return errors.toString(); }
 
   public String findQuote()
-  { return model.findQuote(date); }
+  {
+    return model.findQuote(date);
+    //return model.findStockQuote(shareSymbol, fromDate, toDate)
+  }
 
 }
 

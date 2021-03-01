@@ -18,8 +18,9 @@ public class CacheComponent {
     Context myContext;
     AssetManager assetManager;
 
+    //I have altered the return type to Boolean
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public List<String> getFilenameOfStock(String tickerId, String fromDateString, String toDateString) {
+    public Boolean getFilenameOfStock(String tickerId, String fromDateString, String toDateString) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fromDate = LocalDate.parse(fromDateString, formatter);
@@ -39,12 +40,12 @@ public class CacheComponent {
                     if ((fromDate.equals(storageFromDate) || fromDate.isAfter(storageFromDate))
                             && (toDate.equals(storageToDate) || toDate.isBefore(storageToDate))) {
                         storageFileNames.add(filename);
-                        return;
+                        return ;
                     }
                 }
             });
         }
-        return storageFileNames;
+        return false;
     }
 
     public CacheComponent(Context context) {
