@@ -3,6 +3,7 @@ package com.example.app16.ui.main;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Build;
+import android.widget.CheckBox;
 
 import java.util.ArrayList;
 
@@ -62,16 +63,20 @@ public class ModelFacade
       }
 
       //graph call action
-      public GraphDisplay analyse()
+      public GraphDisplay analyse(String filename, ArrayList<CheckBox> indicators)
       {
         GraphDisplay result = null;
         result = new GraphDisplay();
         ArrayList<DailyQuote> quotes = null;
+
+
+
+
         quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
         ArrayList<String> xnames = null;
-        xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)->{return q.date;}));
+        xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
         ArrayList<Double> yvalues = null;
-        yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)->{return q.close;}));
+        yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.close));
         result.setXNominal(xnames);
         result.setYPoints(yvalues);
 

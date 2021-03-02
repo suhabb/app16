@@ -1,9 +1,11 @@
 package com.example.app16.ui.main;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -45,7 +47,10 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   findQuoteBean findquotebean;
   static int checkBoxCount;
   EditText findQuotedateTextField;
-  String findQuotedateData = "";
+  String findQuotedateData;
+  EditText stockSymbol;
+  EditText quoteFromDate ;
+  EditText quoteEndDate;
   TextView findQuoteResult;
   Button findQuoteOkButton;
   Button findQuotecancelButton;
@@ -72,7 +77,10 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   { root = inflater.inflate(R.layout.findquote_layout, container, false);
     Bundle data = getArguments();
-    findQuotedateTextField = (EditText) root.findViewById(R.id.findQuotedateField);
+    findQuotedateTextField =  root.findViewById(R.id.findQuotedateField);
+    stockSymbol = root.findViewById(R.id.shareSymbolField);
+    quoteFromDate = root.findViewById(R.id.findQuotedateField);
+    quoteEndDate = root.findViewById(R.id.findQuoteDateToField);
     findQuoteResult = (TextView) root.findViewById(R.id.findQuoteResult);
     findquotebean = new findQuoteBean(myContext);
     findQuoteOkButton = root.findViewById(R.id.findQuoteOK);
@@ -92,7 +100,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   }
 
 
-  //the main click methods are called from here by the view instance
+  //The main click methods are called from here by the view instance
+  @RequiresApi(api = Build.VERSION_CODES.O)
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
     try { _imm.hideSoftInputFromWindow(_v.getWindowToken(), 0); } catch (Exception _e) { }
@@ -101,13 +110,12 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     else if (_v.getId() == R.id.findQuoteCancel)
     { findQuoteCancel(_v); }
     else if (_v.getId() == R.id.sma || _v.getId() == R.id.ema || _v.getId() == R.id.macd || _v.getId() == R.id.macdavg )
-    {
-        System.out.println("96 changes");
-        validateTickedBox(_v); }
+    { validateTickedBox(_v); }
   }
 
-  public void findQuoteOK(View _v) 
-  { 
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  public void findQuoteOK(View _v)
+  {
     findQuotedateData = findQuotedateTextField.getText() + "";
     findquotebean.setdate(findQuotedateData);
     if (findquotebean.isfindQuoteerror())
@@ -115,7 +123,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
       Toast.makeText(myContext, "Errors: " + findquotebean.errors(), Toast.LENGTH_LONG).show();
     }
     else
-    { findQuoteResult.setText(findquotebean.findQuote() + ""); }
+    { findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(), quoteFromDate.getText().toString() , quoteEndDate.getText().toString())); }
   }
 
 
@@ -137,7 +145,5 @@ public class findQuoteFragment extends Fragment implements OnClickListener
           cBox.setChecked(false);
           findQuoteResult.setText("Please only select 2 indicators at max");
       }
-
   }
-
 }

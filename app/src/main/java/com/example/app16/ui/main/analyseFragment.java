@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.ArrayList;
 import android.view.View;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.RadioGroup;
@@ -47,6 +48,7 @@ public class analyseFragment extends Fragment implements OnClickListener
   ImageView analyseResult;
   Button analyseOkButton;
   Button analysecancelButton;
+
 
 
  public analyseFragment() {}
@@ -73,6 +75,7 @@ public class analyseFragment extends Fragment implements OnClickListener
     analyseOkButton.setOnClickListener(this);
     analysecancelButton = root.findViewById(R.id.analyseCancel);
     analysecancelButton.setOnClickListener(this);
+
     return root;
   }
 
@@ -95,7 +98,7 @@ public class analyseFragment extends Fragment implements OnClickListener
       Toast.makeText(myContext, "Errors: " + analysebean.errors(), Toast.LENGTH_LONG).show();
     }
     else
-    { GraphDisplay _result = analysebean.analyse();
+    { GraphDisplay _result = analysebean.analyse();//param takes in that are ticked.
       analyseResult.invalidate();
       analyseResult.refreshDrawableState();
       analyseResult.setImageDrawable(_result);
