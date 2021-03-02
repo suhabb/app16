@@ -18,6 +18,7 @@ public class ModelFacade
     static ModelFacade instance = null;
     AssetManager manager = null;
     CacheComponent cacheComponent;
+    String fileName;
 
     public static ModelFacade getInstance(Context context) {
         if (instance == null) {
@@ -35,7 +36,7 @@ public class ModelFacade
 
     // file saving takes place here upon successful GET request
     public void internetAccessCompleted(String response) {
-        DailyQuote_DAO.makeFromCSV(response);
+        DailyQuote_DAO.createJsonFile(fileName,response);
 
     }
 
@@ -67,7 +68,7 @@ public class ModelFacade
         // @ intake: symbol, from and to date. Check date range is another thing
       @RequiresApi(api = Build.VERSION_CODES.O)
       public String findStockQuote(String shareSymbol, String fromDate, String toDate){
-        //String fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
+        fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
         String respResult = "";
         //check for cached outcome
         if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)){

@@ -75,6 +75,18 @@ public class DailyQuote_DAO
         return true;
     }
 
+    //this method will take the file and save it using FileAccessor class.
+    public static void createJsonFile(String fileName, String resp){
+
+
+
+
+
+
+
+    }
+
+
     //create multi instance of dailyquote by repeated calls
     public static ArrayList<DailyQuote> makeFromCSV(String lines) {
         ArrayList<DailyQuote> result = new ArrayList<DailyQuote>();
