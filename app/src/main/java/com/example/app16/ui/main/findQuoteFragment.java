@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.ArrayList;
 import android.view.View;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.Toast;
 import android.widget.RadioGroup;
 import android.widget.EditText;
@@ -42,13 +43,16 @@ public class findQuoteFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;
   findQuoteBean findquotebean;
-
+  static int checkBoxCount;
   EditText findQuotedateTextField;
   String findQuotedateData = "";
   TextView findQuoteResult;
   Button findQuoteOkButton;
   Button findQuotecancelButton;
-
+  CheckBox smaBox;
+  CheckBox emaBox;
+  CheckBox macdBox;
+  CheckBox macdavqBox;
 
  public findQuoteFragment() {}
 
@@ -75,6 +79,15 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     findQuoteOkButton.setOnClickListener(this);
     findQuotecancelButton = root.findViewById(R.id.findQuoteCancel);
     findQuotecancelButton.setOnClickListener(this);
+    smaBox = root.findViewById(R.id.sma);
+    smaBox.setOnClickListener(this);
+    emaBox = root.findViewById(R.id.ema);
+    emaBox.setOnClickListener(this);
+    macdBox = root.findViewById(R.id.macd);
+    macdBox.setOnClickListener(this);
+    macdavqBox = root.findViewById(R.id.macdavg);
+    macdavqBox.setOnClickListener(this);
+
     return root;
   }
 
@@ -87,6 +100,10 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     { findQuoteOK(_v); }
     else if (_v.getId() == R.id.findQuoteCancel)
     { findQuoteCancel(_v); }
+    else if (_v.getId() == R.id.sma || _v.getId() == R.id.ema || _v.getId() == R.id.macd || _v.getId() == R.id.macdavg )
+    {
+        System.out.println("96 changes");
+        validateTickedBox(_v); }
   }
 
   public void findQuoteOK(View _v) 
@@ -108,4 +125,19 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     findQuotedateTextField.setText("");
     findQuoteResult.setText("");
   }
+
+  public void validateTickedBox(View _v){
+      CheckBox cBox = (CheckBox)_v;
+      if(cBox.isChecked() & checkBoxCount < 2){
+          checkBoxCount+=1;
+      }else if(!cBox.isChecked()){
+          checkBoxCount-=1;
+      }
+      else{
+          cBox.setChecked(false);
+          findQuoteResult.setText("Please only select 2 indicators at max");
+      }
+
+  }
+
 }

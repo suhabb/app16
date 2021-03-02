@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 //To create, read and write files. Maybe can be used for the persistence problem too
 public class FileAccessor
-{ Context myContext;
+{
+    Context myContext;
 
 
     public FileAccessor(Context context) {
@@ -22,14 +23,14 @@ public class FileAccessor
 
     public void createFile(String filename) {
         try {
-            File newFile = new File(myContext.getFilesDir(), filename);
+            File newFile = new File(myContext.getFilesDir(), filename);//the file is saved based on the return of getFilesDir().
         } catch (Exception _e) {
             _e.printStackTrace();
         }
     }
 
-    public ArrayList<String> readFile(String filename) {
-        ArrayList<String> result = new ArrayList<String>();
+    public String readFile(String filename) {
+        StringBuilder result = new StringBuilder();
 
         try {
             InputStream inStrm = myContext.openFileInput(filename);
@@ -39,25 +40,24 @@ public class FileAccessor
                 String fileContent;
 
                 while ((fileContent = buffRdr.readLine()) != null) {
-                    result.add(fileContent);
+                    result.append(fileContent);
                 }
                 inStrm.close();
             }
         } catch (Exception _e) {
             _e.printStackTrace();
         }
-        return result;
+        return result.toString();
     }
 
-    public void writeFile(String filename, ArrayList<String> contents) {
+    public void writeFile(String filename, String contents) {
         try {
-            OutputStreamWriter outStrm =
-                    new OutputStreamWriter(myContext.openFileOutput(filename, Context.MODE_PRIVATE));
+            OutputStreamWriter outStrm = new OutputStreamWriter(myContext.openFileOutput(filename, Context.MODE_PRIVATE));
             try {
-                for (int i = 0; i < contents.size(); i++) {
-                    outStrm.write(contents.get(i) + "\n");
-                }
+                outStrm.write(contents + "\n");
+
             } catch (IOException _ix) {
+                System.out.println("Error writing your file : " + _ix);
             }
             outStrm.close();
         } catch (Exception e) {

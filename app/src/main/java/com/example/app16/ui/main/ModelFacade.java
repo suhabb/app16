@@ -36,32 +36,10 @@ public class ModelFacade
 
     // file saving takes place here upon successful GET request
     public void internetAccessCompleted(String response) {
-        DailyQuote_DAO.createJsonFile(fileName,response);
-
-    }
-
-    public String findQuote(String date) {
-        String result = "";
-        if (DailyQuote_DAO.isCached(date)) {
-            result = "Data already exists";
-            return result;
-        }
-        long t1 = 0;
-        t1 = DateComponent.getEpochSeconds(date);
-        long t2 = 0;
-        t2 = (t1 + 7 * 86400);
-        String url = "";
-        ArrayList<String> sq1 = null;
-        sq1 = Ocl.copySequence(Ocl.initialiseSequence("period1", "period2", "interval", "events"));
-        ArrayList<String> sq2 = null;
-        sq2 = Ocl.copySequence(Ocl.initialiseSequence((t1 + ""), (t2 + ""), "1d", "history"));
-        url = DailyQuote_DAO.getURL("GBPUSD=X", sq1, sq2);
-        InternetAccessor x = null;
-        x = new InternetAccessor();
-        x.setDelegate(this);
-        x.execute(url);
-        result = ("Called url: " + url);
-        return result;
+        //DailyQuote_DAO.createJsonFile(fileName,response);
+        fileSystem.createFile(fileName);
+        fileSystem.writeFile(fileName,response);
+        System.out.println("File written locally");
     }
 
         //method will replace the above method
@@ -71,7 +49,7 @@ public class ModelFacade
         fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
         String respResult = "";
         //check for cached outcome
-        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)){
+        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() == 0 ){
           return "Data already cached. No further requests made.";
 
         }else{
@@ -99,5 +77,30 @@ public class ModelFacade
 
         return result;
         }
+
+
+    public String findQuote(String date) {
+        String result = "";
+        if (DailyQuote_DAO.isCached(date)) {
+            result = "Data already exists";
+            return result;
+        }
+        long t1 = 0;
+        t1 = DateComponent.getEpochSeconds(date);
+        long t2 = 0;
+        t2 = (t1 + 7 * 86400);
+        String url = "";
+        ArrayList<String> sq1 = null;
+        sq1 = Ocl.copySequence(Ocl.initialiseSequence("period1", "period2", "interval", "events"));
+        ArrayList<String> sq2 = null;
+        sq2 = Ocl.copySequence(Ocl.initialiseSequence((t1 + ""), (t2 + ""), "1d", "history"));
+        url = DailyQuote_DAO.getURL("GBPUSD=X", sq1, sq2);
+        InternetAccessor x = null;
+        x = new InternetAccessor();
+        x.setDelegate(this);
+        x.execute(url);
+        result = ("Called url: " + url);
+        return result;
+    }
 
 }

@@ -39,10 +39,11 @@ public class CacheComponentTest {
 
         when(assetManager.list(anyString()))
                 .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2017-01-01_2019-01-01"});
-        Boolean listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
+        List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-01-01",
                 "2017-01-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename);
+        System.out.println(listOfFilename);
+        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
 
     }
 
@@ -51,10 +52,10 @@ public class CacheComponentTest {
 
         when(assetManager.list(anyString()))
                 .thenReturn(new String[]{});
-        Boolean listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
+        List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-01-01",
                 "2017-01-01");
-        Assert.assertEquals(Boolean.TRUE,listOfFilename);
+        Assert.assertEquals(Boolean.TRUE,listOfFilename.isEmpty());
 
     }
 
@@ -63,10 +64,10 @@ public class CacheComponentTest {
 
         when(assetManager.list(anyString()))
                 .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2017-01-01_2019-01-01"});
-        Boolean listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
+        List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2017-01-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename);
+        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
 
     }
 
@@ -75,10 +76,10 @@ public class CacheComponentTest {
 
         when(assetManager.list(anyString()))
                 .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2015-01-01_2017-01-01"});
-        Boolean listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
+        List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2016-12-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename);
+        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
     }
 
     @Test
@@ -86,10 +87,10 @@ public class CacheComponentTest {
 
         when(assetManager.list(anyString()))
                 .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2015-01-01_2017-01-01"});
-        Boolean listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
+        List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2017-02-01");
-        Assert.assertEquals(Boolean.TRUE,listOfFilename);
+        Assert.assertEquals(Boolean.TRUE,listOfFilename.isEmpty());
     }
 
     @Test
@@ -98,10 +99,9 @@ public class CacheComponentTest {
         when(assetManager.list(anyString()))
                 .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2015-01-01_2017-01-01",
                         "AAPL_2015-01-01_2017-01-01", "GOGL_2017-01-01_2017-10-01"});
-        Boolean listOfFilename = cacheComponent.getFilenameOfStock("GOGL",
+        List<String> listOfFilename = cacheComponent.getFilenameOfStock("GOGL",
                 "2017-02-01",
                 "2017-07-01");
-        Assert.assertEquals("GOGL_2017-01-01_2017-10-01",listOfFilename);
+        Assert.assertEquals("GOGL_2017-01-01_2017-10-01",listOfFilename.get(0));
     }
 }
-
