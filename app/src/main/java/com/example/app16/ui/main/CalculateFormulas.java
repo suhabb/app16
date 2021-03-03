@@ -14,39 +14,36 @@ public class CalculateFormulas {
         switch (type){
             case SMA:
                 return calculateSMA(data);
-                break;
             case EMA:
                 return calculateEMA(data);
-                break;
             case MACD:
                 return calculateMACD(data);
-                break;
             case MACDAVG:
                 return calculateMACDAVG(data);
-                break;
         }
+        return null;
     }
 
     public ArrayList<String> calculateSMA(ArrayList data){
 
 
-
+        return null;
     }
     public ArrayList<String> calculateEMA(ArrayList data){
 
 
-
+        return null;
     }
     public ArrayList<String> calculateMACD(ArrayList data){
 
 
-
+        return null;
     }
     public ArrayList<String> calculateMACDAVG(ArrayList data){
 
 
 
-
+        return null;
     }
 
 }
