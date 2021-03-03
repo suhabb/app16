@@ -71,15 +71,18 @@ public class ModelFacade
       Add to obtain the files of data, which are the timeframes and values in 2 arraylist
        */
       public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
-        CalculateFormulas cF = new CalculateFormulas();
         ArrayList timeFrameAndValues = fileSystem.getJsonFileData(fileName);
+        CalculateFormulas cF = new CalculateFormulas(timeFrameAndValues);
         IndicatorsEnum IndicType = IndicatorsEnum.resolveType(indicators);
-        ArrayList calculatedValues = cF.calcForInstrument(IndicType, timeFrameAndValues);
+        ArrayList<String>[] calculatedValues = cF.calcForInstrument(IndicType);
         return getNewGraphDisplay(calculatedValues);
         }
 
-        public GraphDisplay getNewGraphDisplay(ArrayList xyValues){
-            GraphDisplay result = new GraphDisplay();
+      public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues){
+         GraphDisplay result = new GraphDisplay();
+         result.setXNominal((ArrayList<String>) xyValues[0]);
+         result.setYPoints((ArrayList<Double>) xyValues[1]);
+         return (result);
 
 //            ArrayList<DailyQuote> quotes = null;
 //            quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
@@ -90,10 +93,7 @@ public class ModelFacade
 //            result.setXNominal(xnames);
 //            result.setYPoints(yvalues);
 
-            result.setXNominal((ArrayList<String>) xyValues.get(0));
-            result.setYPoints((ArrayList<Double>) xyValues.get(1));
-            return (result);
-        }
+      }
 
 
 
