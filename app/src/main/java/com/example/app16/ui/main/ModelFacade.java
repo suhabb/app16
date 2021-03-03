@@ -73,29 +73,24 @@ public class ModelFacade
       public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
         CalculateFormulas cF = new CalculateFormulas();
         ArrayList timeFrameAndValues = fileSystem.getJsonFileData(fileName);
-
-        //resolve the type in string and call the right formula
-          //calc and return the arraylist of x and y values...
-
-
-
-
-
-        return getNewGraphDisplay();
+        IndicatorsEnum IndicType = IndicatorsEnum.resolveType(indicators);
+        ArrayList<String> calculatedValues = cF.calcForInstrument(IndicType, timeFrameAndValues);
+        return getNewGraphDisplay(calculatedValues);
         }
 
-        public GraphDisplay getNewGraphDisplay(){
+        public GraphDisplay getNewGraphDisplay(ArrayList<String> xyValues){
             GraphDisplay result = new GraphDisplay();
-            ArrayList<DailyQuote> quotes = null;
 
+            ArrayList<DailyQuote> quotes = null;
             quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
             ArrayList<String> xnames = null;
             xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
-
             ArrayList<Double> yvalues = null;
             yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.close));
-
             result.setXNominal(xnames);
+            result.setYPoints(yvalues);
+
+            result.setXNominal(xyValues.get(0));
             result.setYPoints(yvalues);
             return (result);
         }
