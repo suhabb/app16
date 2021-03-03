@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 
 import org.json.simple.parser.ParseException;
 
+
 //Encapsulates the required class objects
 public class analyseBean
 { ModelFacade model = null;
@@ -28,17 +29,15 @@ public class analyseBean
 
   public String errors() { return errors.toString(); }
 
-  public GraphDisplay analyse()
+  public GraphDisplay analyse(String cboxes)
   {
-    System.out.println(viewData.getComposedFileName() + "   127 " );
+//    System.out.println(viewData.getComposedFileName() + "   127 " );
     try {
-      return model.analyse(viewData.getComposedFileName(),viewData.getTickedIndicators());  // cannot fetch values from another view
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (ParseException e) {
+      return model.analyse(ModelFacade.fileName,cboxes);  // cannot fetch values from another view
+    } catch (FileNotFoundException | ParseException e) {
       e.printStackTrace();
     }
-    //return new GraphDisplay();
+    return new GraphDisplay();
   }
 }
 

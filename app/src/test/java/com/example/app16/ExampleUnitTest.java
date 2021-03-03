@@ -4,7 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import org.junit.Test;
+//import org.junit.Test;
 import org.json.simple.parser.JSONParser;
 
 import java.io.BufferedReader;
@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    @Test
+//    @Test
     public void addition_isCorrect() throws IOException {
         String urlContent = "";
         URL myUrl = new URL("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1d&symbol=TSLA&region=US&period1=1514117309&period2=1614318309");
@@ -46,10 +46,10 @@ public class ExampleUnitTest {
             System.out.println(myBuffRdr.readLine());
 
 
-        assertEquals(4, 2 + 2);
+//        assertEquals(4, 2 + 2);
     }
 
-    @Test
+//    @Test
     public void readAndParseToJson() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         Object a = parser.parse(new FileReader("/Users/azky/Desktop/AndroidProject/app16/app/src/main/assets/storage/TSLA_2015-01-01_2017-01-01"));
@@ -86,6 +86,6 @@ public class ExampleUnitTest {
 //        }
 
 
-        assertEquals(4, 2 + 2);
+//        assertEquals(4, 2 + 2);
     }
 }

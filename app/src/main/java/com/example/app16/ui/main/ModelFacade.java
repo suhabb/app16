@@ -5,6 +5,8 @@ import android.content.res.AssetManager;
 import android.os.Build;
 import android.widget.CheckBox;
 
+//import org.json.simple.parser.ParseException;
+
 import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
@@ -22,7 +24,7 @@ public class ModelFacade
     static ModelFacade instance = null;
     AssetManager manager = null;
     CacheComponent cacheComponent;
-    String fileName;
+    static String fileName;
 
     public static ModelFacade getInstance(Context context) {
         if (instance == null) {
@@ -50,7 +52,7 @@ public class ModelFacade
         // @ intake: symbol, from and to date. Check date range is another thing
       @RequiresApi(api = Build.VERSION_CODES.O)
       public String findStockQuote(String shareSymbol, String fromDate, String toDate){
-        fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate)+".json";
+        fileName = String.format("%s_%s_%s",shareSymbol,fromDate,toDate)+".json";
         String respResult = "";
         //check for cached outcome
         if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() == 0 ){
@@ -68,19 +70,16 @@ public class ModelFacade
       /*
       Add to obtain the files of data, which are the timeframes and values in 2 arraylist
        */
-      public GraphDisplay analyse(String filename, ArrayList<CheckBox> indicators) throws FileNotFoundException, ParseException {
+      public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
         CalculateFormulas cF = new CalculateFormulas();
-        //Goto file reader, open json parse and get the data in two arraylists
         ArrayList timeFrameAndValues = fileSystem.getJsonFileData(fileName);
 
-        for (CheckBox obj : indicators){
-            //for each indicators, send to the formulae to get the sorted values
-            //cF.calls()
+        //resolve the type in string and call the right formula
+          //calc and return the arraylist of x and y values...
 
 
 
 
-        }
 
         return getNewGraphDisplay();
         }
