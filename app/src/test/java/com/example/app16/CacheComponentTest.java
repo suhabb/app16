@@ -38,12 +38,12 @@ public class CacheComponentTest {
     public void given_criteria_return_filename_if_exits() throws IOException {
 
         when(assetManager.list(anyString()))
-                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01.json", "TSLA_2017-01-01_2019-01-01"});
+                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2017-01-01_2019-01-01"});
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-01-01",
                 "2017-01-01");
         System.out.println(listOfFilename);
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01.json",listOfFilename.get(0));
+        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
 
     }
 
@@ -63,11 +63,11 @@ public class CacheComponentTest {
     public void given_fromdate_isAfter_beforedate_is_equal_return_filename() throws IOException {
 
         when(assetManager.list(anyString()))
-                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01.json", "TSLA_2017-01-01_2019-01-01"});
+                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2017-01-01_2019-01-01"});
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2017-01-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01.json",listOfFilename.get(0));
+        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
 
     }
 
@@ -75,18 +75,18 @@ public class CacheComponentTest {
     public void given_fromdate_isAfter_beforedate_is_less_than_return_filename() throws IOException {
 
         when(assetManager.list(anyString()))
-                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01.json", "TSLA_2015-01-01_2017-01-01.json"});
+                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2015-01-01_2017-01-01"});
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2016-12-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01.json",listOfFilename.get(0));
+        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
     }
 
     @Test
     public void given_fromdate_isAfter_beforedate_is_more_than_return_empty_list() throws IOException {
 
         when(assetManager.list(anyString()))
-                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01.json", "TSLA_2015-01-01_2017-01-01.json"});
+                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2015-01-01_2017-01-01"});
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2017-02-01");
@@ -97,7 +97,7 @@ public class CacheComponentTest {
     public void given_fromdate_isAfter_beforedate_is_before_than_return_file() throws IOException {
 
         when(assetManager.list(anyString()))
-                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01.json", "TSLA_2015-01-01_2017-01-01.json",
+                .thenReturn(new String[]{"TSLA_2015-01-01_2017-01-01", "TSLA_2015-01-01_2017-01-01",
                         "AAPL_2015-01-01_2017-01-01", "GOGL_2017-01-01_2017-10-01"});
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("GOGL",
                 "2017-02-01",

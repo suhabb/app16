@@ -2,8 +2,15 @@ package com.example.app16.ui.main;
 
 import android.content.Context;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -63,6 +70,27 @@ public class FileAccessor
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList getJsonFileData(String filename) throws FileNotFoundException, ParseException {
+
+        ArrayList tFrameAndValues = new ArrayList();
+
+        JSONParser parser = new JSONParser();
+        Object a = parser.parse(String.valueOf(myContext.openFileInput(filename)));
+        JSONObject json = (JSONObject) a;
+        JSONObject as = (JSONObject) json.get("chart");
+        JSONArray ja = (JSONArray) as.get("result");
+        JSONObject ja1 = (JSONObject) ja.get(0);
+        JSONArray ja2 = (JSONArray) ja1.get("timestamp");
+        JSONObject ja3 = (JSONObject) ja1.get("indicators");
+        JSONArray ja4 = (JSONArray) ja3.get("quote");
+        JSONObject ja5 = (JSONObject) ja4.get(0);
+        JSONArray ja6 = (JSONArray) ja5.get("close");
+        tFrameAndValues.add(ja2);
+        tFrameAndValues.add(ja6);
+
+        return tFrameAndValues;
     }
 
 }

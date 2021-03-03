@@ -79,8 +79,6 @@ public class analyseFragment extends Fragment implements OnClickListener
     return root;
   }
 
-
-
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
     try { _imm.hideSoftInputFromWindow(_v.getWindowToken(), 0); } catch (Exception _e) { }
@@ -104,8 +102,6 @@ public class analyseFragment extends Fragment implements OnClickListener
       analyseResult.setImageDrawable(_result);
     }
   }
-
-
 
   public void analyseCancel(View _v)
   { analysebean.resetData();

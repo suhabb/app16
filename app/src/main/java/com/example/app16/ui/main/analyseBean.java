@@ -1,11 +1,14 @@
 package com.example.app16.ui.main;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import java.util.List;
 
 import android.content.Context;
 import android.widget.CheckBox;
+
+import org.json.simple.parser.ParseException;
 
 //Encapsulates the required class objects
 public class analyseBean
@@ -28,7 +31,13 @@ public class analyseBean
   public GraphDisplay analyse()
   {
     System.out.println(viewData.getComposedFileName() + "   127 " );
-    return model.analyse(viewData.getComposedFileName(),viewData.getTickedIndicators());  // cannot fetch values from another view
+    try {
+      return model.analyse(viewData.getComposedFileName(),viewData.getTickedIndicators());  // cannot fetch values from another view
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
     //return new GraphDisplay();
   }
 }

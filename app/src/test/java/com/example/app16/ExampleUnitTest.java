@@ -52,7 +52,7 @@ public class ExampleUnitTest {
     @Test
     public void readAndParseToJson() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        Object a = parser.parse(new FileReader("/Users/azky/Desktop/AndroidProject/app16/app/src/main/assets/storage/TSLA_2015-01-01_2017-01-01.json"));
+        Object a = parser.parse(new FileReader("/Users/azky/Desktop/AndroidProject/app16/app/src/main/assets/storage/TSLA_2015-01-01_2017-01-01"));
         JSONObject json = (JSONObject) a;
         JSONObject as = (JSONObject) json.get("chart");
         JSONArray ja = (JSONArray) as.get("result");

@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import android.os.Build;
 import android.widget.CheckBox;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import androidx.annotation.RequiresApi;
@@ -47,7 +50,7 @@ public class ModelFacade
         // @ intake: symbol, from and to date. Check date range is another thing
       @RequiresApi(api = Build.VERSION_CODES.O)
       public String findStockQuote(String shareSymbol, String fromDate, String toDate){
-        fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
+        fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate)+".json";
         String respResult = "";
         //check for cached outcome
         if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() == 0 ){
@@ -65,14 +68,14 @@ public class ModelFacade
       /*
       Add to obtain the files of data, which are the timeframes and values in 2 arraylist
        */
-      public GraphDisplay analyse(String filename, ArrayList<CheckBox> indicators)
-      {
+      public GraphDisplay analyse(String filename, ArrayList<CheckBox> indicators) throws FileNotFoundException, ParseException {
         CalculateFormulas cF = new CalculateFormulas();
         //Goto file reader, open json parse and get the data in two arraylists
+        ArrayList timeFrameAndValues = fileSystem.getJsonFileData(fileName);
 
         for (CheckBox obj : indicators){
             //for each indicators, send to the formulae to get the sorted values
-
+            //cF.calls()
 
 
 
@@ -86,7 +89,6 @@ public class ModelFacade
             GraphDisplay result = new GraphDisplay();
             ArrayList<DailyQuote> quotes = null;
 
-
             quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
             ArrayList<String> xnames = null;
             xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
@@ -96,7 +98,7 @@ public class ModelFacade
 
             result.setXNominal(xnames);
             result.setYPoints(yvalues);
-            return (new GraphDisplay());
+            return (result);
         }
 
 
