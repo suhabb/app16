@@ -123,7 +123,9 @@ public class findQuoteFragment extends Fragment implements OnClickListener
       Toast.makeText(myContext, "Errors: " + findquotebean.errors(), Toast.LENGTH_LONG).show();
     }
     else
-    { findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(), quoteFromDate.getText().toString() , quoteEndDate.getText().toString())); }
+    {
+        //System.out.println("127 : " +stockSymbol.getText().toString() + " " + quoteFromDate.getText().toString()); -- works
+        findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(), quoteFromDate.getText().toString() , quoteEndDate.getText().toString())); }
   }
 
 

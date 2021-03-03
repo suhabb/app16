@@ -98,7 +98,7 @@ public class analyseFragment extends Fragment implements OnClickListener
       Toast.makeText(myContext, "Errors: " + analysebean.errors(), Toast.LENGTH_LONG).show();
     }
     else
-    { GraphDisplay _result = analysebean.analyse();//param takes in that are ticked.
+    { GraphDisplay _result = analysebean.analyse();
       analyseResult.invalidate();
       analyseResult.refreshDrawableState();
       analyseResult.setImageDrawable(_result);

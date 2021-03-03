@@ -62,26 +62,42 @@ public class ModelFacade
         return "Get request successful!";
       }
 
-      //graph call action
+      /*
+      Add to obtain the files of data, which are the timeframes and values in 2 arraylist
+       */
       public GraphDisplay analyse(String filename, ArrayList<CheckBox> indicators)
       {
-        GraphDisplay result = null;
-        result = new GraphDisplay();
-        ArrayList<DailyQuote> quotes = null;
+
+        //Goto file reader, open json parse and get the data in two arraylists
+
+        for (CheckBox obj : indicators){
+            //for each indicators, send to the formulae to get the sorted values
 
 
 
 
-        quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
-        ArrayList<String> xnames = null;
-        xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
-        ArrayList<Double> yvalues = null;
-        yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.close));
-        result.setXNominal(xnames);
-        result.setYPoints(yvalues);
 
-        return result;
         }
+
+        return getNewGraphDisplay();
+        }
+
+        public GraphDisplay getNewGraphDisplay(){
+            GraphDisplay result = new GraphDisplay();
+            ArrayList<DailyQuote> quotes = null;
+
+
+            quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
+            ArrayList<String> xnames = null;
+            xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
+
+            ArrayList<Double> yvalues = null;
+            yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.close));
+
+            result.setXNominal(xnames);
+            result.setYPoints(yvalues);
+        }
+
 
 
     public String findQuote(String date) {
