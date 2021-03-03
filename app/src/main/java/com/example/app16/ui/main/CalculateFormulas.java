@@ -34,7 +34,7 @@ public class CalculateFormulas {
     note: due to varying input range, Sma figures are based on a period of 5% of the timeframe
      */
     private ArrayList[] calculateSMA(){
-        ArrayList<> lists[] = new ArrayList[2];
+        ArrayList lists[] = new ArrayList[2];
         for(int i=0;i<2;i++){ lists[i]=new ArrayList<>(); }
         int smaPeriod = (int) (timeFrames.size() * 0.05);
         int count = smaPeriod;
