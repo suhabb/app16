@@ -28,7 +28,7 @@ public class analyseBean
   public GraphDisplay analyse()
   {
     System.out.println(viewData.getComposedFileName() + "   127 " );
-    return model.analyse(viewData.getComposedFileName(),viewData.getTickedIndicators()); } // cannot fetch values from another view
+    return model.analyse(viewData.getComposedFileName(),viewData.getTickedIndicators());  // cannot fetch values from another view
     //return new GraphDisplay();
   }
 }

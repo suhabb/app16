@@ -67,7 +67,7 @@ public class ModelFacade
        */
       public GraphDisplay analyse(String filename, ArrayList<CheckBox> indicators)
       {
-
+        CalculateFormulas cF = new CalculateFormulas();
         //Goto file reader, open json parse and get the data in two arraylists
 
         for (CheckBox obj : indicators){
@@ -96,6 +96,7 @@ public class ModelFacade
 
             result.setXNominal(xnames);
             result.setYPoints(yvalues);
+            return (new GraphDisplay());
         }
 
 
