@@ -62,7 +62,6 @@ public class FileAccessor
             OutputStreamWriter outStrm = new OutputStreamWriter(myContext.openFileOutput(filename, Context.MODE_PRIVATE));
             try {
                 outStrm.write(contents + "\n");
-
             } catch (IOException _ix) {
                 System.out.println("Error writing your file : " + _ix);
             }

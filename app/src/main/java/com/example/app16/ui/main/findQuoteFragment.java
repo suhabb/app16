@@ -81,7 +81,9 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     findQuotedateTextField =  root.findViewById(R.id.findQuotedateField);
     stockSymbol = root.findViewById(R.id.shareSymbolField);
     quoteFromDate = root.findViewById(R.id.findQuotedateField);
+    quoteFromDate.setText("2016-06-11");
     quoteEndDate = root.findViewById(R.id.findQuoteDateToField);
+    quoteEndDate.setText("2017-08-11");
     findQuoteResult = (TextView) root.findViewById(R.id.findQuoteResult);
     findquotebean = new findQuoteBean(myContext);
     findQuoteOkButton = root.findViewById(R.id.findQuoteOK);

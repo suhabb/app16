@@ -6,6 +6,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 //import org.junit.Test;
 import org.json.simple.parser.JSONParser;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +29,7 @@ import java.util.Map;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-//    @Test
+    @Test
     public void addition_isCorrect() throws IOException {
         String urlContent = "";
         URL myUrl = new URL("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1d&symbol=TSLA&region=US&period1=1514117309&period2=1614318309");

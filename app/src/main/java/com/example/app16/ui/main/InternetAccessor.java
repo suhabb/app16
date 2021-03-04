@@ -35,7 +35,7 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
      try {
          myData = fetchUrl(url);
      } catch (Exception _e)
-     { delegate.internetAccessCompleted(null);
+     { delegate.internetAccessCompleted(myData);
        return null;
      }
      return myData;
@@ -44,7 +44,7 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
    private String fetchUrl(String url)
    { String urlContent = "";
      StringBuilder myStrBuff = new StringBuilder();
-
+       System.out.println("47 new");
      try{
           URL myUrl = new URL(url);
           HttpURLConnection myConn = (HttpURLConnection) myUrl.openConnection();
@@ -54,7 +54,6 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
           myConn.setRequestMethod("GET");
           myConn.setDoInput(true);
 
-
           myConn.connect();
 
           InputStream myInStrm = myConn.getInputStream();
@@ -63,12 +62,13 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
           while ((urlContent = myBuffRdr.readLine()) != null) {
               myStrBuff.append(urlContent + '\n');
           }
-
-      } catch (IOException e) {
-          delegate.internetAccessCompleted(null);
+         System.out.println("66: "+ myStrBuff);
+      } catch (Exception e) {
+          System.out.println(e.getStackTrace());
+          delegate.internetAccessCompleted(myStrBuff.toString());
           return null;
       }
-
+       System.out.println("71: "+ myStrBuff);
       return myStrBuff.toString();
   }
 

@@ -5,10 +5,11 @@ import android.content.res.AssetManager;
 
 import com.example.app16.ui.main.CacheComponent;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions.*;
+
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class) no longer required with Junit 5
 public class CacheComponentTest {
 
     Context mockContext= mock(Context.class);
@@ -27,7 +28,7 @@ public class CacheComponentTest {
 
     AssetManager assetManager = mock(AssetManager.class);
 
-    @Before
+    @BeforeAll
     public void setUp(){
 
         cacheComponent = new CacheComponent(mockContext);
@@ -43,7 +44,7 @@ public class CacheComponentTest {
                 "2015-01-01",
                 "2017-01-01");
         System.out.println(listOfFilename);
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
+        Assertions.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
 
     }
 
@@ -55,7 +56,7 @@ public class CacheComponentTest {
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-01-01",
                 "2017-01-01");
-        Assert.assertEquals(Boolean.TRUE,listOfFilename.isEmpty());
+        Assertions.assertEquals(Boolean.TRUE,listOfFilename.isEmpty());
 
     }
 
@@ -67,7 +68,7 @@ public class CacheComponentTest {
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2017-01-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
+        Assertions.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
 
     }
 
@@ -79,7 +80,7 @@ public class CacheComponentTest {
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2016-12-01");
-        Assert.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
+        Assertions.assertEquals("TSLA_2015-01-01_2017-01-01",listOfFilename.get(0));
     }
 
     @Test
@@ -90,7 +91,7 @@ public class CacheComponentTest {
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("TSLA",
                 "2015-02-01",
                 "2017-02-01");
-        Assert.assertEquals(Boolean.TRUE,listOfFilename.isEmpty());
+        Assertions.assertEquals(Boolean.TRUE,listOfFilename.isEmpty());
     }
 
     @Test
@@ -102,6 +103,6 @@ public class CacheComponentTest {
         List<String> listOfFilename = cacheComponent.getFilenameOfStock("GOGL",
                 "2017-02-01",
                 "2017-07-01");
-        Assert.assertEquals("GOGL_2017-01-01_2017-10-01",listOfFilename.get(0));
+        Assertions.assertEquals("GOGL_2017-01-01_2017-10-01",listOfFilename.get(0));
     }
 }

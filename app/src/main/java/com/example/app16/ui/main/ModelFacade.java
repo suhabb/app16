@@ -45,17 +45,18 @@ public class ModelFacade
         //DailyQuote_DAO.createJsonFile(fileName,response);
         fileSystem.createFile(fileName);
         fileSystem.writeFile(fileName,response);
-        System.out.println("File written locally");
+        System.out.println("File written locally & read "+ response);
+        System.out.println("49 " +fileSystem.readFile(fileName));
     }
 
         //method will replace the above method
         // @ intake: symbol, from and to date. Check date range is another thing
       @RequiresApi(api = Build.VERSION_CODES.O)
       public String findStockQuote(String shareSymbol, String fromDate, String toDate){
-        fileName = String.format("%s_%s_%s",shareSymbol,fromDate,toDate)+".json";
+        fileName = String.format("%s_%s_%s",shareSymbol,fromDate,toDate);
         String respResult = "";
         //check for cached outcome
-        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() == 0 ){
+        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() != 0 ){
           return "Data already cached. No further requests made.";
 
         }else{
@@ -64,7 +65,7 @@ public class ModelFacade
           getCaller.setDelegate(this);
           getCaller.execute(url);
         }
-        return "Get request successful!";
+        return "Get request successful and cached the file!";
       }
 
       /*
