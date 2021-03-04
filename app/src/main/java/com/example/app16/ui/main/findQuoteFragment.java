@@ -1,9 +1,11 @@
 package com.example.app16.ui.main;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -30,6 +32,7 @@ import java.util.List;
 import java.util.ArrayList;
 import android.view.View;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.Toast;
 import android.widget.RadioGroup;
 import android.widget.EditText;
@@ -42,13 +45,20 @@ public class findQuoteFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;
   findQuoteBean findquotebean;
-
+  static int checkBoxCount;
+  static ArrayList<CheckBox> checkedBoxes = new ArrayList<>();
   EditText findQuotedateTextField;
-  String findQuotedateData = "";
+  String findQuotedateData;
+  EditText stockSymbol;
+  EditText quoteFromDate ;
+  EditText quoteEndDate;
   TextView findQuoteResult;
   Button findQuoteOkButton;
   Button findQuotecancelButton;
-
+  CheckBox smaBox;
+  CheckBox emaBox;
+  CheckBox macdBox;
+  CheckBox macdavqBox;
 
  public findQuoteFragment() {}
 
@@ -68,18 +78,33 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   { root = inflater.inflate(R.layout.findquote_layout, container, false);
     Bundle data = getArguments();
-    findQuotedateTextField = (EditText) root.findViewById(R.id.findQuotedateField);
+    findQuotedateTextField =  root.findViewById(R.id.findQuotedateField);
+    stockSymbol = root.findViewById(R.id.shareSymbolField);
+    quoteFromDate = root.findViewById(R.id.findQuotedateField);
+    quoteFromDate.setText("2016-06-11");
+    quoteEndDate = root.findViewById(R.id.findQuoteDateToField);
+    quoteEndDate.setText("2017-08-11");
     findQuoteResult = (TextView) root.findViewById(R.id.findQuoteResult);
     findquotebean = new findQuoteBean(myContext);
     findQuoteOkButton = root.findViewById(R.id.findQuoteOK);
     findQuoteOkButton.setOnClickListener(this);
     findQuotecancelButton = root.findViewById(R.id.findQuoteCancel);
     findQuotecancelButton.setOnClickListener(this);
+    smaBox = root.findViewById(R.id.sma);
+    smaBox.setOnClickListener(this);
+    emaBox = root.findViewById(R.id.ema);
+    emaBox.setOnClickListener(this);
+    macdBox = root.findViewById(R.id.macd);
+    macdBox.setOnClickListener(this);
+    macdavqBox = root.findViewById(R.id.macdavg);
+    macdavqBox.setOnClickListener(this);
+
     return root;
   }
 
 
-  //the main click methods are called from here by the view instance
+  //The main click methods are called from here by the view instance
+  @RequiresApi(api = Build.VERSION_CODES.O)
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
     try { _imm.hideSoftInputFromWindow(_v.getWindowToken(), 0); } catch (Exception _e) { }
@@ -87,10 +112,13 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     { findQuoteOK(_v); }
     else if (_v.getId() == R.id.findQuoteCancel)
     { findQuoteCancel(_v); }
+    else if (_v.getId() == R.id.sma || _v.getId() == R.id.ema || _v.getId() == R.id.macd || _v.getId() == R.id.macdavg )
+    { validateTickedBox(_v); }
   }
 
-  public void findQuoteOK(View _v) 
-  { 
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  public void findQuoteOK(View _v)
+  {
     findQuotedateData = findQuotedateTextField.getText() + "";
     findquotebean.setdate(findQuotedateData);
     if (findquotebean.isfindQuoteerror())
@@ -98,14 +126,47 @@ public class findQuoteFragment extends Fragment implements OnClickListener
       Toast.makeText(myContext, "Errors: " + findquotebean.errors(), Toast.LENGTH_LONG).show();
     }
     else
-    { findQuoteResult.setText(findquotebean.findQuote() + ""); }
+    {
+        //System.out.println("127 : " +stockSymbol.getText().toString() + " " + quoteFromDate.getText().toString()); -- works
+        findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(), quoteFromDate.getText().toString() , quoteEndDate.getText().toString())); }
   }
-
-
 
   public void findQuoteCancel(View _v)
   { findquotebean.resetData();
     findQuotedateTextField.setText("");
     findQuoteResult.setText("");
   }
+
+  public void validateTickedBox(View _v){
+      CheckBox cBox = (CheckBox)_v;
+      if(cBox.isChecked() & checkBoxCount < 2){
+          checkBoxCount+=1;
+          checkedBoxes.add(cBox);
+      }else if(!cBox.isChecked()){
+          checkBoxCount-=1;
+          checkedBoxes.remove(cBox);
+      }
+      else{
+          cBox.setChecked(false);
+          findQuoteResult.setText("Please only select 2 indicators at max");
+      }
+      //getTickedIndicators(cBox);
+//      System.out.println(checkedBoxes);
+  }
+
+    //Alternative works.. just left here as redundant....
+    public ArrayList<CheckBox> getTickedIndicators(CheckBox cBox) {
+
+        if (smaBox == cBox) {
+            checkedBoxes.add(smaBox);
+        } else if (emaBox == cBox) {
+            checkedBoxes.add(emaBox);
+        } else if (macdBox == cBox) {
+            checkedBoxes.add(macdBox);
+        } else if (macdavqBox == cBox) {
+            checkedBoxes.add(macdavqBox);
+        }
+        return checkedBoxes;
+    }
+
 }

@@ -35,14 +35,10 @@ public class DateComponent
     return d.getTime(); 
   }
 
-  /*
-  This method checks if the given range is between 2 year range.
-  This is checked by checking if the range is grater than the n of seconds in 2years
-   */
-  public boolean checkDateRangeInEpoch(String from, String to){
-
-      return getEpochSeconds(to) - getEpochSeconds(from) <= 315360000 * 2;
-
+  public static String getEpochToDate(long epochSecs){
+//    long epoch = Long.parseLong(epochSecs);
+    Date curDate = new Date(epochSecs * 10000);
+    return (curDate.toString());
   }
 
 

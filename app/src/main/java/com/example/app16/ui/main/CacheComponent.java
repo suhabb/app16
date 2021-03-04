@@ -18,6 +18,7 @@ public class CacheComponent {
     Context myContext;
     AssetManager assetManager;
 
+    //I have altered the return type to Boolean
     @RequiresApi(api = Build.VERSION_CODES.O)
     public List<String> getFilenameOfStock(String tickerId, String fromDateString, String toDateString) {
 

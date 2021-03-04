@@ -2,19 +2,29 @@ package com.example.app16.ui.main;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.os.Build;
+import android.widget.CheckBox;
 
+//import org.json.simple.parser.ParseException;
+
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import androidx.annotation.RequiresApi;
 
 //implemented by mainActivity as a modelling instance
 //defines the model and click calls come from the top (as in the uml files)
 public class ModelFacade
-        implements InternetCallback {
+  implements InternetCallback {
 
     FileAccessor fileSystem;
     Context myContext;
     static ModelFacade instance = null;
     AssetManager manager = null;
     CacheComponent cacheComponent;
+    static String fileName;
 
     public static ModelFacade getInstance(Context context) {
         if (instance == null) {
@@ -30,19 +40,71 @@ public class ModelFacade
         cacheComponent = new CacheComponent(context);
     }
 
+    // file saving takes place here upon successful GET request
     public void internetAccessCompleted(String response) {
-        DailyQuote_DAO.makeFromCSV(response);
-
+        //DailyQuote_DAO.createJsonFile(fileName,response);
+        fileSystem.createFile(fileName);
+        fileSystem.writeFile(fileName,response);
+//        System.out.println("File written locally & read "+ response);
+//        System.out.println("49 " +fileSystem.readFile(fileName));
     }
+
+        //method will replace the above method
+        // @ intake: symbol, from and to date. Check date range is another thing
+      @RequiresApi(api = Build.VERSION_CODES.O)
+      public String findStockQuote(String shareSymbol, String fromDate, String toDate){
+        fileName = String.format("%s_%s_%s",shareSymbol,fromDate,toDate);
+        String respResult = "";
+        //check for cached outcome
+        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() != 0 ){
+          return "Data already cached. No further requests made.";
+
+        }else{
+          String url = DailyQuote_DAO.formatUrlString(shareSymbol,DateComponent.getEpochSeconds(fromDate),DateComponent.getEpochSeconds(toDate));
+          InternetAccessor getCaller = new InternetAccessor();
+          getCaller.setDelegate(this);
+          getCaller.execute(url);
+        }
+        return "Get request successful and cached the file!";
+      }
+
+      /*
+      Add to obtain the files of data, which are the timeframes and values in 2 arraylist
+       */
+      public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
+        ArrayList[] timeFrameAndValues = fileSystem.getJsonFileData(fileSystem.readFile(filename));
+        CalculateFormulas cF = new CalculateFormulas(timeFrameAndValues);
+        IndicatorsEnum IndicType = IndicatorsEnum.resolveType(indicators);
+        ArrayList[] calculatedValues = cF.calcForInstrument(IndicType);
+        return getNewGraphDisplay(calculatedValues);
+        }
+
+      public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues){
+         GraphDisplay result = new GraphDisplay();
+         System.out.println("84: " + xyValues[0]);
+         System.out.println("85: "+ xyValues[1]);
+         result.setXNominal((ArrayList<String>) xyValues[0]);
+         result.setYPoints((ArrayList<Double>) xyValues[1]);
+         return (result);
+
+//            ArrayList<DailyQuote> quotes = null;
+//            quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
+//            ArrayList<String> xnames = null;
+//            xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
+//            ArrayList<Double> yvalues = null;
+//            yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.close));
+//            result.setXNominal(xnames);
+//            result.setYPoints(yvalues);
+
+      }
+
+
 
     public String findQuote(String date) {
         String result = "";
         if (DailyQuote_DAO.isCached(date)) {
             result = "Data already exists";
             return result;
-        } else {
-            {
-            }
         }
         long t1 = 0;
         t1 = DateComponent.getEpochSeconds(date);
@@ -59,41 +121,6 @@ public class ModelFacade
         x.setDelegate(this);
         x.execute(url);
         result = ("Called url: " + url);
-
-
-  //method will replace the above method
-  //@ intake: symbol, from and to date. Check date range is another thing
-
-  public String findStockQuote(String shareSymbol, String fromDate, String toDate){
-    String fileName = String.format("%s-%s-%s",shareSymbol,fromDate,toDate);
-    String respResult = "";
-    //check for cached outcome
-    if (DailyQuote_DAO.isCached(fileName)){
-      //file exists, so means to obtain cached data
-      System.out.println("TBA");
-
-    }else{
-      String url = DailyQuote_DAO.formatUrlString(shareSymbol,DateComponent.getEpochSeconds(fromDate),DateComponent.getEpochSeconds(toDate));
-      InternetAccessor getCaller = new InternetAccessor();
-      getCaller.setDelegate(this);
-      getCaller.execute(url);
-    }
-    return null;
-  }
-  //graph call action
-  public GraphDisplay analyse()
-  { 
-    GraphDisplay result = null;
-    result = new GraphDisplay();
-    ArrayList<DailyQuote> quotes = null;
-    quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
-    ArrayList<String> xnames = null;
-    xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)->{return q.date;}));
-    ArrayList<Double> yvalues = null;
-    yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)->{return q.close;}));
-    result.setXNominal(xnames);
-    result.setYPoints(yvalues);
-
         return result;
     }
 

@@ -340,11 +340,11 @@ public class GraphDisplay extends Drawable implements Drawable.Callback
       for (int i = 0; i < nsize ; i++)
       { double xcoord = i*xstep;
         int currx = (int) xcoord + 45;
-        String xvalue = xlabels.get(i);
+        String xvalue = String.valueOf(xlabels.get(i));
         canvas.drawText(xvalue, currx,height-20,textPaint);
       }
 
-        double miny = ypoints.get(0);
+        double miny =  ypoints.get(0);
         double maxy = ypoints.get(0);
 
         for (int i = 1; i < ypoints.size(); i++)

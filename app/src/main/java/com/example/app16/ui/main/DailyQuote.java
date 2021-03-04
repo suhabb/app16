@@ -1,6 +1,8 @@
 package com.example.app16.ui.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -11,7 +13,7 @@ class DailyQuote {
   static ArrayList<DailyQuote> DailyQuote_allInstances = new ArrayList<DailyQuote>();
 
   DailyQuote() {
-    DailyQuote_allInstances.add(this);
+      DailyQuote_allInstances.add(this);
   }
 
 
@@ -24,6 +26,7 @@ class DailyQuote {
     String date = ""; /* primary */
     static Map<String, DailyQuote> DailyQuote_index = new HashMap<String, DailyQuote>();
 
+    //each instance and there's combination of multi index
     static DailyQuote createByPKDailyQuote(String datex) {
         DailyQuote result = new DailyQuote();
         DailyQuote.DailyQuote_index.put(datex, result);
