@@ -31,7 +31,7 @@ public class DailyQuote_DAO
   &symbol=TSLA&region=US&period1=1514117309&period2=1614318309
   */
     public static String formatUrlString(String stockSymbol, long fromEpoch, long toEpoch ){
-    String formatUrl = ""+baseString+"interval1d&"; //trailing & to connect next param
+    String formatUrl = ""+baseString+"interval=1d&symbol="; //trailing & to connect next param
     try{
       if (!stockSymbol.equals("") & stockSymbol != null){
         formatUrl+=stockSymbol+"&";

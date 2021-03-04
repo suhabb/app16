@@ -45,8 +45,8 @@ public class ModelFacade
         //DailyQuote_DAO.createJsonFile(fileName,response);
         fileSystem.createFile(fileName);
         fileSystem.writeFile(fileName,response);
-        System.out.println("File written locally & read "+ response);
-        System.out.println("49 " +fileSystem.readFile(fileName));
+//        System.out.println("File written locally & read "+ response);
+//        System.out.println("49 " +fileSystem.readFile(fileName));
     }
 
         //method will replace the above method
@@ -72,15 +72,17 @@ public class ModelFacade
       Add to obtain the files of data, which are the timeframes and values in 2 arraylist
        */
       public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
-        ArrayList timeFrameAndValues = fileSystem.getJsonFileData(fileName);
+        ArrayList[] timeFrameAndValues = fileSystem.getJsonFileData(fileSystem.readFile(filename));
         CalculateFormulas cF = new CalculateFormulas(timeFrameAndValues);
         IndicatorsEnum IndicType = IndicatorsEnum.resolveType(indicators);
-        ArrayList<String>[] calculatedValues = cF.calcForInstrument(IndicType);
+        ArrayList[] calculatedValues = cF.calcForInstrument(IndicType);
         return getNewGraphDisplay(calculatedValues);
         }
 
       public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues){
          GraphDisplay result = new GraphDisplay();
+         System.out.println("84: " + xyValues[0]);
+         System.out.println("85: "+ xyValues[1]);
          result.setXNominal((ArrayList<String>) xyValues[0]);
          result.setYPoints((ArrayList<Double>) xyValues[1]);
          return (result);

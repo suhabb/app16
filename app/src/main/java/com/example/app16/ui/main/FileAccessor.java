@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 //To create, read and write files. Maybe can be used for the persistence problem too
@@ -71,12 +72,14 @@ public class FileAccessor
         }
     }
 
-    public ArrayList getJsonFileData(String filename) throws FileNotFoundException, ParseException {
+    public ArrayList[] getJsonFileData(String data) throws ParseException {
 
-        ArrayList tFrameAndValues = new ArrayList();
+       // ArrayList[] tFrameAndValues = new ArrayList[2];//len of 2
+        ArrayList tFrameAndValues[] = new ArrayList[2];
+        for(int i=0;i<2;i++){ tFrameAndValues[i]=new ArrayList<>(); }
 
         JSONParser parser = new JSONParser();
-        Object a = parser.parse(String.valueOf(myContext.openFileInput(filename)));
+        Object a = parser.parse(data);
         JSONObject json = (JSONObject) a;
         JSONObject as = (JSONObject) json.get("chart");
         JSONArray ja = (JSONArray) as.get("result");
@@ -85,10 +88,15 @@ public class FileAccessor
         JSONObject ja3 = (JSONObject) ja1.get("indicators");
         JSONArray ja4 = (JSONArray) ja3.get("quote");
         JSONObject ja5 = (JSONObject) ja4.get(0);
-        JSONArray ja6 = (JSONArray) ja5.get("close");
-        tFrameAndValues.add(ja2);
-        tFrameAndValues.add(ja6);
-
+        ArrayList<Double> ja6 = (ArrayList<Double>) ja5.get("close");
+        //tFrameAndValues[0] = ja2;
+        for(int i = 0; i < ja2.size(); i++){
+            Long value = (Long) ja2.get(i);
+            Date curDate = new Date(value * 10000);
+            tFrameAndValues[0].add(curDate.toString().substring(5,12));
+            // now do something with the Object
+        }
+        tFrameAndValues[1] = ja6;
         return tFrameAndValues;
     }
 

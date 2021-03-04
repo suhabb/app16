@@ -35,9 +35,9 @@ public class DateComponent
     return d.getTime(); 
   }
 
-  public String getEpochToDate(String epochSecs){
-    long epoch = Long.parseLong(epochSecs);
-    Date curDate = new Date(epoch * 10000);
+  public static String getEpochToDate(long epochSecs){
+//    long epoch = Long.parseLong(epochSecs);
+    Date curDate = new Date(epochSecs * 10000);
     return (curDate.toString());
   }
 

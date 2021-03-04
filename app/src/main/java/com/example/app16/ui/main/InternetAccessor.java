@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
+
 import android.content.Context;
 
 /*
@@ -44,7 +46,6 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
    private String fetchUrl(String url)
    { String urlContent = "";
      StringBuilder myStrBuff = new StringBuilder();
-       System.out.println("47 new");
      try{
           URL myUrl = new URL(url);
           HttpURLConnection myConn = (HttpURLConnection) myUrl.openConnection();
@@ -55,6 +56,7 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
           myConn.setDoInput(true);
 
           myConn.connect();
+          myConn.setReadTimeout(5000); //Due to increased latency (because of free API), this is a must...
 
           InputStream myInStrm = myConn.getInputStream();
           BufferedReader myBuffRdr = new BufferedReader(new InputStreamReader(myInStrm));
@@ -62,13 +64,13 @@ public class InternetAccessor extends AsyncTask<String, Void, String>
           while ((urlContent = myBuffRdr.readLine()) != null) {
               myStrBuff.append(urlContent + '\n');
           }
-         System.out.println("66: "+ myStrBuff);
+//         System.out.println("66: "+ myStrBuff);
       } catch (Exception e) {
-          System.out.println(e.getStackTrace());
+          e.printStackTrace(System.out);
+          //System.out.println(e.printStackTrace(System.out));
           delegate.internetAccessCompleted(myStrBuff.toString());
           return null;
       }
-       System.out.println("71: "+ myStrBuff);
       return myStrBuff.toString();
   }
 

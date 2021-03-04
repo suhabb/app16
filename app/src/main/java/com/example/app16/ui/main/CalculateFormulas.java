@@ -10,9 +10,9 @@ public class CalculateFormulas {
 
     static ArrayList<String> timeFrames;
     static ArrayList<Double> stockValues;
-    public CalculateFormulas( ArrayList timeFrameAndValues){
-        timeFrames = (ArrayList<String>) timeFrameAndValues.remove(0);
-        stockValues = (ArrayList<Double>) timeFrameAndValues.remove(1);
+    public CalculateFormulas(ArrayList[] timeFrameAndValues){
+        timeFrames = (ArrayList<String>) timeFrameAndValues[0];
+        stockValues = (ArrayList<Double>) timeFrameAndValues[1];
     }
 
     public ArrayList[] calcForInstrument(IndicatorsEnum type){
@@ -39,7 +39,7 @@ public class CalculateFormulas {
         int smaPeriod = (int) (timeFrames.size() * 0.05);
         int count = smaPeriod;
         while (count<timeFrames.size()){
-            lists[0].add(timeFrames.get(count));
+            lists[0].add(timeFrames.get(count));// prev : timeFrames.get(count)
             lists[1].add(sumValues(count-smaPeriod,count)/smaPeriod);
             count+=smaPeriod;
         }
@@ -62,13 +62,13 @@ public class CalculateFormulas {
         return null;
     }
 
-    public int sumValues(int x, int y)
+    public double sumValues(int x, int y)
     {
         double sum = 0;
         for(int i = x; i < y; i++)
         {
             sum += stockValues.get(i);
         }
-        return ((int) sum);
+        return (sum);
     }
 }
