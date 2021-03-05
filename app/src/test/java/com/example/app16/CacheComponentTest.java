@@ -19,7 +19,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-//@RunWith(MockitoJUnitRunner.class) no longer required with Junit 5
+//@RunWith(MockitoJUnitRunner.class) no longer required with Junit 5. This will be altered in my next commit. So if there's a conflict please remove this... I will override it.
 public class CacheComponentTest {
 
     Context mockContext= mock(Context.class);
