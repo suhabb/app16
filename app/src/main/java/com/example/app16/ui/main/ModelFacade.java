@@ -3,16 +3,15 @@ package com.example.app16.ui.main;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Build;
-import android.widget.CheckBox;
 
-//import org.json.simple.parser.ParseException;
+import androidx.annotation.RequiresApi;
 
 import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import androidx.annotation.RequiresApi;
+//import org.json.simple.parser.ParseException;
 
 //implemented by mainActivity as a modelling instance
 //defines the model and click calls come from the top (as in the uml files)
@@ -56,7 +55,7 @@ public class ModelFacade
         fileName = String.format("%s_%s_%s",shareSymbol,fromDate,toDate);
         String respResult = "";
         //check for cached outcome
-        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate).size() != 0 ){
+        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)){
           return "Data already cached. No further requests made.";
 
         }else{
