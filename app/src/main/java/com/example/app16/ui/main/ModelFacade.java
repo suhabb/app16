@@ -16,7 +16,7 @@ import java.util.ArrayList;
 //implemented by mainActivity as a modelling instance
 //defines the model and click calls come from the top (as in the uml files)
 public class ModelFacade
-  implements InternetCallback {
+        implements InternetCallback {
 
     FileAccessor fileSystem;
     Context myContext;
@@ -24,6 +24,7 @@ public class ModelFacade
     AssetManager manager = null;
     CacheComponent cacheComponent;
     static String fileName;
+    private int period;
 
     public static ModelFacade getInstance(Context context) {
         if (instance == null) {
@@ -43,48 +44,50 @@ public class ModelFacade
     public void internetAccessCompleted(String response) {
         //DailyQuote_DAO.createJsonFile(fileName,response);
         fileSystem.createFile(fileName);
-        fileSystem.writeFile(fileName,response);
+        fileSystem.writeFile(fileName, response);
 //        System.out.println("File written locally & read "+ response);
 //        System.out.println("49 " +fileSystem.readFile(fileName));
     }
 
-        //method will replace the above method
-        // @ intake: symbol, from and to date. Check date range is another thing
-      @RequiresApi(api = Build.VERSION_CODES.O)
-      public String findStockQuote(String shareSymbol, String fromDate, String toDate){
-        fileName = String.format("%s_%s_%s",shareSymbol,fromDate,toDate);
+    //method will replace the above method
+    // @ intake: symbol, from and to date. Check date range is another thing
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public String findStockQuote(String shareSymbol, String fromDate, String toDate,int period) {
+        fileName = String.format("%s_%s_%s", shareSymbol, fromDate, toDate);
         String respResult = "";
+        this.period=period;
         //check for cached outcome
-        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)){
-          return "Data already cached. No further requests made.";
+        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)) {
+            return "Data already cached. No further requests made.";
 
-        }else{
-          String url = DailyQuote_DAO.formatUrlString(shareSymbol,DateComponent.getEpochSeconds(fromDate),DateComponent.getEpochSeconds(toDate));
-          InternetAccessor getCaller = new InternetAccessor();
-          getCaller.setDelegate(this);
-          getCaller.execute(url);
+        } else {
+            String url = DailyQuote_DAO.formatUrlString(shareSymbol, DateComponent.getEpochSeconds(fromDate),
+                    DateComponent.getEpochSeconds(toDate));
+            InternetAccessor getCaller = new InternetAccessor();
+            getCaller.setDelegate(this);
+            getCaller.execute(url);
         }
         return "Get request successful and cached the file!";
-      }
+    }
 
-      /*
-      Add to obtain the files of data, which are the timeframes and values in 2 arraylist
-       */
-      public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
+    /*
+    Add to obtain the files of data, which are the timeframes and values in 2 arraylist
+     */
+    public GraphDisplay analyse(String filename, String indicators) throws FileNotFoundException, ParseException {
         ArrayList[] timeFrameAndValues = fileSystem.getJsonFileData(fileSystem.readFile(filename));
-        CalculateFormulas cF = new CalculateFormulas(timeFrameAndValues);
+        CalculateFormulas cF = new CalculateFormulas(timeFrameAndValues,period);
         IndicatorsEnum IndicType = IndicatorsEnum.resolveType(indicators);
         ArrayList[] calculatedValues = cF.calcForInstrument(IndicType);
         return getNewGraphDisplay(calculatedValues);
-        }
+    }
 
-      public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues){
-         GraphDisplay result = new GraphDisplay();
-         System.out.println("84: " + xyValues[0]);
-         System.out.println("85: "+ xyValues[1]);
-         result.setXNominal((ArrayList<String>) xyValues[0]);
-         result.setYPoints((ArrayList<Double>) xyValues[1]);
-         return (result);
+    public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues) {
+        GraphDisplay result = new GraphDisplay();
+        System.out.println("84: " + xyValues[0]);
+        System.out.println("85: " + xyValues[1]);
+        result.setXNominal((ArrayList<String>) xyValues[0]);
+        result.setYPoints((ArrayList<Double>) xyValues[1]);
+        return (result);
 
 //            ArrayList<DailyQuote> quotes = null;
 //            quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
@@ -95,8 +98,7 @@ public class ModelFacade
 //            result.setXNominal(xnames);
 //            result.setYPoints(yvalues);
 
-      }
-
+    }
 
 
     public String findQuote(String date) {

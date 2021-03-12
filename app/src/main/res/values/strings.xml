@@ -19,6 +19,7 @@
     <string name="macdavg">MACDAvg</string>
     <string name="macdavgtxt">EMA of MACD</string>
     <string name="tech_analysis">Select Technical Anlaysis Indicators:</string>
+    <string name="analyse_interval">Analysis Interval:</string>
 
 
 

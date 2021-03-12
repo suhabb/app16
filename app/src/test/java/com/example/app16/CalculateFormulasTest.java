@@ -5,9 +5,8 @@ import com.example.app16.ui.main.CalculateFormulas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -107,17 +106,20 @@ public class CalculateFormulasTest {
             tFrameAndValues[i] = new ArrayList<>();
         }
         tFrameAndValues[1] = stockValues2;
-        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues);
-        List<Double> sumEMAvalues = calculateFormulas.sumEMAvalues2(12);
-        sumEMAvalues.stream().forEach(System.out::println);
+        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues,12);
+
     }
 
     @Test
     public void given_input_return_ema_list_of_price(){
 
-        LocalDate date =
-                Instant.ofEpochMilli(1318386508000L).atZone(ZoneId.systemDefault()).toLocalDate();
-        System.out.println("CalculateFormulasTest.test:"+date.toString());
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+
+        String date = "16-Aug-2016";
+
+        String s = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy")).substring(3,9);
+        System.out.println("CalculateFormulasTest.given_input_return_ema_list_of_price:"+s);
 
     }
 }

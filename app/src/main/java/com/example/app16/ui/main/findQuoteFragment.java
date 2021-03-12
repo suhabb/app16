@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   CheckBox emaBox;
   CheckBox macdBox;
   CheckBox macdavqBox;
+  int progress;
+    TextView tvProgressLabel;
 
  public findQuoteFragment() {}
 
@@ -84,6 +87,37 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     macdavqBox = root.findViewById(R.id.avg);
     macdavqBox.setOnClickListener(this);
 
+      // set a change listener on the SeekBar
+      SeekBar seekBar = root.findViewById(R.id.seekBar);
+
+
+      progress = seekBar.getProgress();
+      tvProgressLabel = root.findViewById(R.id.textView);
+      tvProgressLabel.setText("" + progress);
+      SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+
+          int progressChangedValue = 0;
+
+          @Override
+          public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+              // updated continuously as the user slides the thumb
+              tvProgressLabel.setText("" + progress);
+              progressChangedValue = progress;
+          }
+
+          @Override
+          public void onStartTrackingTouch(SeekBar seekBar) {
+              // called when the user first touches the SeekBar
+          }
+
+          @Override
+          public void onStopTrackingTouch(SeekBar seekBar) {
+              //
+          }
+
+      };
+      seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
+
     return root;
   }
 
@@ -106,6 +140,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   {
     findQuotedateData = findQuotedateTextField.getText() + "";
     findquotebean.setdate(findQuotedateData);
+     SeekBar seekBar =  root.findViewById(R.id.seekBar);
+
     if (findquotebean.isfindQuoteerror())
     { Log.w(getClass().getName(), findquotebean.errors());
       Toast.makeText(myContext, "Errors: " + findquotebean.errors(), Toast.LENGTH_LONG).show();
@@ -113,7 +149,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     else
     {
         //System.out.println("127 : " +stockSymbol.getText().toString() + " " + quoteFromDate.getText().toString()); -- works
-        findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(), quoteFromDate.getText().toString() , quoteEndDate.getText().toString())); }
+        findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(),
+                quoteFromDate.getText().toString() , quoteEndDate.getText().toString(),seekBar.getProgress())); }
   }
 
   public void findQuoteCancel(View _v)
