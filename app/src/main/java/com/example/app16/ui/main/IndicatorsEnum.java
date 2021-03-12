@@ -17,7 +17,7 @@ public enum IndicatorsEnum {
             type = IndicatorsEnum.EMA;
         }else if (strObj.toLowerCase().contains("macd")){
             type = IndicatorsEnum.MACD;
-        }else if (strObj.toLowerCase().contains("macdavg")){
+        }else if (strObj.toLowerCase().contains("avg")){
             type = IndicatorsEnum.MACDAVG;
         }
         return type;
