@@ -1,13 +1,12 @@
 package com.example.app16.ui.main;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
 import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //implements the findQuoteFragment class
 public class findQuoteBean
@@ -33,10 +32,10 @@ public class findQuoteBean
   public String errors() { return errors.toString(); }
 
   @RequiresApi(api = Build.VERSION_CODES.O)
-  public String findQuote(String shareSymbol, String fromDate, String toDate)
+  public String findQuote(String shareSymbol, String fromDate, String toDate,int interval)
   {
     //return model.findQuote(date);
-    return model.findStockQuote(shareSymbol, fromDate, toDate);
+    return model.findStockQuote(shareSymbol, fromDate, toDate,interval);
   }
 
 }

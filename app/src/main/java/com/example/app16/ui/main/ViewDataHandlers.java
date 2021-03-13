@@ -7,14 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.app16.R;
 
 import java.util.ArrayList;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 /*
 View value cannot be plainly accessed. Need an alternative...
@@ -51,7 +50,7 @@ class ViewDataHandlers extends Fragment {
         smaBox = root.findViewById(R.id.sma);
         emaBox = root.findViewById(R.id.ema);
         macdBox = root.findViewById(R.id.macd);
-        macdavqBox = root.findViewById(R.id.macdavg);
+        macdavqBox = root.findViewById(R.id.avg);
         stockSymbol = root.findViewById(R.id.shareSymbolField);
         quoteFromDate = root.findViewById(R.id.findQuotedateField);
         quoteEndDate = root.findViewById(R.id.findQuoteDateToField);
