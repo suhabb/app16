@@ -78,7 +78,7 @@ public class analyseFragment extends Fragment implements OnClickListener
 
       for (Object cBoxes : findQuoteFragment.checkedBoxes){
           GraphDisplay _result = analysebean.analyse(cBoxes.toString());
-//          analyseResult.invalidate();
+     //     analyseResult.invalidate();
      //     analyseResult.refreshDrawableState();
           analyseResult.setImageDrawable(_result);
       }

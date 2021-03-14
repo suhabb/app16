@@ -23,7 +23,7 @@ public class DailyQuote_DAO {
     public static final String baseString = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?";
 
     /*
-    this method will replace the method below to format url
+    This method will replace the method below to format url
     @input: symbol name, date series in epochs (only passed date range validation)
     Sample string->
     https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?interval=1d

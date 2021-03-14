@@ -121,8 +121,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     return root;
   }
 
-
-  //The main click methods are called from here by the view instance
+  // The main click methods are called from here by the view instance
   @RequiresApi(api = Build.VERSION_CODES.O)
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
