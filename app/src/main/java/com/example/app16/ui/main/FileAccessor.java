@@ -103,7 +103,7 @@ public class FileAccessor {
             Long value = (Long) ja2.get(i);
             Date curDate = new Date(value * 10000);
             tFrameAndValues[0].add(curDate.toString().substring(4, 10));
-            System.out.println("Current Date:" + curDate.toString());
+//            System.out.println("Current Date:" + curDate.toString());
         }
         tFrameAndValues[1] = ja6;
 
