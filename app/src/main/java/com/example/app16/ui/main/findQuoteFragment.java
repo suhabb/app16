@@ -149,7 +149,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     else
     {
         findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(),
-                quoteFromDate.getText().toString() , quoteEndDate.getText().toString(),seekBar.getProgress())); }
+                quoteFromDate.getText().toString(), quoteEndDate.getText().toString(),seekBar.getProgress())); }
   }
 
   public void findQuoteCancel(View _v)

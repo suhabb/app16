@@ -16,7 +16,6 @@ public class analyseBean
 { ModelFacade model = null;
 
   private List errors = new ArrayList();
-  private ViewDataHandlers viewData = new ViewDataHandlers();
   public analyseBean(Context _c) { model = ModelFacade.getInstance(_c); }
 
   public void resetData()

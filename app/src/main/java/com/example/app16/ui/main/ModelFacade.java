@@ -53,7 +53,7 @@ public class ModelFacade
         fileName = String.format("%s_%s_%s", shareSymbol, fromDate, toDate);
         this.period=period;
         //check for cached outcome
-        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)) {
+        if (cacheComponent.getFilenameOfStock(fileName)) {
             return "Data already cached. No further requests made!";
 
         } else {
@@ -79,8 +79,8 @@ public class ModelFacade
 
     public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues) {
         GraphDisplay result = new GraphDisplay();
-        System.out.println("84: " + xyValues[0]);
-        System.out.println("85: " + xyValues[1]);
+//        System.out.println("84: " + xyValues[0]);
+//        System.out.println("85: " + xyValues[1]);
         result.setXNominal((ArrayList<String>) xyValues[0]);
         result.setYPoints((ArrayList<Double>) xyValues[1]);
         return (result);

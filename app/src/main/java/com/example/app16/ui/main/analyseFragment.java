@@ -75,6 +75,7 @@ public class analyseFragment extends Fragment implements OnClickListener
     else
     {
       //Get the ticked checkboxes and then iterative call to get the results
+
       for (Object cBoxes : findQuoteFragment.checkedBoxes){
           GraphDisplay _result = analysebean.analyse(cBoxes.toString());
 //          analyseResult.invalidate();

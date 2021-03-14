@@ -11,7 +11,8 @@ import java.util.HashMap;
 
 //implements the graphs and correlate it to f/e
 public class GraphDisplay extends Drawable implements Drawable.Callback
-{ private String graphKind = "line"; // could also be "scatter" or "bar"
+{
+  private String graphKind = "line"; // could also be "scatter" or "bar"
   private Canvas canvas = null;
 
   private final Paint bluePaint;
