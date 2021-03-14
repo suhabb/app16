@@ -202,7 +202,7 @@
                 android:background="#EEFFBB"
                 android:fontFamily="monospace"
                 android:hint="Result of findQuote"
-                android:text="Result"
+                android:text="Status"
                 android:textStyle="bold" />
 
             <TextView
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_span="4"
                 android:fontFamily="monospace"
-                android:hint="Result of findQuote"
+                android:hint="Updates status here"
                 android:textStyle="bold" />
 
 

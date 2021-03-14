@@ -40,13 +40,11 @@ public class ModelFacade
         cacheComponent = new CacheComponent(context);
     }
 
-    // file saving takes place here upon successful GET request
+    // File saving takes place here upon successful GET request
     public void internetAccessCompleted(String response) {
         //DailyQuote_DAO.createJsonFile(fileName,response);
         fileSystem.createFile(fileName);
         fileSystem.writeFile(fileName, response);
-//        System.out.println("File written locally & read "+ response);
-//        System.out.println("49 " +fileSystem.readFile(fileName));
     }
 
     //method will replace the above method

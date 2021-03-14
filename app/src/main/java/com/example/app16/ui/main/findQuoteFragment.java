@@ -140,7 +140,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   {
     findQuotedateData = findQuotedateTextField.getText() + "";
     findquotebean.setdate(findQuotedateData);
-     SeekBar seekBar =  root.findViewById(R.id.seekBar);
+    SeekBar seekBar =  root.findViewById(R.id.seekBar);
 
     if (findquotebean.isfindQuoteerror())
     { Log.w(getClass().getName(), findquotebean.errors());
@@ -148,7 +148,6 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     }
     else
     {
-        //System.out.println("127 : " +stockSymbol.getText().toString() + " " + quoteFromDate.getText().toString()); -- works
         findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(),
                 quoteFromDate.getText().toString() , quoteEndDate.getText().toString(),seekBar.getProgress())); }
   }
@@ -172,23 +171,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
           cBox.setChecked(false);
           findQuoteResult.setText("Please only select 2 indicators at max");
       }
-      //getTickedIndicators(cBox);
-//      System.out.println(checkedBoxes);
   }
 
-    //Alternative works.. just left here as redundant....
-    public ArrayList<CheckBox> getTickedIndicators(CheckBox cBox) {
-
-        if (smaBox == cBox) {
-            checkedBoxes.add(smaBox);
-        } else if (emaBox == cBox) {
-            checkedBoxes.add(emaBox);
-        } else if (macdBox == cBox) {
-            checkedBoxes.add(macdBox);
-        } else if (macdavqBox == cBox) {
-            checkedBoxes.add(macdavqBox);
-        }
-        return checkedBoxes;
-    }
 
 }
