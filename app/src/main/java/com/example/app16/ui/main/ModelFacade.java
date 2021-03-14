@@ -51,11 +51,10 @@ public class ModelFacade
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String findStockQuote(String shareSymbol, String fromDate, String toDate,int period) {
         fileName = String.format("%s_%s_%s", shareSymbol, fromDate, toDate);
-        String respResult = "";
         this.period=period;
         //check for cached outcome
         if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)) {
-            return "Data already cached. No further requests made.";
+            return "Data already cached. No further requests made!";
 
         } else {
             String url = DailyQuote_DAO.formatUrlString(shareSymbol, DateComponent.getEpochSeconds(fromDate),

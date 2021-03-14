@@ -1,6 +1,5 @@
 package com.example.app16.ui.main;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.app16.R;
 
 
-//handles the analyse fragment screen
+//Handles the analyse fragment screen
 public class analyseFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;
@@ -28,8 +27,6 @@ public class analyseFragment extends Fragment implements OnClickListener
   ImageView analyseResult;
   Button analyseOkButton;
   Button analysecancelButton;
-
-
 
  public analyseFragment() {}
 
@@ -68,7 +65,7 @@ public class analyseFragment extends Fragment implements OnClickListener
     { analyseCancel(_v); }
   }
 
-  //invocation of graph calls here
+  // Invocation of graph calls here
   public void analyseOK(View _v) 
   { 
     if (analysebean.isanalyseerror())
@@ -77,7 +74,7 @@ public class analyseFragment extends Fragment implements OnClickListener
     }
     else
     {
-      //get the ticked checkboxes and then iterative call to get the equation
+      //Get the ticked checkboxes and then iterative call to get the results
       for (Object cBoxes : findQuoteFragment.checkedBoxes){
           GraphDisplay _result = analysebean.analyse(cBoxes.toString());
 //          analyseResult.invalidate();

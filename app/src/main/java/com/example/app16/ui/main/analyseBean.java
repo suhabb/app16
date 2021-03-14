@@ -31,9 +31,8 @@ public class analyseBean
 
   public GraphDisplay analyse(String cboxes)
   {
-//    System.out.println(viewData.getComposedFileName() + "   127 " );
     try {
-      return model.analyse(ModelFacade.fileName,cboxes);  // cannot fetch values from another view
+      return model.analyse(ModelFacade.fileName, cboxes);
     } catch (FileNotFoundException | ParseException e) {
       e.printStackTrace();
     }
