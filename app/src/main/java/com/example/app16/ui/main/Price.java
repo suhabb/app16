@@ -7,8 +7,6 @@ public class Price {
     private LocalDate dateOfStock;
     private Double stockPrice;
 
-
-
     public LocalDate getDateOfStock() {
         return dateOfStock;
     }

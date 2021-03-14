@@ -109,8 +109,7 @@ public class FileAccessor {
 
         for (int i = 0; i < ja2.size(); i++) {
             Long value = (Long) ja2.get(i);
-            LocalDate date =
-                    Instant.ofEpochSecond(value).atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate date = Instant.ofEpochSecond(value).atZone(ZoneId.systemDefault()).toLocalDate();
             Price price = new Price();
             price.setDateOfStock(date);
             priceList.add(price);
@@ -119,8 +118,7 @@ public class FileAccessor {
         for (int i = 0; i < ja6.size(); i++) {
             priceList.get(i).setStockPrice(ja6.get(i));
         }
-       tFrameAndValues[2]=new ArrayList(priceList);
-
+        tFrameAndValues[2]=new ArrayList(priceList);
 
         return tFrameAndValues;
     }
