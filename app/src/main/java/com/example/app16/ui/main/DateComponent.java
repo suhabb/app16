@@ -36,7 +36,6 @@ public class DateComponent
   }
 
   public static String getEpochToDate(long epochSecs){
-//    long epoch = Long.parseLong(epochSecs);
     Date curDate = new Date(epochSecs * 10000);
     return (curDate.toString());
   }

@@ -34,7 +34,6 @@ public class findQuoteBean
   @RequiresApi(api = Build.VERSION_CODES.O)
   public String findQuote(String shareSymbol, String fromDate, String toDate,int interval)
   {
-    //return model.findQuote(date);
     return model.findStockQuote(shareSymbol, fromDate, toDate,interval);
   }
 

@@ -48,9 +48,7 @@ public class CalculateFormulas {
         return null;
     }
 
-    /*SMA calculation
-    note: due to varying input range, Sma figures are based on a period of 5% of the timeframe
-     */
+    // SMA calculation
     private ArrayList[] calculateSMA() {
         ArrayList lists[] = new ArrayList[2];
         for (int i = 0; i < 2; i++) {
@@ -66,9 +64,9 @@ public class CalculateFormulas {
         }
         return lists;
     }
-    // EMA = (today’s closing price *K) + (Previous EMA * (1 – K))
 
-    //K (Smoothing Factor) = 2/(N+1)
+    // EMA = (today’s closing price *K) + (Previous EMA * (1 – K))
+    // K (Smoothing Factor) = 2/(N+1)
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ArrayList[] calculateEMA() {
         ArrayList lists[] = new ArrayList[2];

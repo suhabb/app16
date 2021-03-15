@@ -121,8 +121,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     return root;
   }
 
-
-  //The main click methods are called from here by the view instance
+  // The main click methods are called from here by the view instance
   @RequiresApi(api = Build.VERSION_CODES.O)
   public void onClick(View _v)
   { InputMethodManager _imm = (InputMethodManager) myContext.getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
@@ -140,7 +139,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
   {
     findQuotedateData = findQuotedateTextField.getText() + "";
     findquotebean.setdate(findQuotedateData);
-     SeekBar seekBar =  root.findViewById(R.id.seekBar);
+    SeekBar seekBar =  root.findViewById(R.id.seekBar);
 
     if (findquotebean.isfindQuoteerror())
     { Log.w(getClass().getName(), findquotebean.errors());
@@ -148,9 +147,8 @@ public class findQuoteFragment extends Fragment implements OnClickListener
     }
     else
     {
-        //System.out.println("127 : " +stockSymbol.getText().toString() + " " + quoteFromDate.getText().toString()); -- works
         findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(),
-                quoteFromDate.getText().toString() , quoteEndDate.getText().toString(),seekBar.getProgress())); }
+                quoteFromDate.getText().toString(), quoteEndDate.getText().toString(),seekBar.getProgress())); }
   }
 
   public void findQuoteCancel(View _v)
@@ -172,23 +170,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener
           cBox.setChecked(false);
           findQuoteResult.setText("Please only select 2 indicators at max");
       }
-      //getTickedIndicators(cBox);
-//      System.out.println(checkedBoxes);
   }
 
-    //Alternative works.. just left here as redundant....
-    public ArrayList<CheckBox> getTickedIndicators(CheckBox cBox) {
-
-        if (smaBox == cBox) {
-            checkedBoxes.add(smaBox);
-        } else if (emaBox == cBox) {
-            checkedBoxes.add(emaBox);
-        } else if (macdBox == cBox) {
-            checkedBoxes.add(macdBox);
-        } else if (macdavqBox == cBox) {
-            checkedBoxes.add(macdavqBox);
-        }
-        return checkedBoxes;
-    }
 
 }

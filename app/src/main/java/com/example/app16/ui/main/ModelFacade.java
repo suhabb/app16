@@ -40,13 +40,10 @@ public class ModelFacade
         cacheComponent = new CacheComponent(context);
     }
 
-    // file saving takes place here upon successful GET request
+    // File saving takes place here upon successful GET request
     public void internetAccessCompleted(String response) {
-        //DailyQuote_DAO.createJsonFile(fileName,response);
         fileSystem.createFile(fileName);
         fileSystem.writeFile(fileName, response);
-//        System.out.println("File written locally & read "+ response);
-//        System.out.println("49 " +fileSystem.readFile(fileName));
     }
 
     //method will replace the above method
@@ -54,11 +51,10 @@ public class ModelFacade
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String findStockQuote(String shareSymbol, String fromDate, String toDate,int period) {
         fileName = String.format("%s_%s_%s", shareSymbol, fromDate, toDate);
-        String respResult = "";
         this.period=period;
         //check for cached outcome
-        if (cacheComponent.getFilenameOfStock(shareSymbol, fromDate, toDate)) {
-            return "Data already cached. No further requests made.";
+        if (cacheComponent.getFilenameOfStock(fileName)) {
+            return "Data already cached. No further requests made!";
 
         } else {
             String url = DailyQuote_DAO.formatUrlString(shareSymbol, DateComponent.getEpochSeconds(fromDate),
@@ -83,8 +79,8 @@ public class ModelFacade
 
     public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues) {
         GraphDisplay result = new GraphDisplay();
-        System.out.println("84: " + xyValues[0]);
-        System.out.println("85: " + xyValues[1]);
+//        System.out.println("84: " + xyValues[0]);
+//        System.out.println("85: " + xyValues[1]);
         result.setXNominal((ArrayList<String>) xyValues[0]);
         result.setYPoints((ArrayList<Double>) xyValues[1]);
         return (result);
@@ -100,29 +96,5 @@ public class ModelFacade
 
     }
 
-
-    public String findQuote(String date) {
-        String result = "";
-        if (DailyQuote_DAO.isCached(date)) {
-            result = "Data already exists";
-            return result;
-        }
-        long t1 = 0;
-        t1 = DateComponent.getEpochSeconds(date);
-        long t2 = 0;
-        t2 = (t1 + 7 * 86400);
-        String url = "";
-        ArrayList<String> sq1 = null;
-        sq1 = Ocl.copySequence(Ocl.initialiseSequence("period1", "period2", "interval", "events"));
-        ArrayList<String> sq2 = null;
-        sq2 = Ocl.copySequence(Ocl.initialiseSequence((t1 + ""), (t2 + ""), "1d", "history"));
-        url = DailyQuote_DAO.getURL("GBPUSD=X", sq1, sq2);
-        InternetAccessor x = null;
-        x = new InternetAccessor();
-        x.setDelegate(this);
-        x.execute(url);
-        result = ("Called url: " + url);
-        return result;
-    }
 
 }

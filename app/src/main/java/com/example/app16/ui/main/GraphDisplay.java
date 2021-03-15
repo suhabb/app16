@@ -7,12 +7,15 @@ import android.graphics.drawable.Drawable;
 import android.graphics.Paint;
 
 import java.util.ArrayList;
-import java.util.HashMap; 
+import java.util.HashMap;
+import java.util.Random;
 
 //implements the graphs and correlate it to f/e
 public class GraphDisplay extends Drawable implements Drawable.Callback
-{ private String graphKind = "line"; // could also be "scatter" or "bar"
+{
+  private String graphKind = "line"; // could also be "scatter" or "bar"
   private Canvas canvas = null;
+  private Random rand = new Random();
 
   private final Paint bluePaint;
   private final Paint blackPaint;
@@ -38,7 +41,7 @@ public class GraphDisplay extends Drawable implements Drawable.Callback
   public GraphDisplay() {
         // Set up color and text size
         bluePaint = new Paint();
-        bluePaint.setARGB(255, 0, 0, 255);
+        bluePaint.setARGB(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
         blackPaint = new Paint();
         blackPaint.setARGB(255, 0, 0, 0);
         orangePaint = new Paint();

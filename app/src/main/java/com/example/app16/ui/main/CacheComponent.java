@@ -6,6 +6,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,9 +19,9 @@ public class CacheComponent {
     Context myContext;
     AssetManager assetManager;
 
-    //I have altered the return type to Boolean
+    // Used by Unit tests to check if caching formulae works.
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Boolean getFilenameOfStock(String tickerId, String fromDateString, String toDateString) {
+    public Boolean getFilenameOfStockTest(String tickerId, String fromDateString, String toDateString) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fromDate = LocalDate.parse(fromDateString, formatter);
@@ -49,6 +50,14 @@ public class CacheComponent {
         }
         return true;
     }
+
+    //Method born from the parent method above. This check if the file exists within the myContext.getFilesDir() at runtime
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Boolean getFilenameOfStock(String fileName) {
+        File file = new File(myContext.getFilesDir(), fileName);
+        return file.exists();
+    }
+
 
     public CacheComponent(Context context) {
         this.myContext = context;

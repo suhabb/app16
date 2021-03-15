@@ -1,7 +1,8 @@
 package com.example.app16.ui.main;
 
-
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,17 +20,16 @@ import androidx.fragment.app.Fragment;
 import com.example.app16.R;
 
 
-//handles the analyse fragment screen
+//Handles the analyse fragment screen
 public class analyseFragment extends Fragment implements OnClickListener
 { View root;
   Context myContext;
   analyseBean analysebean;
 
   ImageView analyseResult;
+  ImageView analyseResult2;
   Button analyseOkButton;
   Button analysecancelButton;
-
-
 
  public analyseFragment() {}
 
@@ -50,6 +50,7 @@ public class analyseFragment extends Fragment implements OnClickListener
   { root = inflater.inflate(R.layout.analyse_layout, container, false);
     Bundle data = getArguments();
     analyseResult = (ImageView) root.findViewById(R.id.analyseResult);
+    analyseResult2 = (ImageView) root.findViewById(R.id.analyseResult2);
     analysebean = new analyseBean(myContext);
     analyseOkButton = root.findViewById(R.id.analyseOK);
     analyseOkButton.setOnClickListener(this);
@@ -68,7 +69,7 @@ public class analyseFragment extends Fragment implements OnClickListener
     { analyseCancel(_v); }
   }
 
-  //invocation of graph calls here
+  // Invocation of graph calls here
   public void analyseOK(View _v) 
   { 
     if (analysebean.isanalyseerror())
@@ -77,16 +78,22 @@ public class analyseFragment extends Fragment implements OnClickListener
     }
     else
     {
-      //get the ticked checkboxes and then iterative call to get the equation
+      //Get the ticked checkboxes and then iterative call to get the results
+      int ctr = 0;
       for (Object cBoxes : findQuoteFragment.checkedBoxes){
           GraphDisplay _result = analysebean.analyse(cBoxes.toString());
 //          analyseResult.invalidate();
      //     analyseResult.refreshDrawableState();
-          analyseResult.setImageDrawable(_result);
+          if (ctr == 0) {analyseResult.setImageDrawable(_result);}
+          else{ analyseResult2.setImageDrawable(_result);}
+          ctr+=1;
       }
+//        LayerDrawable finalDrawable = new LayerDrawable(new Drawable[] {arr0, arr1}); Not used
+
 
     }
   }
+
 
   public void analyseCancel(View _v)
   { analysebean.resetData();
