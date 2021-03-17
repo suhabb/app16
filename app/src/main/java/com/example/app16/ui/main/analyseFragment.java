@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,8 @@ public class analyseFragment extends Fragment implements OnClickListener
   ImageView analyseResult2;
   Button analyseOkButton;
   Button analysecancelButton;
+  TextView indicResult;
+  TextView indicResult2;
 
  public analyseFragment() {}
 
@@ -55,6 +58,8 @@ public class analyseFragment extends Fragment implements OnClickListener
     analyseOkButton = root.findViewById(R.id.analyseOK);
     analyseOkButton.setOnClickListener(this);
     analysecancelButton = root.findViewById(R.id.analyseCancel);
+    indicResult =  root.findViewById(R.id.ResultLabel);
+    indicResult2 =  root.findViewById(R.id.ResultLabel2);
     analysecancelButton.setOnClickListener(this);
 
     return root;
@@ -82,14 +87,18 @@ public class analyseFragment extends Fragment implements OnClickListener
       int ctr = 0;
       for (Object cBoxes : findQuoteFragment.checkedBoxes){
           GraphDisplay _result = analysebean.analyse(cBoxes.toString());
-//          analyseResult.invalidate();
-     //     analyseResult.refreshDrawableState();
-          if (ctr == 0) {analyseResult.setImageDrawable(_result);}
-          else{ analyseResult2.setImageDrawable(_result);}
+          if (ctr == 0) {
+              indicResult.setText(IndicatorsEnum.resolveType(cBoxes.toString()).name());
+              analyseResult.setImageDrawable(_result);
+          } else{
+              indicResult2.setText(IndicatorsEnum.resolveType(cBoxes.toString()).name());
+              analyseResult2.setImageDrawable(_result);
+          }
           ctr+=1;
       }
 //        LayerDrawable finalDrawable = new LayerDrawable(new Drawable[] {arr0, arr1}); Not used
-
+//        analyseResult.invalidate();
+//        analyseResult.refreshDrawableState();
 
     }
   }
