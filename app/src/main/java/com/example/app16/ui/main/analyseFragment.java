@@ -96,10 +96,6 @@ public class analyseFragment extends Fragment implements OnClickListener
           }
           ctr+=1;
       }
-//        LayerDrawable finalDrawable = new LayerDrawable(new Drawable[] {arr0, arr1}); Not used
-//        analyseResult.invalidate();
-//        analyseResult.refreshDrawableState();
-
     }
   }
 
