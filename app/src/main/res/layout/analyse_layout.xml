@@ -11,6 +11,63 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <TextView
+            android:id="@+id/displayIndic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:layout_marginBottom="29dp"
+            android:background="#AED6F1"
+            android:fontFamily="monospace"
+            android:hint="Result of findQuote"
+            android:text="Indicator:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/analyseResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ResultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="28dp"
+            android:layout_span="4"
+            android:fontFamily="monospace"
+            android:hint="Indicator Type"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/analyseResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.758"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/analyseButtonLayout" />
+
+
+        <ImageView
+            android:id="@+id/analyseResult"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="52dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout" />
+
+        <ImageView
+            android:id="@+id/analyseResult2"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="612dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout" />
+
+
         <LinearLayout
             android:id="@+id/analyseButtonLayout"
             android:layout_width="match_parent"
@@ -25,12 +82,12 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_shape"
+                android:fontFamily="monospace"
                 android:onClick="analyseOK"
                 android:text="@string/analyse"
-                android:fontFamily="monospace"
-                android:textSize="15dp"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
 
             <Button
                 android:id="@+id/analyseCancel"
@@ -40,31 +97,48 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_shape"
+                android:fontFamily="monospace"
                 android:onClick="analyseCancel"
                 android:text="@string/cancel"
-                android:fontFamily="monospace"
-                android:textSize="15dp"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/analyseResult"
-            android:layout_width="fill_parent"
-            android:layout_height="500dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout" />
+        <TextView
+            android:id="@+id/ResultLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="11dp"
+            android:layout_span="4"
+            android:fontFamily="monospace"
+            android:hint="Indicator Type"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/analyseResult2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.758"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/analyseResult" />
 
-        <ImageView
-            android:id="@+id/analyseResult2"
-            android:layout_width="fill_parent"
-            android:layout_height="500dp"
-            android:layout_marginTop="564dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout"
-            tools:layout_editor_absoluteX="0dp" />
+        <TextView
+            android:id="@+id/displayIndic2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="11dp"
+            android:background="#D5F5E3"
+            android:fontFamily="monospace"
+            android:hint="Result of findQuote"
+            android:text="Indicator:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/analyseResult2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/analyseResult" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
