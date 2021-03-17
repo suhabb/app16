@@ -46,25 +46,51 @@
                 android:textSize="15dp"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/ResultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#EEFFBB"
+            android:fontFamily="monospace"
+            android:hint="Result of findQuote"
+            android:text="Indicator:"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="651dp" />
 
         <ImageView
             android:id="@+id/analyseResult"
             android:layout_width="fill_parent"
             android:layout_height="500dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="72dp"
             android:adjustViewBounds="true"
-            app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout" />
+            app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout"
+            tools:layout_editor_absoluteX="9dp" />
+        <TextView
+            android:id="@+id/ResultLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#EEFFBB"
+            android:fontFamily="monospace"
+            android:hint="Result of findQuote"
+            android:text="Indicator:"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="94dp" />
 
         <ImageView
             android:id="@+id/analyseResult2"
             android:layout_width="fill_parent"
             android:layout_height="500dp"
-            android:layout_marginTop="564dp"
+            android:layout_marginTop="612dp"
             android:adjustViewBounds="true"
             app:layout_constraintTop_toBottomOf="@id/analyseButtonLayout"
             tools:layout_editor_absoluteX="0dp" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
