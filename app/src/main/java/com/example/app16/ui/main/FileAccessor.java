@@ -26,8 +26,8 @@ import java.util.List;
 
 //To create, read and write files. Maybe can be used for the persistence problem too
 public class FileAccessor {
-    Context myContext;
 
+    Context myContext;
 
     public FileAccessor(Context context) {
         myContext = context;
@@ -118,7 +118,7 @@ public class FileAccessor {
         for (int i = 0; i < ja6.size(); i++) {
             priceList.get(i).setStockPrice(ja6.get(i));
         }
-        tFrameAndValues[2]=new ArrayList(priceList);
+        tFrameAndValues[2] = new ArrayList(priceList);
 
         return tFrameAndValues;
     }

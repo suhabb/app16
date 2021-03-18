@@ -1,89 +1,90 @@
 package com.example.app16.ui.main;
 
 import android.os.AsyncTask;
-import android.os.Bundle;
+
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
-
-import android.content.Context;
 
 /*
 Does the handling of HTTP GET requests
  */
-public class InternetAccessor extends AsyncTask<String, Void, String>
-{  private InternetCallback delegate = null;
-   private static InternetAccessor instance = null;
+public class InternetAccessor extends AsyncTask<String, Void, String> {
 
-   public void setDelegate(InternetCallback c)
-   { delegate = c; }
+    private InternetCallback delegate = null;
+    private static InternetAccessor instance = null;
 
-   public static InternetAccessor getInstance()
-   { if (instance == null) 
-     { instance = new InternetAccessor(); }
-     return instance; }
+    public void setDelegate(InternetCallback c) {
+        delegate = c;
+    }
 
-   @Override
-   protected void onPreExecute() {}
+    public static InternetAccessor getInstance() {
+        if (instance == null) {
+            instance = new InternetAccessor();
+        }
+        return instance;
+    }
 
-   @Override
-   protected String doInBackground(String... params)
-   { String url = params[0];
-     String myData = "";
-     try {
-         myData = fetchUrl(url);
-     } catch (Exception _e)
-     { delegate.internetAccessCompleted(myData);
-       return null;
-     }
-     return myData;
-   }
+    @Override
+    protected void onPreExecute() {
+    }
 
-   private String fetchUrl(String url)
-   { String urlContent = "";
-     StringBuilder myStrBuff = new StringBuilder();
-     try{
-          URL myUrl = new URL(url);
-          HttpURLConnection myConn = (HttpURLConnection) myUrl.openConnection();
-          myConn.setRequestProperty("User-Agent", "");
-          myConn.setRequestProperty("x-rapidapi-key","4e47937527mshf111bc4e02a3f6fp1ce684jsn6de2467b8246");
-          myConn.setRequestProperty("x-rapidapi-host","apidojo-yahoo-finance-v1.p.rapidapi.com");
-          myConn.setRequestMethod("GET");
-          myConn.setDoInput(true);
+    @Override
+    protected String doInBackground(String... params) {
+        String url = params[0];
+        String myData = "";
+        try {
+            myData = fetchUrl(url);
+        } catch (Exception _e) {
+            delegate.internetAccessCompleted(myData);
+            return null;
+        }
+        return myData;
+    }
 
-          myConn.connect();
-          myConn.setReadTimeout(5000); //Due to increased latency (because of free API), this is a must...
+    private String fetchUrl(String url) {
+        String urlContent = "";
+        StringBuilder myStrBuff = new StringBuilder();
+        try {
+            URL myUrl = new URL(url);
+            HttpURLConnection myConn = (HttpURLConnection) myUrl.openConnection();
+            myConn.setRequestProperty("User-Agent", "");
+            myConn.setRequestProperty("x-rapidapi-key", "4e47937527mshf111bc4e02a3f6fp1ce684jsn6de2467b8246");
+            myConn.setRequestProperty("x-rapidapi-host", "apidojo-yahoo-finance-v1.p.rapidapi.com");
+            myConn.setRequestMethod("GET");
+            myConn.setDoInput(true);
 
-          InputStream myInStrm = myConn.getInputStream();
-          BufferedReader myBuffRdr = new BufferedReader(new InputStreamReader(myInStrm));
+            myConn.connect();
+            myConn.setReadTimeout(5000); //Due to increased latency (because of free API), this is a must...
 
-          while ((urlContent = myBuffRdr.readLine()) != null) {
-              myStrBuff.append(urlContent + '\n');
-          }
-//         System.out.println("66: "+ myStrBuff);
-      } catch (Exception e) {
-          e.printStackTrace(System.out);
-          //System.out.println(e.printStackTrace(System.out));
-          delegate.internetAccessCompleted(myStrBuff.toString());
-          return null;
-      }
-      return myStrBuff.toString();
-  }
+            InputStream myInStrm = myConn.getInputStream();
+            BufferedReader myBuffRdr = new BufferedReader(new InputStreamReader(myInStrm));
 
-  @Override
-  protected void onPostExecute(String result) {
-      delegate.internetAccessCompleted(result);
-  }
+            while ((urlContent = myBuffRdr.readLine()) != null) {
+                myStrBuff.append(urlContent + '\n');
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            delegate.internetAccessCompleted(myStrBuff.toString());
+            return null;
+        }
+        return myStrBuff.toString();
+    }
 
-  @Override
-  protected void onProgressUpdate(Void... values) {}
- }
+    @Override
+    protected void onPostExecute(String result) {
+        delegate.internetAccessCompleted(result);
+    }
 
-interface InternetCallback
-{ public void internetAccessCompleted(String response); }
+    @Override
+    protected void onProgressUpdate(Void... values) {
+    }
+}
+
+interface InternetCallback {
+    public void internetAccessCompleted(String response);
+}
 
 

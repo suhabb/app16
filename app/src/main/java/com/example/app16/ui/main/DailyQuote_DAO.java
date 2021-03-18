@@ -1,23 +1,6 @@
 package com.example.app16.ui.main;
 
 
-import java.util.*;
-import java.util.HashMap;
-import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.TreeSet;
-import java.util.Collections;
-import java.util.StringTokenizer;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.*;
-
 //Handles all the quote values and parsing and conversions
 public class DailyQuote_DAO {
     public static final String baseString = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-chart?";

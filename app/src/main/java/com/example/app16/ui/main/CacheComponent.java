@@ -32,7 +32,7 @@ public class CacheComponent {
             Arrays.stream(listFiles).forEach(filename ->
             {
                 String[] file = filename.split("_");
-                String fileTickerId= file[0];
+                String fileTickerId = file[0];
                 String fileFromDate = file[1];
                 String fileToDate = file[2];
                 if (fileTickerId.equalsIgnoreCase(tickerId)) {
@@ -45,7 +45,7 @@ public class CacheComponent {
                 }
             });
         }
-        if(storageFileNames.isEmpty()){
+        if (storageFileNames.isEmpty()) {
             return false;
         }
         return true;
@@ -73,6 +73,4 @@ public class CacheComponent {
         }
         return fileNameList;
     }
-
-
 }
