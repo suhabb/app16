@@ -24,7 +24,6 @@ import androidx.fragment.app.Fragment;
 import com.example.app16.R;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 //controller for handling the quote request
@@ -49,6 +48,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
     CheckBox macdavqBox;
     int progress;
     TextView tvProgressLabel;
+    SeekBar seekBar;
 
     public findQuoteFragment() {
     }
@@ -93,7 +93,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
         macdavqBox.setOnClickListener(this);
 
         // set a change listener on the SeekBar
-        SeekBar seekBar = root.findViewById(R.id.seekBar);
+        seekBar = root.findViewById(R.id.seekBar);
 
 
         progress = seekBar.getProgress();
@@ -146,17 +146,16 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void findQuoteOK(View _v) {
 
-        findQuotedateData = findQuotedateTextField.getText() + "";
-        findquotebean.setdate(findQuotedateData);
+        findquotebean.setDateFrom(quoteFromDate.getText().toString());
+        findquotebean.setDateTo(quoteEndDate.getText().toString());
+        findquotebean.setStockSymbol(stockSymbol.getText().toString());
         SeekBar seekBar = root.findViewById(R.id.seekBar);
 
         if (findquotebean.isfindQuoteerror()) {
             Log.w(getClass().getName(), findquotebean.errors());
             Toast.makeText(myContext, "Errors: " + findquotebean.errors(), Toast.LENGTH_LONG).show();
-        } else if (Objects.isNull(stockSymbol.getText()) || stockSymbol.getText().toString().trim().equals("")) {
-            Log.w(getClass().getName(), findquotebean.errors());
-            Toast.makeText(myContext, "Errors: Stock Id cannot be empty", Toast.LENGTH_LONG).show();
-        } else {
+            findQuoteResult.setText("");
+        }  else {
             findQuoteResult.setText(findquotebean.findQuote(stockSymbol.getText().toString(),
                     quoteFromDate.getText().toString(), quoteEndDate.getText().toString(), seekBar.getProgress()));
         }
@@ -166,6 +165,13 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
         findquotebean.resetData();
         findQuotedateTextField.setText("");
         findQuoteResult.setText("");
+        stockSymbol.setText("");
+        quoteEndDate.setText("");
+        stockSymbol.setFocusable(true);
+        checkedBoxes.stream().forEach(c -> c.setChecked(false));
+        checkedBoxes.clear();
+        checkBoxCount = 0;
+        seekBar.setProgress(2);
     }
 
     public void validateTickedBox(View _v) {

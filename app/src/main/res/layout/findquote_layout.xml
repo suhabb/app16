@@ -199,9 +199,9 @@
                 android:id="@+id/findQuoteResultLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#EEFFBB"
                 android:fontFamily="monospace"
                 android:hint="Result of findQuote"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="Status"
                 android:textStyle="bold" />
 
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_span="4"
                 android:fontFamily="monospace"
-                android:hint="Updates status here"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
 
