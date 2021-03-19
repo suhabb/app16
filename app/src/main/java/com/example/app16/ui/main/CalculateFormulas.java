@@ -73,7 +73,7 @@ public class CalculateFormulas {
         }
 
         List<Price> emaList = getEMAValues(priceDateList, 20);
-        Collections.reverse(emaList);
+        //Collections.reverse(emaList);
         List<String> dateList = emaList
                 .stream()
                 .map(p -> p.getDateOfStock().format(DateTimeFormatter.ofPattern("dd-MMM-yy"))
@@ -124,7 +124,7 @@ public class CalculateFormulas {
     public ArrayList[] calculateMACDAVG() {
         List<Price> macdValues = getMACDValues();
         List<Price> macdAvgList = getEMAValues(macdValues, 9);
-        Collections.reverse(macdAvgList);
+        //Collections.reverse(macdAvgList);
         ArrayList lists[] = new ArrayList[2];
         for (int i = 0; i < 2; i++) {
             lists[i] = new ArrayList<>();
@@ -201,21 +201,29 @@ public class CalculateFormulas {
 
     public List<Price> getEMAValues(List<Price> priceList, int period) {
 
-        Collections.reverse(priceList);
+        //Collections.reverse(priceList);
 
         double k = (double) 2 / (period + 1);
         k = Math.round(k * 100) / 100.0d;
         List<Price> emaList = new ArrayList<>();
         List<Price> smaSubList = priceList
-                .subList(0, period - 1);
+                .subList(0, period );
         double smaSum = 0.0;
         for (Price p : smaSubList) {
             smaSum += p.getStockPrice();
         }
         smaSum = (double) smaSum / period;
+        smaSum = Math.round(smaSum * 100) / 100.0d;
         double ema = 0.0;
         for (int i = period; i < priceList.size(); i++) {
             if (emaList.isEmpty()) {
+                //add the first value as sma and use it for further calculation
+                Price initialSma = new Price();
+                initialSma.setStockPrice(smaSum);
+                initialSma.setDateOfStock(priceList.get(i-1).getDateOfStock());
+                emaList.add(initialSma);
+
+                //calculate the ema values
                 ema = (priceList.get(i).getStockPrice() * k) + smaSum * (1 - k);
             } else {
                 ema = (priceList.get(i).getStockPrice() * k) + ema * (1 - k);
