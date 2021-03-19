@@ -65,8 +65,6 @@ public class CalculateFormulas {
         return lists;
     }
 
-    // EMA = (today’s closing price *K) + (Previous EMA * (1 – K))
-    // K (Smoothing Factor) = 2/(N+1)
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ArrayList[] calculateEMA() {
         ArrayList lists[] = new ArrayList[2];
@@ -79,7 +77,7 @@ public class CalculateFormulas {
         List<String> dateList = emaList
                 .stream()
                 .map(p -> p.getDateOfStock().format(DateTimeFormatter.ofPattern("dd-MMM-yy"))
-                        .substring(3,9))
+                        .substring(3, 9))
                 .collect(Collectors.toList());
         List<Double> stockPriceList = emaList.stream()
                 .map(Price::getStockPrice)
@@ -91,13 +89,9 @@ public class CalculateFormulas {
             lists[1].add(stockPriceList.get(index - 1));
             index += dateInterval;
         }
-
         return lists;
-
     }
 
-    // MACD=12-Period
-    // EMA − 26-Period EMA
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ArrayList[] calculateMACD() {
 
@@ -111,7 +105,7 @@ public class CalculateFormulas {
         List<String> dateList = macdList
                 .stream()
                 .map(p -> p.getDateOfStock().format(DateTimeFormatter.ofPattern("dd-MMM-yy"))
-                        .substring(3,9))
+                        .substring(3, 9))
                 .collect(Collectors.toList());
         List<Double> stockPriceList = macdList.stream()
                 .map(Price::getStockPrice)
@@ -123,7 +117,6 @@ public class CalculateFormulas {
             lists[1].add(stockPriceList.get(index - 1));
             index += dateInterval;
         }
-
         return lists;
     }
 
@@ -140,7 +133,7 @@ public class CalculateFormulas {
         List<String> dateList = macdAvgList
                 .stream()
                 .map(p -> p.getDateOfStock().format(DateTimeFormatter.ofPattern("dd-MMM-yy"))
-                        .substring(3,9))
+                        .substring(3, 9))
                 .collect(Collectors.toList());
         List<Double> stockPriceList = macdAvgList.stream()
                 .map(Price::getStockPrice)
@@ -153,7 +146,6 @@ public class CalculateFormulas {
             lists[1].add(stockPriceList.get(index - 1));
             index += dateInterval;
         }
-
         return lists;
     }
 
@@ -175,13 +167,6 @@ public class CalculateFormulas {
         return macdList;
     }
 
-
-    //EMA=Price(t)×k+EMA(y)×(1−k)
-    //=today
-    //y=yesterday
-    //N=number of days in EMA
-    //k=2÷(N+1)
-    //​
     public List<Double> sumEMAvalues(List<Double> stockList, int period) {
 
         double k = (double) 2 / (period + 1);

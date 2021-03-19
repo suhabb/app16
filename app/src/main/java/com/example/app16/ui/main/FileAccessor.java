@@ -26,8 +26,8 @@ import java.util.List;
 
 //To create, read and write files. Maybe can be used for the persistence problem too
 public class FileAccessor {
-    Context myContext;
 
+    Context myContext;
 
     public FileAccessor(Context context) {
         myContext = context;
@@ -96,14 +96,12 @@ public class FileAccessor {
         JSONArray ja4 = (JSONArray) ja3.get("quote");
         JSONObject ja5 = (JSONObject) ja4.get(0);
         ArrayList<Double> ja6 = (ArrayList<Double>) ja5.get("close");
-        //tFrameAndValues[0] = ja2;
         List<Price> priceList = new ArrayList<>();
 
         for (int i = 0; i < ja2.size(); i++) {
             Long value = (Long) ja2.get(i);
             Date curDate = new Date(value * 10000);
             tFrameAndValues[0].add(curDate.toString().substring(4, 10));
-//            System.out.println("Current Date:" + curDate.toString());
         }
         tFrameAndValues[1] = ja6;
 
@@ -118,7 +116,7 @@ public class FileAccessor {
         for (int i = 0; i < ja6.size(); i++) {
             priceList.get(i).setStockPrice(ja6.get(i));
         }
-        tFrameAndValues[2]=new ArrayList(priceList);
+        tFrameAndValues[2] = new ArrayList(priceList);
 
         return tFrameAndValues;
     }

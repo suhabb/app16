@@ -79,20 +79,9 @@ public class ModelFacade
 
     public GraphDisplay getNewGraphDisplay(ArrayList[] xyValues) {
         GraphDisplay result = new GraphDisplay();
-//        System.out.println("84: " + xyValues[0]);
-//        System.out.println("85: " + xyValues[1]);
         result.setXNominal((ArrayList<String>) xyValues[0]);
         result.setYPoints((ArrayList<Double>) xyValues[1]);
         return (result);
-
-//            ArrayList<DailyQuote> quotes = null;
-//            quotes = Ocl.copySequence(DailyQuote.DailyQuote_allInstances);
-//            ArrayList<String> xnames = null;
-//            xnames = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.date));
-//            ArrayList<Double> yvalues = null;
-//            yvalues = Ocl.copySequence(Ocl.collectSequence(quotes,(q)-> q.close));
-//            result.setXNominal(xnames);
-//            result.setYPoints(yvalues);
 
     }
 

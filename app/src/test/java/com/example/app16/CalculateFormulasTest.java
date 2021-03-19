@@ -5,8 +5,6 @@ import com.example.app16.ui.main.CalculateFormulas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +23,6 @@ public class CalculateFormulasTest {
 
     @BeforeEach
     public <stockValues2> void setUp() {
-        //ArrayList<String> timeFrames = Arrays.asList(14,28);
-        //  timeFrames = (ArrayList<String>) timeFrameAndValues[0];
         stockValues = Arrays.asList(37.70,
                 37.75,
                 37.40,
@@ -91,7 +87,6 @@ public class CalculateFormulasTest {
 
     }
 
-
     @Test
     public void given_input_return_ema_list() {
         reverse(stockValues);
@@ -110,17 +105,5 @@ public class CalculateFormulasTest {
 
     }
 
-    @Test
-    public void given_input_return_ema_list_of_price(){
-
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-
-        String date = "16-Aug-2016";
-
-        String s = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy")).substring(3,9);
-        System.out.println("CalculateFormulasTest.given_input_return_ema_list_of_price:"+s);
-
-    }
 }
 

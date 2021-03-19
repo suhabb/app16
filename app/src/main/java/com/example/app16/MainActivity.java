@@ -1,25 +1,12 @@
 package com.example.app16;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.appcompat.widget.Toolbar; 
-import androidx.viewpager.widget.ViewPager;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
-
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
-import com.example.app16.ui.main.SectionsPagerAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.app16.ui.main.ModelFacade;
 import com.example.app16.ui.main.SectionsPagerAdapter;
@@ -27,7 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 //Interacts with the main activity screen .xml file
 public class MainActivity extends AppCompatActivity {
-   ModelFacade model;
+    ModelFacade model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 }
