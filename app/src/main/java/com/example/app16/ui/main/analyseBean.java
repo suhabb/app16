@@ -2,9 +2,6 @@ package com.example.app16.ui.main;
 
 import android.content.Context;
 
-import org.json.simple.parser.ParseException;
-
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class analyseBean {
     public GraphDisplay analyse(String cboxes) {
         try {
             return model.analyse(ModelFacade.fileName, cboxes);
-        } catch (FileNotFoundException | ParseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new GraphDisplay();

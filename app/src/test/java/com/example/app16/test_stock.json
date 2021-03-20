@@ -1,0 +1,625 @@
+{
+  "data": [
+    {
+      "epoch": 1546439400,
+      "dateOfStock": "02/01/2019",
+      "stockPrice": 62.02
+    },
+    {
+      "epoch": 1546525800,
+      "dateOfStock": "03/01/2019",
+      "stockPrice": 60.07
+    },
+    {
+      "epoch": 1546612200,
+      "dateOfStock": "04/01/2019",
+      "stockPrice": 63.54
+    },
+    {
+      "epoch": 1546871400,
+      "dateOfStock": "07/01/2019",
+      "stockPrice": 66.99
+    },
+    {
+      "epoch": 1546957800,
+      "dateOfStock": "08/01/2019",
+      "stockPrice": 67.07
+    },
+    {
+      "epoch": 1547044200,
+      "dateOfStock": "09/01/2019",
+      "stockPrice": 67.71
+    },
+    {
+      "epoch": 1547130600,
+      "dateOfStock": "10/01/2019",
+      "stockPrice": 68.99
+    },
+    {
+      "epoch": 1547217000,
+      "dateOfStock": "11/01/2019",
+      "stockPrice": 69.45
+    },
+    {
+      "epoch": 1547476200,
+      "dateOfStock": "14/01/2019",
+      "stockPrice": 66.88
+    },
+    {
+      "epoch": 1547562600,
+      "dateOfStock": "15/01/2019",
+      "stockPrice": 68.89
+    },
+    {
+      "epoch": 1547649000,
+      "dateOfStock": "16/01/2019",
+      "stockPrice": 69.21
+    },
+    {
+      "epoch": 1547735400,
+      "dateOfStock": "17/01/2019",
+      "stockPrice": 69.46
+    },
+    {
+      "epoch": 1547821800,
+      "dateOfStock": "18/01/2019",
+      "stockPrice": 60.45
+    },
+    {
+      "epoch": 1548167400,
+      "dateOfStock": "22/01/2019",
+      "stockPrice": 59.78
+    },
+    {
+      "epoch": 1548253800,
+      "dateOfStock": "23/01/2019",
+      "stockPrice": 57.52
+    },
+    {
+      "epoch": 1548340200,
+      "dateOfStock": "24/01/2019",
+      "stockPrice": 58.3
+    },
+    {
+      "epoch": 1548426600,
+      "dateOfStock": "25/01/2019",
+      "stockPrice": 59.41
+    },
+    {
+      "epoch": 1548685800,
+      "dateOfStock": "28/01/2019",
+      "stockPrice": 59.28
+    },
+    {
+      "epoch": 1548772200,
+      "dateOfStock": "29/01/2019",
+      "stockPrice": 59.49
+    },
+    {
+      "epoch": 1548858600,
+      "dateOfStock": "30/01/2019",
+      "stockPrice": 61.75
+    },
+    {
+      "epoch": 1548945000,
+      "dateOfStock": "31/01/2019",
+      "stockPrice": 61.4
+    },
+    {
+      "epoch": 1549031400,
+      "dateOfStock": "01/02/2019",
+      "stockPrice": 62.44
+    },
+    {
+      "epoch": 1549290600,
+      "dateOfStock": "04/02/2019",
+      "stockPrice": 62.58
+    },
+    {
+      "epoch": 1549377000,
+      "dateOfStock": "05/02/2019",
+      "stockPrice": 64.27
+    },
+    {
+      "epoch": 1549463400,
+      "dateOfStock": "06/02/2019",
+      "stockPrice": 63.44
+    },
+    {
+      "epoch": 1549549800,
+      "dateOfStock": "07/02/2019",
+      "stockPrice": 61.5
+    },
+    {
+      "epoch": 1549636200,
+      "dateOfStock": "08/02/2019",
+      "stockPrice": 61.16
+    },
+    {
+      "epoch": 1549895400,
+      "dateOfStock": "11/02/2019",
+      "stockPrice": 62.57
+    },
+    {
+      "epoch": 1549981800,
+      "dateOfStock": "12/02/2019",
+      "stockPrice": 62.36
+    },
+    {
+      "epoch": 1550068200,
+      "dateOfStock": "13/02/2019",
+      "stockPrice": 61.63
+    },
+    {
+      "epoch": 1550154600,
+      "dateOfStock": "14/02/2019",
+      "stockPrice": 60.75
+    },
+    {
+      "epoch": 1550241000,
+      "dateOfStock": "15/02/2019",
+      "stockPrice": 61.58
+    },
+    {
+      "epoch": 1550586600,
+      "dateOfStock": "19/02/2019",
+      "stockPrice": 61.13
+    },
+    {
+      "epoch": 1550673000,
+      "dateOfStock": "20/02/2019",
+      "stockPrice": 60.51
+    },
+    {
+      "epoch": 1550759400,
+      "dateOfStock": "21/02/2019",
+      "stockPrice": 58.25
+    },
+    {
+      "epoch": 1550845800,
+      "dateOfStock": "22/02/2019",
+      "stockPrice": 58.94
+    },
+    {
+      "epoch": 1551105000,
+      "dateOfStock": "25/02/2019",
+      "stockPrice": 59.75
+    },
+    {
+      "epoch": 1551191400,
+      "dateOfStock": "26/02/2019",
+      "stockPrice": 59.57
+    },
+    {
+      "epoch": 1551277800,
+      "dateOfStock": "27/02/2019",
+      "stockPrice": 62.95
+    },
+    {
+      "epoch": 1551364200,
+      "dateOfStock": "28/02/2019",
+      "stockPrice": 63.98
+    },
+    {
+      "epoch": 1551450600,
+      "dateOfStock": "01/03/2019",
+      "stockPrice": 58.96
+    },
+    {
+      "epoch": 1551709800,
+      "dateOfStock": "04/03/2019",
+      "stockPrice": 57.07
+    },
+    {
+      "epoch": 1551796200,
+      "dateOfStock": "05/03/2019",
+      "stockPrice": 55.31
+    },
+    {
+      "epoch": 1551882600,
+      "dateOfStock": "06/03/2019",
+      "stockPrice": 55.25
+    },
+    {
+      "epoch": 1551969000,
+      "dateOfStock": "07/03/2019",
+      "stockPrice": 55.32
+    },
+    {
+      "epoch": 1552055400,
+      "dateOfStock": "08/03/2019",
+      "stockPrice": 56.83
+    },
+    {
+      "epoch": 1552311000,
+      "dateOfStock": "11/03/2019",
+      "stockPrice": 58.18
+    },
+    {
+      "epoch": 1552397400,
+      "dateOfStock": "12/03/2019",
+      "stockPrice": 56.67
+    },
+    {
+      "epoch": 1552483800,
+      "dateOfStock": "13/03/2019",
+      "stockPrice": 57.79
+    },
+    {
+      "epoch": 1552570200,
+      "dateOfStock": "14/03/2019",
+      "stockPrice": 57.99
+    },
+    {
+      "epoch": 1552656600,
+      "dateOfStock": "15/03/2019",
+      "stockPrice": 55.09
+    },
+    {
+      "epoch": 1552915800,
+      "dateOfStock": "18/03/2019",
+      "stockPrice": 53.9
+    },
+    {
+      "epoch": 1553002200,
+      "dateOfStock": "19/03/2019",
+      "stockPrice": 53.49
+    },
+    {
+      "epoch": 1553088600,
+      "dateOfStock": "20/03/2019",
+      "stockPrice": 54.72
+    },
+    {
+      "epoch": 1553175000,
+      "dateOfStock": "21/03/2019",
+      "stockPrice": 54.8
+    },
+    {
+      "epoch": 1553261400,
+      "dateOfStock": "22/03/2019",
+      "stockPrice": 52.91
+    },
+    {
+      "epoch": 1553520600,
+      "dateOfStock": "25/03/2019",
+      "stockPrice": 52.08
+    },
+    {
+      "epoch": 1553607000,
+      "dateOfStock": "26/03/2019",
+      "stockPrice": 53.55
+    },
+    {
+      "epoch": 1553693400,
+      "dateOfStock": "27/03/2019",
+      "stockPrice": 54.97
+    },
+    {
+      "epoch": 1553779800,
+      "dateOfStock": "28/03/2019",
+      "stockPrice": 55.72
+    },
+    {
+      "epoch": 1553866200,
+      "dateOfStock": "29/03/2019",
+      "stockPrice": 55.97
+    },
+    {
+      "epoch": 1554125400,
+      "dateOfStock": "01/04/2019",
+      "stockPrice": 57.84
+    },
+    {
+      "epoch": 1554211800,
+      "dateOfStock": "02/04/2019",
+      "stockPrice": 57.18
+    },
+    {
+      "epoch": 1554298200,
+      "dateOfStock": "03/04/2019",
+      "stockPrice": 58.36
+    },
+    {
+      "epoch": 1554384600,
+      "dateOfStock": "04/04/2019",
+      "stockPrice": 53.56
+    },
+    {
+      "epoch": 1554471000,
+      "dateOfStock": "05/04/2019",
+      "stockPrice": 54.99
+    },
+    {
+      "epoch": 1554730200,
+      "dateOfStock": "08/04/2019",
+      "stockPrice": 54.64
+    },
+    {
+      "epoch": 1554816600,
+      "dateOfStock": "09/04/2019",
+      "stockPrice": 54.46
+    },
+    {
+      "epoch": 1554903000,
+      "dateOfStock": "10/04/2019",
+      "stockPrice": 55.21
+    },
+    {
+      "epoch": 1554989400,
+      "dateOfStock": "11/04/2019",
+      "stockPrice": 53.68
+    },
+    {
+      "epoch": 1555075800,
+      "dateOfStock": "12/04/2019",
+      "stockPrice": 53.54
+    },
+    {
+      "epoch": 1555335000,
+      "dateOfStock": "15/04/2019",
+      "stockPrice": 53.28
+    },
+    {
+      "epoch": 1555421400,
+      "dateOfStock": "16/04/2019",
+      "stockPrice": 54.67
+    },
+    {
+      "epoch": 1555507800,
+      "dateOfStock": "17/04/2019",
+      "stockPrice": 54.25
+    },
+    {
+      "epoch": 1555594200,
+      "dateOfStock": "18/04/2019",
+      "stockPrice": 54.65
+    },
+    {
+      "epoch": 1555939800,
+      "dateOfStock": "22/04/2019",
+      "stockPrice": 52.55
+    },
+    {
+      "epoch": 1556026200,
+      "dateOfStock": "23/04/2019",
+      "stockPrice": 52.78
+    },
+    {
+      "epoch": 1556112600,
+      "dateOfStock": "24/04/2019",
+      "stockPrice": 51.73
+    },
+    {
+      "epoch": 1556199000,
+      "dateOfStock": "25/04/2019",
+      "stockPrice": 49.53
+    },
+    {
+      "epoch": 1556285400,
+      "dateOfStock": "26/04/2019",
+      "stockPrice": 47.03
+    },
+    {
+      "epoch": 1556544600,
+      "dateOfStock": "29/04/2019",
+      "stockPrice": 48.29
+    },
+    {
+      "epoch": 1556631000,
+      "dateOfStock": "30/04/2019",
+      "stockPrice": 47.74
+    },
+    {
+      "epoch": 1556717400,
+      "dateOfStock": "01/05/2019",
+      "stockPrice": 46.8
+    },
+    {
+      "epoch": 1556803800,
+      "dateOfStock": "02/05/2019",
+      "stockPrice": 48.82
+    },
+    {
+      "epoch": 1556890200,
+      "dateOfStock": "03/05/2019",
+      "stockPrice": 51.01
+    },
+    {
+      "epoch": 1557149400,
+      "dateOfStock": "06/05/2019",
+      "stockPrice": 51.07
+    },
+    {
+      "epoch": 1557235800,
+      "dateOfStock": "07/05/2019",
+      "stockPrice": 49.41
+    },
+    {
+      "epoch": 1557322200,
+      "dateOfStock": "08/05/2019",
+      "stockPrice": 48.97
+    },
+    {
+      "epoch": 1557408600,
+      "dateOfStock": "09/05/2019",
+      "stockPrice": 48.4
+    },
+    {
+      "epoch": 1557495000,
+      "dateOfStock": "10/05/2019",
+      "stockPrice": 47.9
+    },
+    {
+      "epoch": 1557754200,
+      "dateOfStock": "13/05/2019",
+      "stockPrice": 45.4
+    },
+    {
+      "epoch": 1557840600,
+      "dateOfStock": "14/05/2019",
+      "stockPrice": 46.46
+    },
+    {
+      "epoch": 1557927000,
+      "dateOfStock": "15/05/2019",
+      "stockPrice": 46.39
+    },
+    {
+      "epoch": 1558013400,
+      "dateOfStock": "16/05/2019",
+      "stockPrice": 45.67
+    },
+    {
+      "epoch": 1558099800,
+      "dateOfStock": "17/05/2019",
+      "stockPrice": 42.21
+    },
+    {
+      "epoch": 1558359000,
+      "dateOfStock": "20/05/2019",
+      "stockPrice": 41.07
+    },
+    {
+      "epoch": 1558445400,
+      "dateOfStock": "21/05/2019",
+      "stockPrice": 41.02
+    },
+    {
+      "epoch": 1558531800,
+      "dateOfStock": "22/05/2019",
+      "stockPrice": 38.55
+    },
+    {
+      "epoch": 1558618200,
+      "dateOfStock": "23/05/2019",
+      "stockPrice": 39.1
+    },
+    {
+      "epoch": 1558704600,
+      "dateOfStock": "24/05/2019",
+      "stockPrice": 38.13
+    },
+    {
+      "epoch": 1559050200,
+      "dateOfStock": "28/05/2019",
+      "stockPrice": 37.74
+    },
+    {
+      "epoch": 1559136600,
+      "dateOfStock": "29/05/2019",
+      "stockPrice": 37.97
+    },
+    {
+      "epoch": 1559223000,
+      "dateOfStock": "30/05/2019",
+      "stockPrice": 37.64
+    },
+    {
+      "epoch": 1559309400,
+      "dateOfStock": "31/05/2019",
+      "stockPrice": 37.03
+    },
+    {
+      "epoch": 1559568600,
+      "dateOfStock": "03/06/2019",
+      "stockPrice": 35.79
+    },
+    {
+      "epoch": 1559655000,
+      "dateOfStock": "04/06/2019",
+      "stockPrice": 38.72
+    },
+    {
+      "epoch": 1559741400,
+      "dateOfStock": "05/06/2019",
+      "stockPrice": 39.32
+    },
+    {
+      "epoch": 1559827800,
+      "dateOfStock": "06/06/2019",
+      "stockPrice": 41.19
+    },
+    {
+      "epoch": 1559914200,
+      "dateOfStock": "07/06/2019",
+      "stockPrice": 40.9
+    },
+    {
+      "epoch": 1560173400,
+      "dateOfStock": "10/06/2019",
+      "stockPrice": 42.58
+    },
+    {
+      "epoch": 1560259800,
+      "dateOfStock": "11/06/2019",
+      "stockPrice": 43.42
+    },
+    {
+      "epoch": 1560346200,
+      "dateOfStock": "12/06/2019",
+      "stockPrice": 41.85
+    },
+    {
+      "epoch": 1560432600,
+      "dateOfStock": "13/06/2019",
+      "stockPrice": 42.78
+    },
+    {
+      "epoch": 1560519000,
+      "dateOfStock": "14/06/2019",
+      "stockPrice": 42.98
+    },
+    {
+      "epoch": 1560778200,
+      "dateOfStock": "17/06/2019",
+      "stockPrice": 45.01
+    },
+    {
+      "epoch": 1560864600,
+      "dateOfStock": "18/06/2019",
+      "stockPrice": 44.95
+    },
+    {
+      "epoch": 1560951000,
+      "dateOfStock": "19/06/2019",
+      "stockPrice": 45.29
+    },
+    {
+      "epoch": 1561037400,
+      "dateOfStock": "20/06/2019",
+      "stockPrice": 43.92
+    },
+    {
+      "epoch": 1561123800,
+      "dateOfStock": "21/06/2019",
+      "stockPrice": 44.37
+    },
+    {
+      "epoch": 1561383000,
+      "dateOfStock": "24/06/2019",
+      "stockPrice": 44.73
+    },
+    {
+      "epoch": 1561469400,
+      "dateOfStock": "25/06/2019",
+      "stockPrice": 43.95
+    },
+    {
+      "epoch": 1561555800,
+      "dateOfStock": "26/06/2019",
+      "stockPrice": 43.85
+    },
+    {
+      "epoch": 1561642200,
+      "dateOfStock": "27/06/2019",
+      "stockPrice": 44.57
+    },
+    {
+      "epoch": 1561728600,
+      "dateOfStock": "28/06/2019",
+      "stockPrice": 44.69
+    }
+  ]
+}
+

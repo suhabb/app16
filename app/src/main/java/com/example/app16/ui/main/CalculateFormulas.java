@@ -10,20 +10,16 @@ import androidx.annotation.RequiresApi;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CalculateFormulas {
 
-    ArrayList<String> timeFrames;
-    ArrayList<Double> stockValues;
-    ArrayList<Price> priceDateList;
+    List<String> timeFrames;
+    List<Double> stockValues;
+    List<Price> priceDateList;
     private int interval;
 
-    public CalculateFormulas() {
-
-    }
 
     public CalculateFormulas(ArrayList[] timeFrameAndValues, int interval) {
         this.timeFrames = (ArrayList<String>) timeFrameAndValues[0];
@@ -73,7 +69,6 @@ public class CalculateFormulas {
         }
 
         List<Price> emaList = getEMAValues(priceDateList, 20);
-        //Collections.reverse(emaList);
         List<String> dateList = emaList
                 .stream()
                 .map(p -> p.getDateOfStock().format(DateTimeFormatter.ofPattern("dd-MMM-yy"))
@@ -124,7 +119,6 @@ public class CalculateFormulas {
     public ArrayList[] calculateMACDAVG() {
         List<Price> macdValues = getMACDValues();
         List<Price> macdAvgList = getEMAValues(macdValues, 9);
-        //Collections.reverse(macdAvgList);
         ArrayList lists[] = new ArrayList[2];
         for (int i = 0; i < 2; i++) {
             lists[i] = new ArrayList<>();
@@ -149,7 +143,7 @@ public class CalculateFormulas {
         return lists;
     }
 
-    private List<Price> getMACDValues() {
+    public List<Price> getMACDValues() {
         List<Price> _12emaValues = getEMAValues(priceDateList, 12);
         List<Price> _26emaValues = getEMAValues(priceDateList, 26);
         List<Price> macdList = new ArrayList<>();
@@ -158,6 +152,7 @@ public class CalculateFormulas {
                 if (_12ema.getDateOfStock().equals(_26ema.getDateOfStock())) {
                     Price price = new Price();
                     Double emaValue = (double) _12ema.getStockPrice() - _26ema.getStockPrice();
+                    emaValue = Math.round(emaValue * 100) / 100.0d;
                     price.setStockPrice(emaValue);
                     price.setDateOfStock(_12ema.getDateOfStock());
                     macdList.add(price);
@@ -165,29 +160,6 @@ public class CalculateFormulas {
             }
         }
         return macdList;
-    }
-
-    public List<Double> sumEMAvalues(List<Double> stockList, int period) {
-
-        double k = (double) 2 / (period + 1);
-        k = Math.round(k * 100) / 100.0d;
-        List<Double> emaList = new ArrayList<>();
-        double smaSum = stockList
-                .subList(stockList.size() - period - 1, stockList.size() - 1)
-                .stream()
-                .reduce(0.0, Double::sum) / period;
-        double ema = 0.0;
-        for (int index = stockList.size() - 1 - period; index >= 0; index--) {
-
-            if (emaList.isEmpty()) {
-                ema = (stockList.get(index) * k) + smaSum * (1 - k);
-            } else {
-                ema = (stockList.get(index) * k) + ema * (1 - k);
-            }
-            ema = Math.round(ema * 100) / 100.0d;
-            emaList.add(ema);
-        }
-        return emaList;
     }
 
     public double sumValues(int x, int y) {
@@ -201,7 +173,6 @@ public class CalculateFormulas {
 
     public List<Price> getEMAValues(List<Price> priceList, int period) {
 
-        //Collections.reverse(priceList);
 
         double k = (double) 2 / (period + 1);
         k = Math.round(k * 100) / 100.0d;

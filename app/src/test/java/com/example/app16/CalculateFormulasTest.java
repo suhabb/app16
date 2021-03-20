@@ -1,109 +1,144 @@
 package com.example.app16;
 
-import com.example.app16.ui.main.CalculateFormulas;
 
+import com.example.app16.ui.main.CalculateFormulas;
+import com.example.app16.ui.main.Price;
+import com.example.app16.ui.main.PriceBuilder;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import org.json.simple.parser.JSONParser;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static java.util.Collections.reverse;
+import java.util.stream.Collectors;
 
 public class CalculateFormulasTest {
 
-    CalculateFormulas calculateFormulas;
 
-    ArrayList[] timeFrameAndValues;
+    List stockPriceList;
 
-    List<Double> stockValues;
-    static ArrayList<Double> stockValues2;
-
+    List<Price> priceList;
 
     @BeforeEach
-    public <stockValues2> void setUp() {
-        stockValues = Arrays.asList(37.70,
-                37.75,
-                37.40,
-                36.95,
-                34.25,
-                34.65,
-                35.90,
-                35.85,
-                37.00,
-                36.70,
-                36.65,
-                37.05,
-                37.40,
-                38.55,
-                39.70,
-                41.35,
-                45.80,
-                44.40,
-                44.45,
-                47.15,
-                46.05,
-                46.25,
-                48.45,
-                46.60,
-                50.20,
-                51.40,
-                49.65,
-                49.45);
-        calculateFormulas = new CalculateFormulas();
-
-        stockValues2 = new ArrayList<Double>() {{
-            add(37.70);
-            add(37.75);
-            add(37.40);
-            add(36.95);
-            add(34.25);
-            add(34.65);
-            add(35.90);
-            add(35.85);
-            add(37.00);
-            add(36.70);
-            add(36.65);
-            add(37.05);
-            add(37.40);
-            add(38.55);
-            add(39.70);
-            add(41.35);
-            add(45.80);
-            add(44.40);
-            add(44.45);
-            add(47.15);
-            add(46.05);
-            add(46.25);
-            add(48.45);
-            add(46.60);
-            add(50.20);
-            add(51.40);
-            add(49.65);
-            add(49.45);
-        }};
-        calculateFormulas = new CalculateFormulas();
+    public void setUp() {
+        priceList = getStocksPriceFromFile("src/test/java/com/example/app16/test_stock.json",true);
+        stockPriceList = priceList.stream().map(Price::getStockPrice).collect(Collectors.toList());
 
     }
 
     @Test
     public void given_input_return_ema_list() {
-        reverse(stockValues);
-        List<Double> sumEMAvalues = calculateFormulas.sumEMAvalues(stockValues, 12);
-        sumEMAvalues.stream().forEach(System.out::println);
+        ArrayList tFrameAndValues[] = new ArrayList[3];
+        for (int i = 0; i < 3; i++) {
+            tFrameAndValues[i] = new ArrayList<>();
+        }
+        tFrameAndValues[1] = (ArrayList) stockPriceList;
+        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 20);
+        List<Price> emaValues = calculateFormulas.getEMAValues(priceList, 20);
+        List<Price> expectedPriceList =
+                getStocksPriceFromFile("src/test/java/com/example/app16/expect_ema.json",
+                        false);
+        Assertions.assertArrayEquals(expectedPriceList.toArray(),emaValues.toArray());
     }
 
     @Test
-    public void given_input_return_ema_list_2() {
-        ArrayList tFrameAndValues[] = new ArrayList[2];
-        for (int i = 0; i < 2; i++) {
+    public void given_input_return_macd_list() {
+        ArrayList tFrameAndValues[] = new ArrayList[3];
+        for (int i = 0; i < 3; i++) {
             tFrameAndValues[i] = new ArrayList<>();
         }
-        tFrameAndValues[1] = stockValues2;
-        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues,12);
-
+        tFrameAndValues[1] = (ArrayList) stockPriceList;
+        tFrameAndValues[2] = (ArrayList) priceList;
+        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 20);
+        List<Price> macdValues = calculateFormulas.getMACDValues();
+        List<Price> expectedPriceList =
+                getStocksPriceFromFile("src/test/java/com/example/app16/expected_macd.json",
+                        false);
+        Assertions.assertArrayEquals(expectedPriceList.toArray(),macdValues.toArray());
     }
 
+    @Test
+    public void given_input_return_macd_avg_list() {
+        ArrayList tFrameAndValues[] = new ArrayList[3];
+        for (int i = 0; i < 3; i++) {
+            tFrameAndValues[i] = new ArrayList<>();
+        }
+        tFrameAndValues[1] = (ArrayList) stockPriceList;
+        tFrameAndValues[2] = (ArrayList) priceList;
+        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 20);
+        List<Price> macdValues = calculateFormulas.getMACDValues();
+        List<Price> macdAvgValues = calculateFormulas.getEMAValues(macdValues,9);
+        List<Price> expectedPriceList =
+                getStocksPriceFromFile("src/test/java/com/example/app16/expected_macd_avg.json",
+                        false);
+        Assertions.assertArrayEquals(expectedPriceList.toArray(),macdAvgValues.toArray());
+    }
+
+
+    public static List<Price> getStocksPriceFromFile(String path,boolean isEpoch) {
+        List<Price> priceList = new ArrayList<>();
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            String jsonString = readFile(fis);
+
+            JSONParser parser = new JSONParser();
+            Object a = parser.parse(jsonString);
+            ObjectMapper mapper = new ObjectMapper();
+            ObjectNode node = (ObjectNode) mapper.readTree(jsonString);
+            JsonNode arrayNode = node.get("data");
+
+            arrayNode.forEach(s -> {
+                LocalDate date ;
+                if(isEpoch) {
+                    int epoch = Integer.parseInt(s.get("epoch").asText());
+                  date = Instant.ofEpochSecond(epoch).atZone(ZoneId.systemDefault()).toLocalDate();
+                }else{
+                    String value = s.get("dateOfStock").asText();
+                    date = LocalDate.parse(value);
+                }
+
+                String value = s.get("stockPrice").asText();
+                Price price = new PriceBuilder()
+                        .setStockPrice(Double.valueOf(value))
+                        .setDateOfStock(date).build();
+                priceList.add(price);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return priceList;
+    }
+
+    public static String readFile(FileInputStream fis) {
+        StringBuilder result = new StringBuilder();
+
+        try (InputStreamReader inStrmRdr = new InputStreamReader(fis);) {
+
+            if (fis != null) {
+
+                BufferedReader buffRdr = new BufferedReader(inStrmRdr);
+                String fileContent;
+
+                while ((fileContent = buffRdr.readLine()) != null) {
+                    result.append(fileContent);
+                }
+                fis.close();
+            }
+        } catch (Exception _e) {
+            _e.printStackTrace();
+        }
+        return result.toString();
+    }
 }
 
