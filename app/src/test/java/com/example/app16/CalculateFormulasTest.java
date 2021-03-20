@@ -32,7 +32,7 @@ public class CalculateFormulasTest {
 
     @BeforeEach
     public void setUp() {
-        priceList = getStocksPriceFromFile("src/test/java/com/example/app16/test_stock.json",true);
+        priceList = getStocksPriceFromFile("src/test/java/com/example/app16/json_data/test_stock.json",true);
         stockPriceList = priceList.stream().map(Price::getStockPrice).collect(Collectors.toList());
 
     }
@@ -47,7 +47,7 @@ public class CalculateFormulasTest {
         CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 20);
         List<Price> emaValues = calculateFormulas.getEMAValues(priceList, 20);
         List<Price> expectedPriceList =
-                getStocksPriceFromFile("src/test/java/com/example/app16/expect_ema.json",
+                getStocksPriceFromFile("src/test/java/com/example/app16/json_data/expect_ema.json",
                         false);
         Assertions.assertArrayEquals(expectedPriceList.toArray(),emaValues.toArray());
     }
@@ -63,7 +63,7 @@ public class CalculateFormulasTest {
         CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 20);
         List<Price> macdValues = calculateFormulas.getMACDValues();
         List<Price> expectedPriceList =
-                getStocksPriceFromFile("src/test/java/com/example/app16/expected_macd.json",
+                getStocksPriceFromFile("src/test/java/com/example/app16/json_data/expected_macd.json",
                         false);
         Assertions.assertArrayEquals(expectedPriceList.toArray(),macdValues.toArray());
     }
@@ -80,7 +80,7 @@ public class CalculateFormulasTest {
         List<Price> macdValues = calculateFormulas.getMACDValues();
         List<Price> macdAvgValues = calculateFormulas.getEMAValues(macdValues,9);
         List<Price> expectedPriceList =
-                getStocksPriceFromFile("src/test/java/com/example/app16/expected_macd_avg.json",
+                getStocksPriceFromFile("src/test/java/com/example/app16/json_data/expected_macd_avg.json",
                         false);
         Assertions.assertArrayEquals(expectedPriceList.toArray(),macdAvgValues.toArray());
     }

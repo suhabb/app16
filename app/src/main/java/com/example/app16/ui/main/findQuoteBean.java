@@ -69,7 +69,7 @@ public class findQuoteBean {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private boolean minDateRangeRequired(String dateFrom, String dateTo) {
+    public boolean minDateRangeRequired(String dateFrom, String dateTo) {
         try {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate fromDate = LocalDate.parse(dateFrom, dtf);
