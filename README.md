@@ -4,7 +4,7 @@
 
 1. Install Android Studio
 2. Gradle
-3. JDK - 11
+3. JDK - 8
 4. Import the project and run on Gradle
 
 
