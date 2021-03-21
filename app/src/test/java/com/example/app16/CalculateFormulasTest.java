@@ -20,6 +20,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,9 +33,31 @@ public class CalculateFormulasTest {
 
     @BeforeEach
     public void setUp() {
-        priceList = getStocksPriceFromFile("src/test/java/com/example/app16/json_data/test_stock.json",true);
+        priceList = getStocksPriceFromFile("src/test/java/com/example/app16/json_data/test_stock.json", true);
         stockPriceList = priceList.stream().map(Price::getStockPrice).collect(Collectors.toList());
 
+    }
+
+
+    @Test
+    public void given_input_return_sma_list() {
+        ArrayList tFrameAndValues[] = new ArrayList[3];
+        for (int i = 0; i < 3; i++) {
+            tFrameAndValues[i] = new ArrayList<>();
+        }
+        ArrayList timeFrame = new ArrayList(255);
+        for (int i = 0; i < 124; i++) {
+            timeFrame.add("Jun 02");
+        }
+        tFrameAndValues[0] = new ArrayList(timeFrame);
+        tFrameAndValues[1] = new ArrayList(stockPriceList);
+        tFrameAndValues[2]= new ArrayList(priceList);
+        CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 5);
+        ArrayList[] arrayLists = calculateFormulas.calculateSMA();
+        List[] expectList = new List[]{Arrays.asList(new Double(63.62),
+                new Double(59.74), new Double(54.99)
+                , new Double(48.87), new Double(41.04))};
+        Assertions.assertArrayEquals(expectList[0].toArray(), arrayLists[1].toArray());
     }
 
     @Test
@@ -49,7 +72,7 @@ public class CalculateFormulasTest {
         List<Price> expectedPriceList =
                 getStocksPriceFromFile("src/test/java/com/example/app16/json_data/expect_ema.json",
                         false);
-        Assertions.assertArrayEquals(expectedPriceList.toArray(),emaValues.toArray());
+        Assertions.assertArrayEquals(expectedPriceList.toArray(), emaValues.toArray());
     }
 
     @Test
@@ -65,7 +88,7 @@ public class CalculateFormulasTest {
         List<Price> expectedPriceList =
                 getStocksPriceFromFile("src/test/java/com/example/app16/json_data/expected_macd.json",
                         false);
-        Assertions.assertArrayEquals(expectedPriceList.toArray(),macdValues.toArray());
+        Assertions.assertArrayEquals(expectedPriceList.toArray(), macdValues.toArray());
     }
 
     @Test
@@ -78,15 +101,15 @@ public class CalculateFormulasTest {
         tFrameAndValues[2] = (ArrayList) priceList;
         CalculateFormulas calculateFormulas = new CalculateFormulas(tFrameAndValues, 20);
         List<Price> macdValues = calculateFormulas.getMACDValues();
-        List<Price> macdAvgValues = calculateFormulas.getEMAValues(macdValues,9);
+        List<Price> macdAvgValues = calculateFormulas.getEMAValues(macdValues, 9);
         List<Price> expectedPriceList =
                 getStocksPriceFromFile("src/test/java/com/example/app16/json_data/expected_macd_avg.json",
                         false);
-        Assertions.assertArrayEquals(expectedPriceList.toArray(),macdAvgValues.toArray());
+        Assertions.assertArrayEquals(expectedPriceList.toArray(), macdAvgValues.toArray());
     }
 
 
-    public static List<Price> getStocksPriceFromFile(String path,boolean isEpoch) {
+    public static List<Price> getStocksPriceFromFile(String path, boolean isEpoch) {
         List<Price> priceList = new ArrayList<>();
         try {
             FileInputStream fis = new FileInputStream(path);
@@ -99,11 +122,11 @@ public class CalculateFormulasTest {
             JsonNode arrayNode = node.get("data");
 
             arrayNode.forEach(s -> {
-                LocalDate date ;
-                if(isEpoch) {
+                LocalDate date;
+                if (isEpoch) {
                     int epoch = Integer.parseInt(s.get("epoch").asText());
-                  date = Instant.ofEpochSecond(epoch).atZone(ZoneId.systemDefault()).toLocalDate();
-                }else{
+                    date = Instant.ofEpochSecond(epoch).atZone(ZoneId.systemDefault()).toLocalDate();
+                } else {
                     String value = s.get("dateOfStock").asText();
                     date = LocalDate.parse(value);
                 }

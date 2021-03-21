@@ -45,7 +45,7 @@ public class CalculateFormulas {
     }
 
     // SMA calculation
-    private ArrayList[] calculateSMA() {
+    public ArrayList[] calculateSMA() {
         ArrayList lists[] = new ArrayList[2];
         for (int i = 0; i < 2; i++) {
             lists[i] = new ArrayList<>();
@@ -55,7 +55,9 @@ public class CalculateFormulas {
 
         while (index <= timeFrames.size()) {
             lists[0].add(timeFrames.get(index - 1));
-            lists[1].add(sumValues(index - dateInterval, index) / dateInterval);
+            double sma = sumValues(index - dateInterval, index) / dateInterval;
+            sma = Math.round(sma * 100) / 100.0d;
+            lists[1].add(sma);
             index += dateInterval;
         }
         return lists;

@@ -67,4 +67,5 @@ public class FindQuoteBeanValidationTest {
         boolean validateDate = findQuoteBean.minDateRangeRequired(dateFrom, dateTo);
         Assertions.assertEquals(false,validateDate);
     }
+
 }
