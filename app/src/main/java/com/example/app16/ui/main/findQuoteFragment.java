@@ -94,6 +94,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
 
         // set a change listener on the SeekBar
         seekBar = root.findViewById(R.id.seekBar);
+        seekBar.setProgress(5);
 
 
         progress = seekBar.getProgress();
