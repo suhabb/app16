@@ -1,0 +1,424 @@
+{
+  "data": [
+    {
+      "dateOfStock": "2019-01-30",
+      "stockPrice": "63.81"
+    },
+    {
+      "dateOfStock": "2019-01-31",
+      "stockPrice": "63.57"
+    },
+    {
+      "dateOfStock": "2019-02-01",
+      "stockPrice": "63.46"
+    },
+    {
+      "dateOfStock": "2019-02-04",
+      "stockPrice": "63.37"
+    },
+    {
+      "dateOfStock": "2019-02-05",
+      "stockPrice": "63.46"
+    },
+    {
+      "dateOfStock": "2019-02-06",
+      "stockPrice": "63.46"
+    },
+    {
+      "dateOfStock": "2019-02-07",
+      "stockPrice": "63.26"
+    },
+    {
+      "dateOfStock": "2019-02-08",
+      "stockPrice": "63.05"
+    },
+    {
+      "dateOfStock": "2019-02-11",
+      "stockPrice": "63.0"
+    },
+    {
+      "dateOfStock": "2019-02-12",
+      "stockPrice": "62.94"
+    },
+    {
+      "dateOfStock": "2019-02-13",
+      "stockPrice": "62.81"
+    },
+    {
+      "dateOfStock": "2019-02-14",
+      "stockPrice": "62.6"
+    },
+    {
+      "dateOfStock": "2019-02-15",
+      "stockPrice": "62.5"
+    },
+    {
+      "dateOfStock": "2019-02-19",
+      "stockPrice": "62.36"
+    },
+    {
+      "dateOfStock": "2019-02-20",
+      "stockPrice": "62.18"
+    },
+    {
+      "dateOfStock": "2019-02-21",
+      "stockPrice": "61.79"
+    },
+    {
+      "dateOfStock": "2019-02-22",
+      "stockPrice": "61.51"
+    },
+    {
+      "dateOfStock": "2019-02-25",
+      "stockPrice": "61.33"
+    },
+    {
+      "dateOfStock": "2019-02-26",
+      "stockPrice": "61.15"
+    },
+    {
+      "dateOfStock": "2019-02-27",
+      "stockPrice": "61.33"
+    },
+    {
+      "dateOfStock": "2019-02-28",
+      "stockPrice": "61.6"
+    },
+    {
+      "dateOfStock": "2019-03-01",
+      "stockPrice": "61.34"
+    },
+    {
+      "dateOfStock": "2019-03-04",
+      "stockPrice": "60.91"
+    },
+    {
+      "dateOfStock": "2019-03-05",
+      "stockPrice": "60.35"
+    },
+    {
+      "dateOfStock": "2019-03-06",
+      "stockPrice": "59.84"
+    },
+    {
+      "dateOfStock": "2019-03-07",
+      "stockPrice": "59.39"
+    },
+    {
+      "dateOfStock": "2019-03-08",
+      "stockPrice": "59.13"
+    },
+    {
+      "dateOfStock": "2019-03-11",
+      "stockPrice": "59.04"
+    },
+    {
+      "dateOfStock": "2019-03-12",
+      "stockPrice": "58.8"
+    },
+    {
+      "dateOfStock": "2019-03-13",
+      "stockPrice": "58.7"
+    },
+    {
+      "dateOfStock": "2019-03-14",
+      "stockPrice": "58.63"
+    },
+    {
+      "dateOfStock": "2019-03-15",
+      "stockPrice": "58.28"
+    },
+    {
+      "dateOfStock": "2019-03-18",
+      "stockPrice": "57.84"
+    },
+    {
+      "dateOfStock": "2019-03-19",
+      "stockPrice": "57.41"
+    },
+    {
+      "dateOfStock": "2019-03-20",
+      "stockPrice": "57.14"
+    },
+    {
+      "dateOfStock": "2019-03-21",
+      "stockPrice": "56.91"
+    },
+    {
+      "dateOfStock": "2019-03-22",
+      "stockPrice": "56.51"
+    },
+    {
+      "dateOfStock": "2019-03-25",
+      "stockPrice": "56.07"
+    },
+    {
+      "dateOfStock": "2019-03-26",
+      "stockPrice": "55.82"
+    },
+    {
+      "dateOfStock": "2019-03-27",
+      "stockPrice": "55.74"
+    },
+    {
+      "dateOfStock": "2019-03-28",
+      "stockPrice": "55.74"
+    },
+    {
+      "dateOfStock": "2019-03-29",
+      "stockPrice": "55.76"
+    },
+    {
+      "dateOfStock": "2019-04-01",
+      "stockPrice": "55.97"
+    },
+    {
+      "dateOfStock": "2019-04-02",
+      "stockPrice": "56.09"
+    },
+    {
+      "dateOfStock": "2019-04-03",
+      "stockPrice": "56.32"
+    },
+    {
+      "dateOfStock": "2019-04-04",
+      "stockPrice": "56.04"
+    },
+    {
+      "dateOfStock": "2019-04-05",
+      "stockPrice": "55.94"
+    },
+    {
+      "dateOfStock": "2019-04-08",
+      "stockPrice": "55.81"
+    },
+    {
+      "dateOfStock": "2019-04-09",
+      "stockPrice": "55.68"
+    },
+    {
+      "dateOfStock": "2019-04-10",
+      "stockPrice": "55.63"
+    },
+    {
+      "dateOfStock": "2019-04-11",
+      "stockPrice": "55.44"
+    },
+    {
+      "dateOfStock": "2019-04-12",
+      "stockPrice": "55.25"
+    },
+    {
+      "dateOfStock": "2019-04-15",
+      "stockPrice": "55.05"
+    },
+    {
+      "dateOfStock": "2019-04-16",
+      "stockPrice": "55.01"
+    },
+    {
+      "dateOfStock": "2019-04-17",
+      "stockPrice": "54.93"
+    },
+    {
+      "dateOfStock": "2019-04-18",
+      "stockPrice": "54.9"
+    },
+    {
+      "dateOfStock": "2019-04-22",
+      "stockPrice": "54.67"
+    },
+    {
+      "dateOfStock": "2019-04-23",
+      "stockPrice": "54.48"
+    },
+    {
+      "dateOfStock": "2019-04-24",
+      "stockPrice": "54.21"
+    },
+    {
+      "dateOfStock": "2019-04-25",
+      "stockPrice": "53.74"
+    },
+    {
+      "dateOfStock": "2019-04-26",
+      "stockPrice": "53.07"
+    },
+    {
+      "dateOfStock": "2019-04-29",
+      "stockPrice": "52.59"
+    },
+    {
+      "dateOfStock": "2019-04-30",
+      "stockPrice": "52.11"
+    },
+    {
+      "dateOfStock": "2019-05-01",
+      "stockPrice": "51.58"
+    },
+    {
+      "dateOfStock": "2019-05-02",
+      "stockPrice": "51.3"
+    },
+    {
+      "dateOfStock": "2019-05-03",
+      "stockPrice": "51.27"
+    },
+    {
+      "dateOfStock": "2019-05-06",
+      "stockPrice": "51.25"
+    },
+    {
+      "dateOfStock": "2019-05-07",
+      "stockPrice": "51.07"
+    },
+    {
+      "dateOfStock": "2019-05-08",
+      "stockPrice": "50.86"
+    },
+    {
+      "dateOfStock": "2019-05-09",
+      "stockPrice": "50.61"
+    },
+    {
+      "dateOfStock": "2019-05-10",
+      "stockPrice": "50.34"
+    },
+    {
+      "dateOfStock": "2019-05-13",
+      "stockPrice": "49.85"
+    },
+    {
+      "dateOfStock": "2019-05-14",
+      "stockPrice": "49.51"
+    },
+    {
+      "dateOfStock": "2019-05-15",
+      "stockPrice": "49.2"
+    },
+    {
+      "dateOfStock": "2019-05-16",
+      "stockPrice": "48.85"
+    },
+    {
+      "dateOfStock": "2019-05-17",
+      "stockPrice": "48.19"
+    },
+    {
+      "dateOfStock": "2019-05-20",
+      "stockPrice": "47.48"
+    },
+    {
+      "dateOfStock": "2019-05-21",
+      "stockPrice": "46.83"
+    },
+    {
+      "dateOfStock": "2019-05-22",
+      "stockPrice": "46.0"
+    },
+    {
+      "dateOfStock": "2019-05-23",
+      "stockPrice": "45.31"
+    },
+    {
+      "dateOfStock": "2019-05-24",
+      "stockPrice": "44.59"
+    },
+    {
+      "dateOfStock": "2019-05-28",
+      "stockPrice": "43.91"
+    },
+    {
+      "dateOfStock": "2019-05-29",
+      "stockPrice": "43.32"
+    },
+    {
+      "dateOfStock": "2019-05-30",
+      "stockPrice": "42.75"
+    },
+    {
+      "dateOfStock": "2019-05-31",
+      "stockPrice": "42.18"
+    },
+    {
+      "dateOfStock": "2019-06-03",
+      "stockPrice": "41.54"
+    },
+    {
+      "dateOfStock": "2019-06-04",
+      "stockPrice": "41.26"
+    },
+    {
+      "dateOfStock": "2019-06-05",
+      "stockPrice": "41.07"
+    },
+    {
+      "dateOfStock": "2019-06-06",
+      "stockPrice": "41.08"
+    },
+    {
+      "dateOfStock": "2019-06-07",
+      "stockPrice": "41.06"
+    },
+    {
+      "dateOfStock": "2019-06-10",
+      "stockPrice": "41.21"
+    },
+    {
+      "dateOfStock": "2019-06-11",
+      "stockPrice": "41.43"
+    },
+    {
+      "dateOfStock": "2019-06-12",
+      "stockPrice": "41.47"
+    },
+    {
+      "dateOfStock": "2019-06-13",
+      "stockPrice": "41.6"
+    },
+    {
+      "dateOfStock": "2019-06-14",
+      "stockPrice": "41.74"
+    },
+    {
+      "dateOfStock": "2019-06-17",
+      "stockPrice": "42.07"
+    },
+    {
+      "dateOfStock": "2019-06-18",
+      "stockPrice": "42.36"
+    },
+    {
+      "dateOfStock": "2019-06-19",
+      "stockPrice": "42.65"
+    },
+    {
+      "dateOfStock": "2019-06-20",
+      "stockPrice": "42.78"
+    },
+    {
+      "dateOfStock": "2019-06-21",
+      "stockPrice": "42.94"
+    },
+    {
+      "dateOfStock": "2019-06-24",
+      "stockPrice": "43.12"
+    },
+    {
+      "dateOfStock": "2019-06-25",
+      "stockPrice": "43.2"
+    },
+    {
+      "dateOfStock": "2019-06-26",
+      "stockPrice": "43.27"
+    },
+    {
+      "dateOfStock": "2019-06-27",
+      "stockPrice": "43.4"
+    },
+    {
+      "dateOfStock": "2019-06-28",
+      "stockPrice": "43.53"
+    }
+  ]
+}

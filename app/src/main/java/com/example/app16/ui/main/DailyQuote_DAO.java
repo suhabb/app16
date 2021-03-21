@@ -22,6 +22,7 @@ public class DailyQuote_DAO {
             if (fromEpoch != 0 && toEpoch != 0) {
                 formatUrl += "period1=" + fromEpoch + "&period2=" + toEpoch;
             }
+            System.out.println("Calling Url....:" + formatUrl);
             return formatUrl;
 
         } catch (Exception e) {

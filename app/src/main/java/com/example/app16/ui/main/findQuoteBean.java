@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +53,7 @@ public class findQuoteBean {
         if (stockSymbol.isEmpty()) {
             errors.add("Stock Id cannot be empty");
         }
-        if(!dateFrom.isEmpty() && !dateTo.isEmpty()) {
+        if (!dateFrom.isEmpty() && !dateTo.isEmpty()) {
             if (!validateDate(dateFrom, dateTo)) {
                 errors.add("Date not in proper format");
                 return errors.size() > 0;
@@ -60,8 +61,27 @@ public class findQuoteBean {
             if (!validateDateRange(dateFrom, dateTo)) {
                 errors.add("Start Date must be less then End Date");
             }
+            if (minDateRangeRequired(dateFrom, dateTo)) {
+                errors.add("Minimum 60 days of gap between From and To date expected.");
+            }
         }
         return errors.size() > 0;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public boolean minDateRangeRequired(String dateFrom, String dateTo) {
+        try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fromDate = LocalDate.parse(dateFrom, dtf);
+            LocalDate toDate = LocalDate.parse(dateTo, dtf);
+            long gap = ChronoUnit.DAYS.between(fromDate, toDate);
+            if (gap < 60) {
+                return true;
+            }
+            return false;
+        } catch (DateTimeParseException exception) {
+            return false;
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

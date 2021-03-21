@@ -94,6 +94,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
 
         // set a change listener on the SeekBar
         seekBar = root.findViewById(R.id.seekBar);
+        seekBar.setProgress(5);
 
 
         progress = seekBar.getProgress();
@@ -171,7 +172,7 @@ public class findQuoteFragment extends Fragment implements OnClickListener {
         checkedBoxes.stream().forEach(c -> c.setChecked(false));
         checkedBoxes.clear();
         checkBoxCount = 0;
-        seekBar.setProgress(2);
+        seekBar.setProgress(5);
     }
 
     public void validateTickedBox(View _v) {
