@@ -51,7 +51,7 @@ public class findQuoteBean {
             errors.add("Date cannot be empty");
         }
         if (stockSymbol.isEmpty()) {
-            errors.add("Stock Id cannot be empty");
+            errors.add("Share symbol cannot be empty");
         }
         if (!dateFrom.isEmpty() && !dateTo.isEmpty()) {
             if (!validateDate(dateFrom, dateTo)) {
